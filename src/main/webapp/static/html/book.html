@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>책 목록</title>
+
+<!-- 외부 css 연결법 정리해두기 , 링크 잘 됬는지 확인 방법 컨트롤 우클릭 -->
+<link rel="stylesheet" type="text/css" href="/static/css/default.css">
+<link rel="stylesheet" type="text/css" href="/static/css/book.css">
+
+<!-- 구글 폰트 사이트에서 get embeded code -> Embed code in the <head> of your html 복사 붙여넣기
+css에 Gaegu: CSS classes 에서 font-family: "Gaegu", sans-serif; 1줄만 적어주면 적용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Sunflower:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- 외부 js파일 적용 -->
+<script src="/static/js/book.js"></script>
+
+</head>
+<body>
+	<main class="main">
+		<nav class="navigation">
+			<a href="/index.html">인덱스로</a>
+		</nav>
+		<h1 class="title">책 목록 페이지</h1>
+		
+		<!-- 9월 26일 추가 -->
+		<button class="btn-insert">추가</button>
+		<!-- dialog는 기본적으로 안 보인다. -->
+		<dialog class="book-dialog">
+			<h3>책 정보를 입력하세요</h3>
+			<form method="dialog">
+				<label>제목<input type="text" name="title"></label>
+				<label>작가<input type="text" name="author"></label>
+				<label>출판사<input type="text" name="publisher"></label>
+				<label>가격<input type="number" name="price"></label>
+				<input type="submit" value="확인">
+				<input type="submit" value="취소">
+			</form>
+		</dialog>
+		
+		
+		<section class="container"></section>
+	</main>
+	<template id="template">
+		<!-- 속성값을 내가 임의로 줄 수 있다. data-이름="value" 
+		data-book-id ="번호"를 f12 element에서 확인 가능 -->
+		<article class="card">
+			<header class="header"></header>
+			<div class="book">
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+			</div>
+			<footer class="footter">
+			<!-- form 태그 안의 button태그는 submit이 되는 버튼이다.  
+			form 안이 아니지만 type="button" 적어주면 좋다.-->
+				<button type="button" class="btn-update">수정</button>
+				<button type="button" class="btn-delete">삭제</button>
+			</footer>
+		</article>
+	</template>
+</body>
+
+</html>
