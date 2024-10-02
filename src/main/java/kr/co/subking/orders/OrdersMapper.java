@@ -1,4 +1,4 @@
-package kr.co.subking.orderList;
+package kr.co.subking.orders;
 
 import java.util.List;
 
