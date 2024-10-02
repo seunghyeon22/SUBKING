@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="../css/orders.css">
+<title>서브킹 주문 내역</title>
+</head>
+<body>
+
+	<section class="section-container"></section>
+
+	<template id="order-template">
+		<div class="container">
+			<div class="image-container">
+				<img
+					src="../image/logo.jpg"
+					alt="햄버거 이미지">
+			</div>
+			<div class="content">
+				<h2>서브킹</h2>
+				<p>주문날짜: 10월 2일</p>
+				<p>주문 상태: 배달완료</p>
+				<p>햄버거 1개 외 총 금액: 10000원</p>
+				<div class="button-container">
+					<button class="same-menu">같은 메뉴 담기</button>
+					<button class="order-details">주문 상세</button>
+				</div>
+			</div>
+			<dialog class="order-dialog">
+			<h3>내용1</h3>
+			<h3>내용2</h3>
+			<h3>내용3</h3>
+			<h3>내용4</h3>
+			<button class="btn-close">닫기</button>
+
+			</dialog>
+		</div>
+	</template>
+
+
+
+</body>
+
+<script
+	src="../js/orders.js"></script>
+</html>

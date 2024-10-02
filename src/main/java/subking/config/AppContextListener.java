@@ -14,6 +14,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
+import kr.co.subking.orderList.OrdersMapper;
+
 
 @WebListener
 public class AppContextListener implements ServletContextListener {
@@ -29,9 +31,9 @@ public class AppContextListener implements ServletContextListener {
 	private void initDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/my_db");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+		dataSource.setUrl("jdbc:mysql://192.168.0.188:3306/subking");
+		dataSource.setUsername("dc");
+		dataSource.setPassword("1234");
 
 		AppContextListener.dataSource = dataSource;
 	}
@@ -43,7 +45,7 @@ public class AppContextListener implements ServletContextListener {
 		Configuration configuration = new Configuration(environment);
 
 		// Mapper 추가하는 곳
-//		configuration.addMapper(BookMapper.class);
+		configuration.addMapper(OrdersMapper.class);
 
 		sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 	}
