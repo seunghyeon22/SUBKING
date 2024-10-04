@@ -6,6 +6,8 @@ window.addEventListener("load", onload);
 
 const url = "/240930subKingProject/api/v1/orders"
 
+
+
 let container;
 
 function onload(e) {
@@ -20,12 +22,19 @@ function onload(e) {
 				container.append(elem);
 			})
 		})
-
 }
 
 // orders 테이블 데이터 get으로 가져와서 json 배열로 반환
 function loadOrdersData() {
 	return fetch(url, { method: "get" })
+		.then((resp) => resp.json())
+}
+
+// orderId에 맞는 json 정보를 parsing해서 menu 객체배열(menuArr)로 반환
+function loadMenuData(orderId) {
+	const menuUrl = "/240930subKingProject/api/v1/menu/"
+	
+	return fetch(menuUrl + orderId, { method: "get" })
 		.then((resp) => resp.json())
 }
 
@@ -35,7 +44,6 @@ function createOrders(orders) {
 	
 	let template = document.getElementById('order-template');
 	let clone = document.importNode(template.content, true);
-//	let content = clone.querySelector(".content")
 		
 	let milliseconds = orders.order_date;
 	let date = parseDateToString(milliseconds);
@@ -47,11 +55,8 @@ function createOrders(orders) {
 	let btnOrderDetail = clone.querySelector(".order-details");
 	let dialog = clone.querySelector(".order-dialog");
 	let btnClose = clone.querySelector(".btn-close");
-	//	let btnSameMenu = container.querySelector(".same-menu");
-	//	btnSameMenu.addEventListener("click", (e) => {
-	//		
-	//	})
 
+	// 버튼 2개와 다이얼로그가 제대로 작동하지 확인 하기 위해 else가 적혀 있어서 나중에 지워도 된다.
 	if (btnOrderDetail && dialog && btnClose) {
 		btnOrderDetail.addEventListener("click", (e) => {
 			dialog.showModal();
@@ -62,8 +67,32 @@ function createOrders(orders) {
 	} else {
 		console.error("btnOrderDetail 또는 dialog 요소를 찾을 수 없습니다.");
 	}
-
+	
+	let orderId = orders.order_menu_id;
+	console.log(orderId);
+			
+	loadMenuData(orderId)
+		.then((menuArr) => {
+			menuArr.map((menus) => {
+				return createMenus(menus);
+			}).forEach((elem) => {
+				dialog.append(elem);
+			})
+	})
 	return clone;
+}
+
+function createMenus(menus) {
+	console.log(menus.menu_name)
+	
+	let menuTemplate = document.getElementById('menu-template');
+	let menuClone = document.importNode(menuTemplate.content, true);
+	
+	menuClone.querySelector(".menu-name").innerText = "버거 이름: " + menus.menu_name;
+	menuClone.querySelector(".menu-kcal").innerText = "칼로리: " + menus.menu_all_kcal;
+	menuClone.querySelector(".menu-price").innerText = "가격: "  + menus.menu_price + "원";
+	
+	return menuClone;
 }
 
 function parseDateToString(milliseconds) {

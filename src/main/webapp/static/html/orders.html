@@ -23,21 +23,24 @@
 				<p>주문 상태: 배달완료</p>
 				<p>햄버거 1개 외 총 금액: 10000원</p>
 				<div class="button-container">
-					<button class="same-menu">같은 메뉴 담기</button>
+<!-- 				<button class="same-menu">같은 메뉴 담기</button> -->
 					<button class="order-details">주문 상세</button>
 				</div>
 			</div>
 			<dialog class="order-dialog">
-			<h3>내용1</h3>
-			<h3>내용2</h3>
-			<h3>내용3</h3>
-			<h3>내용4</h3>
-			<button class="btn-close">닫기</button>
-
+				<template id="menu-template">
+					<div class="label-conatiner">
+						<label class="menu-name">버거이름</label>
+						<label class="menu-kcal">칼로리</label>
+						<label class="menu-price">금액</label>
+					</div>
+					<ul id="ingredients-name"></ul>
+					<button>복사 버튼</button>
+				</template>
+					<button class="btn-close">닫기</button>
 			</dialog>
 		</div>
 	</template>
-
 
 
 </body>
