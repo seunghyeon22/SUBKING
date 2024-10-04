@@ -33,7 +33,6 @@
 								<img alt="재료이름" src="">
 							</div> <strong class="tit">재료이름</strong> <span class="eng">가격</span> <span
 							class="cal">칼로리</span>
-
 						</li>
 					</ul>
 				</div>

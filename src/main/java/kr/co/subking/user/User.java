@@ -21,4 +21,5 @@ public class User {
 	private String user_role;
 	private Timestamp signupdate;
 	private Timestamp updatedate;
+	
 }
