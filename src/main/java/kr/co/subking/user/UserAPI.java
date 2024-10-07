@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import kr.co.subking.*;
 import lombok.extern.slf4j.Slf4j;
+import subking.config.WebUtil;
 
 @WebServlet("/api/v1/user")
 @Slf4j
