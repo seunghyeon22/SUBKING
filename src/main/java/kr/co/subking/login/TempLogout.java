@@ -20,6 +20,7 @@ public class TempLogout extends HttpServlet{
 		session = req.getSession();
 		
 		session.setAttribute("message", "로그아웃되었습니다.");
+		
 		resp.sendRedirect("http://localhost:8080/240930subKingProject/static/jsp/subking.jsp");
 	}
 	

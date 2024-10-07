@@ -24,7 +24,16 @@ public class OrdersServiceImple implements OrdersService {
 			return list;
 		}
 	}
-	
-	
+
+	@Override
+	public List<Orders> selectByUserId(String user_id) {
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			OrdersMapper ordersMapper = sqlSession.getMapper(OrdersMapper.class);
+			
+			List<Orders> list = ordersMapper.selectByUserId(user_id);
+			
+			return list;
+		}
+	}
 
 }

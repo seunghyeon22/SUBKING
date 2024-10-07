@@ -23,7 +23,6 @@ public interface UserMapper {
     int insert(@Param("user") User user);
 
     @Select("SELECT user_id, user_pw, user_name, user_birth, user_phone, user_gender, user_email, user_address, user_role, user_signupDate, user_updateDate FROM user WHERE user_id = #{userId}")
-    @ResultMap(value = "userResults")
     User selectByPk(@Param("userId") int pk);
 
     @Update({
@@ -36,6 +35,9 @@ public interface UserMapper {
     @Delete("DELETE FROM user WHERE user_id=#{userId}")
     int delete(@Param("userId") int userId);
 
+    @Select("SELECT COUNT(user_id) FROM user WHERE user_id = #{user_id} AND user_pw=#{user_pw}")
+    int login(@Param("user_id") String user_id, @Param("user_pw") String user_pw);
+	
 	List<User> selectAll();
 }
 
