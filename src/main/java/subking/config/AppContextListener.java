@@ -54,8 +54,6 @@ public class AppContextListener implements ServletContextListener {
 		configuration.addMapper(MenuMapper.class);
 		configuration.addMapper(CustomMapper.class);
 		configuration.addMapper(CartMapper.class);
-
-
 		sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 	}
 

@@ -48,10 +48,12 @@
     cursor: pointer;
 }
 
-.button-container .same-menu {
-    background-color: #4CAF50;
-}
+/* .button-container .same-menu { */
+/*     background-color: #4CAF50; */
+/* } */
 
 .button-container .order-details {
+	size: 100%;
     background-color: #008CBA;
 }
+
