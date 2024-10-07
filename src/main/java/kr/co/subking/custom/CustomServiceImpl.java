@@ -35,7 +35,6 @@ public class CustomServiceImpl implements CustomService {
 			sqlSession.commit();
 			int lastId = menuMapper.selectLastIdbyMenu();
 			List<Custom> custom = new ArrayList<Custom>();
-			List<Integer> counts = new ArrayList<Integer>();
 			int result = 0;
 			Set<Integer> set = new HashSet<Integer>(list);
 			for(Integer i : set) {
