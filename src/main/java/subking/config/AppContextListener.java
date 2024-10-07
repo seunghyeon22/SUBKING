@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
+import kr.co.subking.cart.CartMapper;
 import kr.co.subking.custom.CustomMapper;
 import kr.co.subking.ingredients.IngredientsMapper;
 import kr.co.subking.menu.MenuMapper;
@@ -48,11 +49,11 @@ public class AppContextListener implements ServletContextListener {
 		Configuration configuration = new Configuration(environment);
 
 		// Mapper 추가하는 곳
-		configuration.addMapper(OrdersMapper.class);
-		configuration.addMapper(CustomMapper.class);
 		configuration.addMapper(IngredientsMapper.class);
+		configuration.addMapper(OrdersMapper.class);
 		configuration.addMapper(MenuMapper.class);
-
+		configuration.addMapper(CustomMapper.class);
+		configuration.addMapper(CartMapper.class);
 		sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 	}
 

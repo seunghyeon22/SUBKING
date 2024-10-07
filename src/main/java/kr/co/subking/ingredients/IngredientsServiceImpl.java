@@ -20,10 +20,11 @@ public class IngredientsServiceImpl implements IngredientsService {
 	public List<Ingredients> selectAll() {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			IngredientsMapper mapper = sqlSession.getMapper(IngredientsMapper.class);
-			
-			List<Ingredients> list = mapper.selectIg();
+			List<Ingredients> list = mapper.selectAll();
+
 			return list;
 		}
+		
 	}
 
 	@Override
@@ -35,4 +36,5 @@ public class IngredientsServiceImpl implements IngredientsService {
 			return list;
 		}
 	}
+
 }

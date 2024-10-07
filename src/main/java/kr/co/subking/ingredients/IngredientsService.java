@@ -7,4 +7,5 @@ public interface IngredientsService {
 
 	List<ingredientsList> selectIgnameAndCount(Integer menu_id);
 
+
 }
