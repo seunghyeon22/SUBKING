@@ -23,6 +23,12 @@ function onload(e) {
 			})
 		})
 }
+// menu_id (custom_menu_id)에 맞는 재료 이름과 숫자 목록을 불러와서 json 배열로 반환
+function loadIgListData(menu_id) {
+	const igUrl = "/240930subKingProject/api/v1/ingredients/";
+	return fetch(igUrl + menu_id, { method: "put"})
+		.then((resp) => resp.json())
+}
 
 // orders 테이블 데이터 get으로 가져와서 json 배열로 반환
 function loadOrdersData() {
@@ -69,7 +75,6 @@ function createOrders(orders) {
 	}
 	
 	let orderId = orders.order_menu_id;
-	console.log(orderId);
 			
 	loadMenuData(orderId)
 		.then((menuArr) => {
@@ -79,19 +84,33 @@ function createOrders(orders) {
 				dialog.append(elem);
 			})
 	})
+	
 	return clone;
 }
 
 function createMenus(menus) {
-	console.log(menus.menu_name)
 	
 	let menuTemplate = document.getElementById('menu-template');
 	let menuClone = document.importNode(menuTemplate.content, true);
+	let igList = menuClone.querySelector(".ingredients-list");
 	
 	menuClone.querySelector(".menu-name").innerText = "버거 이름: " + menus.menu_name;
 	menuClone.querySelector(".menu-kcal").innerText = "칼로리: " + menus.menu_all_kcal;
 	menuClone.querySelector(".menu-price").innerText = "가격: "  + menus.menu_price + "원";
 	
+	console.log(menus.menu_id);
+	
+	loadIgListData(menus.menu_id)
+		.then((igArr) => {
+			igArr.forEach((elem) => {
+				console.log(elem.ig_name + ": " + elem.custom_count + "개");
+				
+				let igName = document.createElement('li');
+				igName.textContent = elem.ig_name + ": " + elem.custom_count + "개";
+				
+				igList.appendChild(igName);
+			})
+		})
 	return menuClone;
 }
 

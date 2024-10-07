@@ -29,10 +29,15 @@ public class IngredientsAPI extends HttpServlet {
 
 		Integer menu_id = parsingIdPath(uri);
 		
-		// 문제가 있다. custom_ig_id, custom_count인데 필요한건 이름이다.
-		// 새로운 객체를 만들어야 하나? custom_ig_id, ig_name, custom_count 3개를 필드로 가지는
-		// JOIN해서 select하고
-//		List<Ingredients> list = ingredientsService.getIgListByMenuId(menu_id);
+		List<ingredientsList> igList = ingredientsService.selectIgnameAndCount(menu_id);
+		
+		resp.setHeader("Content-Type", "application/json; charset=utf-8");
+		JsonMapper jsonMapper = new JsonMapper();
+		String json  = jsonMapper.writeValueAsString(igList);
+		
+		PrintWriter pw = resp.getWriter();
+		pw.print(json);
+		pw.flush();
 	}
 
 	private Integer parsingIdPath(String uri) {
