@@ -57,7 +57,7 @@
 				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogOut">로그아웃</a>
 				<a href="../html/orders.html">주문내역</a>
 			</c:if>
-		</div>1
+		</div>
 	</header>
 </body>
 </html>
