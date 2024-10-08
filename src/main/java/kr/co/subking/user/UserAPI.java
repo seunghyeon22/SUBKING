@@ -70,15 +70,21 @@ public class UserAPI extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("message", "회원가입이 완료되었습니다.");
-		((HttpServletResponse) request).sendRedirect(request.getContextPath() + "/index");
+		response.sendRedirect("http://localhost:8080/240930subKingProject/static/jsp/subking.jsp");
 	}
 
-	private void errorForwarding(HttpServletRequest req, HttpServletResponse response, User userinfo,
+	private void errorForwarding(HttpServletRequest request, HttpServletResponse response, User user,
 			Map<String, String> error) throws ServletException, IOException {
 		response.setStatus(400);
-		req.setAttribute("error", error);
-		req.setAttribute("userinfo", userinfo);
-		req.getRequestDispatcher("/WEB-INF/views/userinfo/signup.jsp").forward(req, response);
+		request.setAttribute("error", error);
+		request.setAttribute("user", user);
+		request.getRequestDispatcher("http://localhost:8080/240930subKingProject/static/html/join.html").forward(request, response);
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doDelete(req, resp);
 	}
 
 //	@Override
@@ -116,4 +122,5 @@ public class UserAPI extends HttpServlet {
 //			resp.setStatus(404);
 //		}
 //	}
+	
 }
