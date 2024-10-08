@@ -17,19 +17,20 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import kr.co.subking.user.User;
 import kr.co.subking.user.UserMapper;
 import subking.config.AppContextListener;
+import subking.config.PasswordUtils;
 
 @WebServlet("/api/v1/register")
 public class RegisterServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
 
 		// JSON 형식으로 응답할 때 인코딩 설정
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
 		// JSON 형식으로 전송된 요청 데이터 파싱
+		req.setCharacterEncoding("UTF-8");
 		BufferedReader reader = req.getReader();
 		StringBuilder sb = new StringBuilder();
 		String line;
@@ -37,10 +38,6 @@ public class RegisterServlet extends HttpServlet {
 			sb.append(line);
 		}
 		String json = sb.toString();
-
-		// JSON 데이터 파싱
-//        Gson gson = new Gson();
-//        User user = gson.fromJson(requestData, User.class);
 
 		JsonMapper jsonMapper = new JsonMapper();
 		System.out.println(json);
@@ -76,6 +73,22 @@ public class RegisterServlet extends HttpServlet {
 		}
 		out.close();
 		
-		resp.sendRedirect("http://localhost:8080/240930subKingProject/api/v1/tempLogIn");
 	}
+
+	// 원래 doPost에 작성해야 하는데 임시로 여기 작성
+	// 비밀번호 해쉬화 하는 방법
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String username = req.getParameter("username");
+        String password = req.getParameter("password");
+
+        // 비밀번호 해시화
+        String hashedPassword = PasswordUtils.hashPassword(password);
+
+        // 해시화된 비밀번호를 데이터베이스에 저장 (예제이므로 데이터베이스 저장 코드는 생략)
+        // DatabaseUtils.saveUser(username, hashedPassword);
+
+        resp.getWriter().println("User registered successfully");
+	}
+	
 }

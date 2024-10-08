@@ -9,8 +9,6 @@
 
 </head>
 <body>
-
-
 	<!-- wrapper -->
 	<div id="wrapper">
 
@@ -23,7 +21,7 @@
 					<label for="id">아이디</label>
 				</h3>
 				<span class="box int_id"> <input type="text" id="id"
-					class="int" maxlength="20"> <!--                         <span class="step_url">@naver.com</span> -->
+					class="int" maxlength="20"> 
 				</span> <span class="error_next_box"></span>
 			</div>
 
@@ -34,7 +32,6 @@
 				</h3>
 				<span class="box int_pass"> <input type="password" id="pswd1"
 					class="int" maxlength="20"> <span id="alertTxt">사용불가</span>
-					<!--                         <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg"> -->
 				</span> <span class="error_next_box"></span>
 			</div>
 
@@ -44,7 +41,7 @@
 					<label for="pswd2">비밀번호 재확인</label>
 				</h3>
 				<span class="box int_pass_check"> <input type="password"
-					id="pswd2" class="int" maxlength="20"> <!--                         <img src="m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
+					id="pswd2" class="int" maxlength="20"> 
 				</span> <span class="error_next_box"></span>
 			</div>
 
