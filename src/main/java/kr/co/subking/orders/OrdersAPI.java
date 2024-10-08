@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
@@ -18,7 +19,10 @@ public class OrdersAPI extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Orders> ordersList = ordersService.selectAll();
+		HttpSession session = req.getSession();
+		String user_id = (String) session.getAttribute("user_id");
+		System.out.println(user_id);
+		List<Orders> ordersList = ordersService.selectByUserId(user_id);
 		
 		resp.setHeader("Content-Type", "application/json; charset=utf-8");
 		JsonMapper jsonMapper = new JsonMapper();

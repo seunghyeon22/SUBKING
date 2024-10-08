@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-public class ingredientsList {
+public class IngredientsList {
 	private String ig_name;
 	private int custom_count;
 	

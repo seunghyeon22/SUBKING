@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="join.css">
+</head>
+<style>
+html {
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    background: #f3f6f7;
+    font-family: Dotum, '돋움';
+}
+
+#logo{
+    width: 240px;
+    height: 44px;
+}
+
+#header {
+    padding-top: 62px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#wrapper {
+    position: relative;
+    height: 100%;
+}
+
+#content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 460px;
+}
+
+label {
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
+
+h3 {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.box {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    background: #fff;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.info {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+
+input {
+    font-family: Dotum, '돋움', sans-serif;
+}
+
+.box.info_id {
+    padding-right: 110px;
+}
+
+.box.info_pw, .box.info_pw_check {
+    padding-right: 40px;
+}
+
+.auto_url {
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+.pwimg {
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+#bir_wrap {
+    display: table;
+    width: 100%;
+}
+
+#bir_yy {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm {
+    display: table-cell;
+    width: 147px;
+    vertical-align: middle;
+}
+
+#bir_dd {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm, #bir_dd {
+    padding-left: 10px;
+}
+
+.sel {
+    width: 100%;
+    height: 29px;
+    font-size: 15px;
+    line-height: 18px;
+    color: black;
+    background: #fff url('./sel_arr_2x.gif') 100% 50% no-repeat;
+    background-size: 20px 8px;
+    -webkit-appearance: none;
+    display: inline-block;
+    text-align: start;
+    border: none;
+    cursor: default;
+    font-family: Dotum, '돋움', Helvetica, sans-serif;
+}
+
+.error_next_box {
+    margin-top: 9px;
+    font-size: 9px;
+    color: red;
+}
+
+.terms_choice {
+    font-size: 12px;
+    font-weight: 400;
+    color: #8e8e8e;
+}
+
+.btn_area {
+    margin: 30px 0 91px;
+}
+
+#btnJoin {
+    display: block;
+    width: 100%;
+    padding: 15px 0 15px;
+    border: solid 1px rgba(0,0,0, .08);
+    cursor: pointer;
+    background-color: #03c75a;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+    box-sizing: border-box;
+    font-family: Dotum,'돋움', Helvetica, sans-serif;
+    color: #fff;
+}
+#checkIdBtn {
+    padding: 1px 5px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+#checkIdBtn:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <!-- id -->
+            <div>
+    <h3 class="join_title">
+        <label for="id">아이디</label>
+        <button type="button" id="checkIdBtn">ID 중복확인</button>
+    </h3>
+    <span class="box info_id">
+        <input type="text" id="id" class="info" maxlength="20">
+    </span>
+    <span class="error_next_box"></span>
+</div>
+            <!-- pw -->
+            <div>
+                <h3 class="join_title">
+                    <label for="pw1">비밀번호</label>
+                </h3>
+                <span class="box info_pw">
+                    <input type="password" id="pw1" class="info" maxlength="20">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- pw_check -->
+            <div>
+                <h3 class="join_title">
+                    <label for="pw2">비밀번호 재확인</label>
+                </h3>
+                <span class="box info_pw_check">
+                    <input type="password" id="pw2" class="info" maxlength="20">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- 이름 -->
+            <div>
+                <h3 class="join_title">
+                    <label for="userName">이름</label>
+                </h3>
+                <span class="box info_name">
+                    <input type="text" id="userName" class="info" maxlength="20">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- birth -->
+            <div>
+                <h3 class="join_title">
+                    <label for="yy">생년월일</label>
+                </h3>
+                <div id="bir_wrap">
+                    <!-- BIRTH_YY -->
+                    <div id="bir_yy">
+                        <span class="box">
+                            <input type="text" id="yy" class="info" maxlength="4" placeholder="년(4자)">
+                        </span>
+                    </div>
+                    <!-- BIRTH_MM -->
+                    <div id="bir_mm">
+                        <span class="box">
+                            <select id="mm" class="sel">
+                                <option>월</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </span>
+                    </div>
+                    <!-- BIRTH_DD -->
+                    <div id="bir_dd">
+                        <span class="box">
+                            <input type="text" id="dd" class="info" maxlength="2" placeholder="일">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- gender -->
+            <div>
+                <h3 class="join_title">
+                    <label for="gender">성별</label>
+                </h3>
+                <div id="gender">
+                    <span class="box gender">
+                        <select id="gender" class="sel">
+                            <option value selected>성별</option>
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <!-- 본인 확인 이메일 -->
+            <div>
+                <h3 class="join_title">
+                    <label for="email">본인 확인 이메일
+                        <span class="terms_choice">(선택)</span>
+                    </label>
+                </h3>
+                <span class="box">
+                    <input type="text" id="email" class="info" maxlength="40" placeholder="선택입력">
+                </span>
+            </div>
+            <!-- PHONE -->
+            <div>
+                <h3 class="join_title">
+                    <label for="phone">휴대전화</label>
+                </h3>
+                <span class="box phone">
+                    <input type="text" id="phone" class="info" maxlength="16" placeholder="전화번호 입력">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- join_btn -->
+              <div class="btn_area">
+                <button type="button" id="btnJoin">
+                    <span>가입하기</span>
+                </button>
+            </div>
+        </div>
+    </div>
+        <script>
+        // ID 중복 확인 기능
+        document.getElementById("checkIdBtn").addEventListener("click", function() {
+            const id = document.getElementById("user_id").value;
+
+            if (!id) {
+                alert("아이디를 입력해주세요.");
+                return;
+            }
+
+            fetch("http:localhost:8080/240930subKingProject/api/v1/user?user_id=${user_id}", {
+                method: 'GET',
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.available) {
+                    document.querySelector('.error_next_box').innerHTML = "사용 가능한 아이디입니다.";
+                    document.querySelector('.error_next_box').style.color = "#08A600";
+                } else {
+                    document.querySelector('.error_next_box').innerHTML = "이미 사용 중인 아이디입니다.";
+                    document.querySelector('.error_next_box').style.color = "red";
+                }
+            })
+            .catch(error => {
+                console.error('중복 확인 중 오류가 발생했습니다:', error);
+                alert('중복 확인 중 오류가 발생했습니다.');
+            });
+        });
+    document.getElementById("btnJoin").addEventListener("click", function() {
+        // 입력 필드 값 가져오기
+        const id = document.getElementById("id").value;
+        const pw1 = document.getElementById("pw1").value;
+        const pw2 = document.getElementById("pw2").value;
+        const userName = document.getElementById("userName").value;
+        const yy = document.getElementById("yy").value;
+        const mm = document.getElementById("mm").value;
+        const dd = document.getElementById("dd").value;
+        const gender = document.getElementById("gender").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+
+        // 유효성 검사
+        if (!id || !pw1 || !pw2 || !userName || !yy || mm === "월" || !dd || gender === "성별" || !phone) {
+            alert("모든 필드를 올바르게 입력해 주세요.");
+            return;
+        }
+
+        if (pw1 !== pw2) {
+            alert("비밀번호가 일치하지 않습니다.");
+            return;
+        }
+		
+        // 데이터 객체 생성
+        const data = {
+            id,
+            password: pw1,
+            name: userName,
+            birthdate: `${yy}-${mm}-${dd}`,
+            gender,
+            email,
+            phone
+        };
+	
+        fetch('http://localhost:8080/240930subKingProject/api/v1/user', {
+            method: 'POST', // 요청 방법: POST (데이터를 서버에 전송)
+            headers: {
+                'Content-Type': 'application/json' // 전송할 데이터의 형식을 JSON으로 설정
+            },
+            body: JSON.stringify(data) // 전송할 데이터 (JavaScript 객체)를 JSON 문자열로 변환
+        })
+        .then(response => {
+        	console.log(response.json());
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert('회원가입이 완료되었습니다!');
+            // 필요한 경우, 추가 작업 (예: 리다이렉션)
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            alert('회원가입 중 오류가 발생했습니다.');
+        });
+    });
+
+    // 기존 이벤트 리스너 및 함수들...
+    </script>
+   <script>
+   // 회원가입 성공 메시지 표시
+   document.getElementById("message").innerText = "회원가입이 완료되었습니다!";
+   
+   // 입력 필드 초기화
+   document.getElementById("signupForm").reset();	
+   </script>
+    <script>
+    var id = document.querySelector('#id');
+
+    var pw1 = document.querySelector('#pw1');
+    var pwMsg = document.querySelector('#alertTxt');
+    var pwImg1 = document.querySelector('#pw1_img1');
+
+    var pw2 = document.querySelector('#pw2');
+    var pwImg2 = document.querySelector('#pw2_img1');
+    var pwMsgArea = document.querySelector('.state_pass');
+
+    var userName = document.querySelector('#name');
+
+    var yy = document.querySelector('#yy');
+    var mm = document.querySelector('#mm');
+    var dd = document.querySelector('#dd');
+
+    var gender = document.querySelector('#gender');
+
+    var email = document.querySelector('#email');
+
+    var phone = document.querySelector('#phone');
+
+    var error = document.querySelectorAll('.error_next_box');
+
+
+
+    /*이벤트 핸들러 연결*/
+
+
+    id.addEventListener("focusout", checkId);
+    pw1.addEventListener("focusout", checkPw);
+    pw2.addEventListener("focusout", comparePw);
+    userName.addEventListener("focusout", checkName);
+    yy.addEventListener("focusout", isBirthCompleted);
+    mm.addEventListener("focusout", isBirthCompleted);
+    dd.addEventListener("focusout", isBirthCompleted);
+    gender.addEventListener("focusout", function() {
+        if(gender.value === "성별") {
+            error[5].style.display = "block";
+        } else {
+            error[5].style.display = "none";
+        }
+    })
+    email.addEventListener("focusout", isEmailCorrect);
+    phone.addEventListener("focusout", checkPhoneNum);
+
+
+
+
+
+    /*콜백 함수*/
+
+
+    function checkId() {
+        var idPattern = /[a-zA-Z0-9_-]{5,20}/;
+        if(id.value === "") {
+            error[0].innerHTML = "필수 정보입니다.";
+            error[0].style.display = "block";
+        } else if(!idPattern.test(id.value)) {
+            error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+            error[0].style.display = "block";
+        } else {
+            error[0].innerHTML = "멋진 아이디네요!";
+            error[0].style.color = "#08A600";
+            error[0].style.display = "block";
+        } 
+    }
+
+    function checkPw() {
+        var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
+        if(pw1.value === "") {
+            error[1].innerHTML = "필수 정보입니다.";
+            error[1].style.display = "block";
+        } else if(!pwPattern.test(pw1.value)) {
+            error[1].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+            pwMsg.innerHTML = "사용불가";
+            pwMsgArea.style.paddingRight = "93px";
+            error[1].style.display = "block";
+            
+            pwMsg.style.display = "block";
+            pwImg1.src = "m_icon_not_use.png";
+        } else {
+            error[1].style.display = "none";
+            pwMsg.innerHTML = "안전";
+            pwMsg.style.display = "block";
+            pwMsg.style.color = "#03c75a";
+            pwImg1.src = "m_icon_safe.png";
+        }
+    }
+
+    function comparePw() {
+        if(pw2.value === pw1.value && pw2.value != "") {
+            pwImg2.src = "m_icon_check_enable.png";
+            error[2].style.display = "none";
+        } else if(pw2.value !== pw1.value) {
+            pwImg2.src = "m_icon_check_disable.png";
+            error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
+            error[2].style.display = "block";
+        } 
+
+        if(pw2.value === "") {
+            error[2].innerHTML = "필수 정보입니다.";
+            error[2].style.display = "block";
+        }
+    }
+
+    function checkName() {
+        var namePattern = /[a-zA-Z가-힣]/;
+        if(userName.value === "") {
+            error[3].innerHTML = "필수 정보입니다.";
+            error[3].style.display = "block";
+        } else if(!namePattern.test(userName.value) || userName.value.indexOf(" ") > -1) {
+            error[3].innerHTML = "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
+            error[3].style.display = "block";
+        } else {
+            error[3].style.display = "none";
+        }
+    }
+
+
+    function isBirthCompleted() {
+        var yearPattern = /[0-9]{4}/;
+
+        if(!yearPattern.test(yy.value)) {
+            error[4].innerHTML = "태어난 년도 4자리를 정확하게 입력하세요.";
+            error[4].style.display = "block";
+        } else {
+            isMonthSelected();
+        }
+
+
+        function isMonthSelected() {
+            if(mm.value === "월") {
+                error[4].innerHTML = "태어난 월을 선택하세요.";
+            } else {
+                isDateCompleted();
+            }
+        }
+
+        function isDateCompleted() {
+            if(dd.value === "") {
+                error[4].innerHTML = "태어난 일(날짜) 2자리를 정확하게 입력하세요.";
+            } else {
+                isBirthRight();
+            }
+        }
+    }
+
+
+
+    function isBirthRight() {
+        var datePattern = /\d{1,2}/;
+        if(!datePattern.test(dd.value) || Number(dd.value)<1 || Number(dd.value)>31) {
+            error[4].innerHTML = "생년월일을 다시 확인해주세요.";
+        } else {
+            checkAge();
+        }
+    }
+
+    function checkAge() {
+        if(Number(yy.value) < 1920) {
+            error[4].innerHTML = "정말이세요?";
+            error[4].style.display = "block";
+        } else if(Number(yy.value) > 2024) {
+            error[4].innerHTML = "미래에서 오셨군요. ^^";
+            error[4].style.display = "block";
+        } else if(Number(yy.value) > 2008) {
+            error[4].innerHTML = "만 14세 미만의 어린이는 보호자 동의가 필요합니다.";
+            error[4].style.display = "block";
+        } else {
+            error[4].style.display = "none";
+        }
+    }
+
+
+    function isEmailCorrect() {
+        var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
+
+        if(email.value === ""){ 
+            error[6].style.display = "none"; 
+        } else if(!emailPattern.test(email.value)) {
+            error[6].style.display = "block";
+        } else {
+            error[6].style.display = "none"; 
+        }
+
+    }
+
+    function checkPhoneNum() {
+        var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
+
+        if(phone.value === "") {
+            error[7].innerHTML = "필수 정보입니다.";
+            error[7].style.display = "block";
+        } else if(!isPhoneNum.test(phone.value)) {
+            error[7].innerHTML = "형식에 맞지 않는 번호입니다.";
+            error[7].style.display = "block";
+        } else {
+            error[7].style.display = "none";
+        }
+
+        
+    }
+    </script>
+</body>
+</html>

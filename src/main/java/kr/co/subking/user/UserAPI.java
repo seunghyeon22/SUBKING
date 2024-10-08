@@ -2,20 +2,25 @@ package kr.co.subking.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import org.apache.ibatis.session.SqlSession;
+
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
-import kr.co.subking.*;
 import lombok.extern.slf4j.Slf4j;
+import subking.config.AppContextListener;
 import subking.config.WebUtil;
+
 
 @WebServlet("/api/v1/user")
 @Slf4j
@@ -36,59 +41,79 @@ public class UserAPI extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		WebUtil webUtil = new WebUtil();
-		String json = webUtil.readBody(req);
+		// JSON 데이터를 User 객체로 변환
+		String json = webUtil.readBody(request);
 		JsonMapper jsonMapper = new JsonMapper();
+		System.out.println(json);
 		User user = jsonMapper.readValue(json, User.class);
 
-		log.info(user.toString());
-		
-		service.insert(user);
-		
-		webUtil.setCodeAndMimeType(resp, 201, "json");
-		webUtil.writeBodyJson(resp, user);
-	}
+		System.out.println(user.toString());
 
-	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		WebUtil webUtil = new WebUtil();
-		String json = webUtil.readBody(req);
-		JsonMapper jsonMapper = new JsonMapper();
-		User user = jsonMapper.readValue(json, User.class);
-	
-		User updateduser = service.update(user);
-		
-		if (updateduser == null) {
-			resp.setStatus(404);
-			return;
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+			User select = mapper.selectByUserId(user.getUser_id());
+
+			if (select != null) {
+				Map<String, String> duplicateError = new HashMap<>();
+				duplicateError.put("아이디", "이미 존재하는 아이디입니다");
+				errorForwarding(request, response, user, duplicateError);
+				return;
+			}
+
+			int result = service.insertUser(user);
+			response.setStatus(200);
+			sqlSession.commit();
 		}
-		
-		webUtil.setCodeAndMimeType(resp, 201, "json");
-		webUtil.writeBodyJson(resp, updateduser);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("message", "회원가입이 완료되었습니다.");
+		((HttpServletResponse) request).sendRedirect(request.getContextPath() + "/index");
 	}
 
-	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		WebUtil webUtil = new WebUtil();
-		String json = webUtil.readBody(req);
-		JsonMapper jsonMapper = new JsonMapper();
-
-		JsonNode rootNode = jsonMapper.readTree(json);
-		int user_id = rootNode.path("user_id").asInt();
-		
-		int rows = service.delete(user_id);	
-		
-		if (rows == 1) {
-			resp.setStatus(204);
-		} else {
-			resp.setStatus(404);
-		}
+	private void errorForwarding(HttpServletRequest req, HttpServletResponse response, User userinfo,
+			Map<String, String> error) throws ServletException, IOException {
+		response.setStatus(400);
+		req.setAttribute("error", error);
+		req.setAttribute("userinfo", userinfo);
+		req.getRequestDispatcher("/WEB-INF/views/userinfo/signup.jsp").forward(req, response);
 	}
+
+//	@Override
+//	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		WebUtil webUtil = new WebUtil();
+//		String json = webUtil.readBody(req);
+//		JsonMapper jsonMapper = new JsonMapper();
+//		User user = jsonMapper.readValue(json, User.class);
+//
+//		User updateduser = service.update(user);
+//
+//		if (updateduser == null) {
+//			resp.setStatus(404);
+//			return;
+//		}
+//
+//		webUtil.setCodeAndMimeType(resp, 201, "json");
+//		webUtil.writeBodyJson(resp, updateduser);
+//	}
+//
+//	@Override
+//	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		WebUtil webUtil = new WebUtil();
+//		String json = webUtil.readBody(req);
+//		JsonMapper jsonMapper = new JsonMapper();
+//
+//		JsonNode rootNode = jsonMapper.readTree(json);
+//		int user_id = rootNode.path("user_id").asInt();
+//
+//		int rows = service.delete(user_id);
+//
+//		if (rows == 1) {
+//			resp.setStatus(204);
+//		} else {
+//			resp.setStatus(404);
+//		}
+//	}
 }
-
-
-
-
-
-

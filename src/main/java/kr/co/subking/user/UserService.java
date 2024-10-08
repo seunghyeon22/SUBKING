@@ -5,12 +5,14 @@ import java.util.List;
 public interface UserService {
 
 	List<User> selectAll();
-
-	int insert(User user);
-
+//
+//	int insert(User user);
+//
 	User selectByPk(int pk);
-
-	User update(User user);
+//
+//	User update(User user);
+//	
+//	int delete(int UserId);
 	
-	int delete(int UserId);
+	int insertUser(User user);
 }
