@@ -28,11 +28,11 @@ public class IngredientsServiceImpl implements IngredientsService {
 	}
 
 	@Override
-	public List<ingredientsList> selectIgnameAndCount(Integer menu_id) {
+	public List<IngredientsList> selectIgnameAndCount(Integer menu_id) {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			IngredientsMapper mapper = sqlSession.getMapper(IngredientsMapper.class);
 			
-			List<ingredientsList> list = mapper.selectIgnameAndCount(menu_id);
+			List<IngredientsList> list = mapper.selectIgnameAndCount(menu_id);
 			return list;
 		}
 	}

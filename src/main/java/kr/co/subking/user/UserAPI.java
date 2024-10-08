@@ -54,7 +54,7 @@ public class UserAPI extends HttpServlet {
 
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-			User select = mapper.selectByPk(user.getUser_id());
+			User select = mapper.selectByUserId(user.getUser_id());
 
 			if (select != null) {
 				Map<String, String> duplicateError = new HashMap<>();
