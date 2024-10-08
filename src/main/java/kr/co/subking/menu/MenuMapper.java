@@ -13,11 +13,11 @@ public interface MenuMapper {
 	@Insert("insert into menu(menu_name) values (#{menu_name})")
 	int insertMenu(@Param("menu_name") String menu_name);
 
-	@Select("select last_insert_id();")
+	@Select("select count(last_insert_id()) from menu;")
 	int selectLastIdbyMenu();
 	
-	@Update("update menu set menu_price=(select sum(custom_price) from custom where custom_menu_id= 4) where menu_id = 4;")
-	int upadetMenu();
+	@Update("update menu set menu_price=(select sum(custom_price) from custom where custom_menu_id= #{menu_id}), menu_all_kcal = (select sum(custom_kcal) from custom where custom_menu_id= #{menu_id}) where menu_id = #{menu_id};")
+	int upadetMenu(@Param("menu_id") int munu_id);
 	
 	@Select("SELECT menu_id, menu_name, menu_price, menu_all_kcal FROM menu \n"
 			+ "WHERE menu_id = #{menu_id}")
@@ -29,4 +29,5 @@ public interface MenuMapper {
 	@Select("SELECT menu_id, menu_name, menu_price, menu_all_kcal FROM menu")
 	List<Menu> getAllMenu();
 
+	
 }

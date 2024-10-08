@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./static/css/custom.css">
+<link rel="stylesheet" type="text/css" href="../static/css/custom.css">
 </head>
 
 <body>
@@ -36,7 +36,6 @@
 						</li>
 					</ul>
 					<div class="buttons">
-						<input type="button" value="다음으로" class="next-button">
 					</div>
 				</div>
 
@@ -45,5 +44,5 @@
 	</div>
 	</main>
 </body>
-<script type="text/javascript" src="./static/js/custom.js"></script>
+<script type="text/javascript" src="../static/js/custom.js"></script>
 </html>

@@ -37,8 +37,8 @@ public class CustomServiceImpl implements CustomService {
 			List<Custom> custom = new ArrayList<Custom>();
 			int result = 0;
 			Set<Integer> set = new HashSet<Integer>(list);
-			for(Integer i : set) {
-				System.out.println(i +" : "+ Collections.frequency(list, i));
+			for (Integer i : set) {
+				System.out.println(i + " : " + Collections.frequency(list, i));
 				custom.add(new Custom(lastId, i, Collections.frequency(list, i)));
 			}
 			System.out.println(custom.toString());
@@ -47,7 +47,10 @@ public class CustomServiceImpl implements CustomService {
 				result = customMapper.insertCustom(custom.get(i));
 				sqlSession.commit();
 			}
-			return menuResult;
+
+			int updateResult = menuMapper.upadetMenu(lastId);
+			sqlSession.commit();
+			return lastId;
 		}
 	}
 
