@@ -10,7 +10,11 @@
 </head>
 
 <body>
+		<c:import
+			url="subking.jsp"
+			charEncoding="utf-8"></c:import>
 	<div class="container">
+
 		<div class="content">
 			<div class="menu_list_wrapper">
 				<div class="pd_tab">
@@ -31,12 +35,10 @@
 							<div class="img">
 								<img alt="재료이름" src="">
 							</div> <strong class="tit">재료이름</strong> <span class="eng">가격</span> <span
-							class="cal">칼로리</span>
-							<input type="checkbox" class="check">
+							class="cal">칼로리</span> <input type="checkbox" class="check">
 						</li>
 					</ul>
-					<div class="buttons">
-					</div>
+					<div class="buttons"></div>
 				</div>
 
 			</div>
