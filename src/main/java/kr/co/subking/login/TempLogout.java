@@ -1,6 +1,7 @@
 package kr.co.subking.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,9 +20,17 @@ public class TempLogout extends HttpServlet{
 		
 		session = req.getSession();
 		
-		session.setAttribute("message", "로그아웃되었습니다.");
+//		session.setAttribute("message", "로그아웃되었습니다.");
 		
-		resp.sendRedirect("http://localhost:8080/240930subKingProject/static/jsp/subking.jsp");
+		resp.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = resp.getWriter();
+		out.println("<script>");
+	    out.println("alert('로그아웃하셨습니다.');");
+	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/static/jsp/subking.jsp';");
+	    out.println("</script>");
+	    out.close();
+		
+//		resp.sendRedirect("http://localhost:8080/240930subKingProject/static/jsp/subking.jsp");
 	}
 	
 }

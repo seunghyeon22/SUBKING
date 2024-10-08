@@ -45,10 +45,6 @@
 			</div>
 		</nav>
 		<div class="auth-links">
-			<c:if test="${ not empty message }">
-				<div>${ message }</div>
-				<c:remove var="message" scope="session"/>
-			</c:if>
 			<c:if test="${ empty user_id }">
 				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogIn">로그인</a>
 				<a href="../html/agreement.html">회원가입</a>

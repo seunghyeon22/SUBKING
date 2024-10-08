@@ -1,6 +1,7 @@
 package kr.co.subking.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,8 +47,17 @@ public class TempLogIn extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		session.setAttribute("user_id", user_id);
-		session.setAttribute("message", "로그인에 성공하셨습니다.");
 		
-		resp.sendRedirect("http://localhost:8080/240930subKingProject/static/jsp/subking.jsp");
+		// 로그인 성공 시 자바스크립트를 포함한 HTML 응답
+	    resp.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = resp.getWriter();
+	    out.println("<script>");
+	    out.println("alert('로그인에 성공하셨습니다.');");
+	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/static/jsp/subking.jsp';");
+	    out.println("</script>");
+	    out.close();
+		
+//		session.setAttribute("message", "로그인에 성공하셨습니다.");
+//		resp.sendRedirect("http://localhost:8080/240930subKingProject/static/jsp/subking.jsp");
 	}
 }

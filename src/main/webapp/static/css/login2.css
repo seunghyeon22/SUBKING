@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.login-error {
+	color: red;
+}
+
 body {
 	font-family: Arial, sans-serif;
 	margin: 0;
