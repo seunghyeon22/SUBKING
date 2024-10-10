@@ -67,7 +67,7 @@ public class IngredientsAPI extends HttpServlet {
 		String uri = req.getRequestURI();
 		Integer menu_id = parsingIdPath(uri);
 
-		List<ingredientsList> igList = ingredientsService.selectIgnameAndCount(menu_id);
+		List<IngredientsList> igList = ingredientsService.selectIgnameAndCount(menu_id);
 
 		resp.setHeader("Content-Type", "application/json; charset=utf-8");
 		ObjectMapper mapper = new ObjectMapper();
