@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>서브킹 매출 확인</title>
+    <link rel="stylesheet" href="/static/css/sales.css">
+</head>
+<body>
+    <div class="container">
+        <h1>서브킹 매출 확인</h1>
+        <div id="controls">
+            <button id="prev-year-button" onclick="previousYear()">이전 해</button>
+            <button id="prev-month-button" onclick="previousMonth()">이전 달</button>
+            <div id="month-year"></div>
+            <button id="next-month-button" onclick="nextMonth()">다음 달</button>
+            <button id="next-year-button" onclick="nextYear()">다음 해</button>
+        </div>
+        <div id="calendar" class="calendar"></div>
+        <div id="month-sales" class="month-sales"></div>
+    </div>
+
+    <script src="/static/js/sales.js"></script>
+</body>
+</html>
