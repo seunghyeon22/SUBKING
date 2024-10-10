@@ -33,19 +33,12 @@ body {
     transform: translate(-50%);
     width: 460px;
 }
-
-
-
-
 /* 입력폼 */
-
-
 h3 {
     margin: 19px 0 8px;
     font-size: 14px;
     font-weight: 700;
 }
-
 
 .box {
     display: block;

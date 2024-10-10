@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.co.subking.user.UserMapper;
 import subking.config.AppContextListener;
+import subking.config.PasswordUtils;
 
 
 @WebServlet("/api/v1/tempLogIn")
@@ -29,12 +30,18 @@ public class TempLogIn extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String user_id = req.getParameter("username");
 		String user_pw = req.getParameter("password");
-//		String user_pw
 		
 		int result = 0;
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-			result = userMapper.login(user_id, user_pw);
+			
+			String userId = userMapper.checkUserExists(user_id);
+			String hashedPassword = userMapper.getHashedPassword(user_id);
+			if (userId != null && PasswordUtils.checkPassword(user_pw, hashedPassword)) {
+				result = 1;
+			} else {
+				result = 0;
+			}
 		}
 		
 		// db에 아이디나 비밀번호가 없는 경우 

@@ -94,6 +94,8 @@ public class UserAPI extends HttpServlet {
 		int rows = service.delete(user_id);
 		
 		if (rows == 1) {
+			HttpSession session = req.getSession();
+			session.invalidate();
 			resp.setStatus(204);
 		} else {
 			resp.setStatus(404);

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="../css/new_main.css">
+<link rel="stylesheet" href="../css/newjoin.css">
 
 </head>
 <body>
@@ -18,11 +18,12 @@
 			<!-- ID -->
 			<div>
 				<h3 class="join_title">
-					<label for="id">아이디</label>
+					<label for="id">아이디</label> <button type="button" id="checkId">중복 확인</button>
 				</h3>
 				<span class="box int_id"> <input type="text" id="id"
 					class="int" maxlength="20"> 
 				</span> <span class="error_next_box"></span>
+				
 			</div>
 
 			<!-- PW1 -->
@@ -31,7 +32,7 @@
 					<label for="pswd1">비밀번호</label>
 				</h3>
 				<span class="box int_pass"> <input type="password" id="pswd1"
-					class="int" maxlength="20"> <span id="alertTxt">사용불가</span>
+					class="int" maxlength="20">
 				</span> <span class="error_next_box"></span>
 			</div>
 
@@ -72,7 +73,6 @@
 					<!-- BIRTH_MM -->
 					<div id="bir_mm">
 						<span class="box"> <select id="mm" class="sel">
-								<option>월</option>
 								<option value="01">1</option>
 								<option value="02">2</option>
 								<option value="03">3</option>
@@ -122,10 +122,7 @@
 				<div>
 					<table>
 						<tr>
-							<th>우편번호</th>
-							<td><input type="text" id="zipNo" name="zipNo" readonly
-								style="width: 100px"> <input id="poup" type="button" value="주소검색"
-								onclick="goPopup();"></td>
+							<td><input id="poup" type="button" value="주소검색"></td>
 						</tr>
 						<tr>
 							<th>도로명주소</th>
@@ -133,19 +130,19 @@
 						</tr>
 						<tr>
 							<th>상세주소</th>
-							<td><input type="text" id="addrDetail" style="width: 40%"
-								value=""> <input type="text" id="roadAddrPart2"
-								style="width: 40%" value=""></td>
+							<td> <input type="text" id="roadAddrPart2"
+								style="width: 40%" value=""><input type="text" id="addrDetail" style="width: 40%"
+								value=""></td>
 						</tr>
 					</table>
 				</div>
-				<span class="error_next_box"></span>
+				<span class="error_next_box">일단 확인</span>
 			</div>
 
 			<!-- EMAIL -->
 			<div>
 				<h3 class="join_title">
-					<label for="email">본인확인 이메일<span class="optional">(선택)</span></label>
+					<label for="email">본인확인 이메일<span class="optional"></span></label>
 				</h3>
 				<span class="box int_email"> <input type="text" id="email"
 					class="int" maxlength="100" placeholder="선택입력">
@@ -164,7 +161,7 @@
 
 			<!-- JOIN BTN-->
 			<div class="btn_area">
-				<button type="button" id="btnJoin" onclick="submitForm()">
+				<button type="button" id="btnJoin">
 					<span>가입하기</span>
 				</button>
 			</div>
@@ -174,6 +171,6 @@
 
 	</div>
 	<!-- wrapper -->
-	<script src="../js/newmain.js"></script>
+	<script src="../js/newjoin.js"></script>
 </body>
 </html>

@@ -48,10 +48,16 @@ public interface UserMapper {
 	@Insert("insert into user (user_id, user_pw, user_name, user_birth,user_phone, user_gender, user_email, user_address, user_role) values(#{user.user_id}, #{user.user_pw}, #{user.user_name}, #{user.user_birth}, #{user.user_phone}, #{user.user_gender}, #{user.user_email}, #{user.user_address}, #{user.user_role})")
 	int insertUser(@Param("user") User user);
 
-//	String getHashedPassword(@PackagePrivate)
-	
-	// TODO: 아이디 중복 체크
-	int checkUserExists(String user_id);
+	@Results(value = {
+			@Result(column = "user_id", property = "user_id", jdbcType = JdbcType.VARCHAR, id = true)})
+	@Select("SELECT user_id FROM user WHERE user_id = #{user_id}")
+	String checkUserExists(@Param("user_id") String user_id);
+
+	// 해쉬된 비밀번호 받아오기
+	@Select("SELECT user_pw FROM user WHERE user_id = #{user_id}")
+	String getHashedPassword(@Param("user_id") String user_id);
+
+
 	
 	
 }

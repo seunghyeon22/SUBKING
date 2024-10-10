@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
@@ -78,20 +79,47 @@ public class RegisterServlet extends HttpServlet {
 		
 	}
 
-	// 원래 doPost에 작성해야 하는데 임시로 여기 작성
-	// 비밀번호 해쉬화 하는 방법
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String username = req.getParameter("username");
-        String password = req.getParameter("password");
+		// Set response type to JSON
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
 
-        // 비밀번호 해시화
-        String hashedPassword = PasswordUtils.hashPassword(password);
+        // Parse the request body to extract the user_id
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = req.getReader().readLine()) != null) {
+            sb.append(line);
+        }
+        String requestBody = sb.toString();
+        JSONObject jsonRequest = new JSONObject(requestBody);
+        String userId = jsonRequest.getString("user_id");
 
-        // 해시화된 비밀번호를 데이터베이스에 저장 (예제이므로 데이터베이스 저장 코드는 생략)
-        // DatabaseUtils.saveUser(username, hashedPassword);
+        // Prepare the response JSON
+        JSONObject jsonResponse = new JSONObject();
+        
+        try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			
+			boolean isDuplicate = false;
+			String duplicatedId = userMapper.checkUserExists(userId);
+			
+			if (duplicatedId != null) {
+				isDuplicate = true;
+			}
+			// Respond with the result
+            jsonResponse.put("isDuplicate", isDuplicate);
+		} catch (Exception e) {
+			e.printStackTrace();
+	            jsonResponse.put("error", "Server error occurred.");
+		}
 
-        resp.getWriter().println("User registered successfully");
+        // Send the response
+        PrintWriter out = resp.getWriter();
+        out.print(jsonResponse.toString());
+        out.flush();
 	}
+
+	
 	
 }
