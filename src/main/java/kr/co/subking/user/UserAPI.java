@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -83,8 +84,20 @@ public class UserAPI extends HttpServlet {
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doDelete(req, resp);
+		WebUtil webUtil = new WebUtil();
+		String json = webUtil.readBody(req);
+		JsonMapper jsonMapper = new JsonMapper();
+
+		JsonNode rootNode = jsonMapper.readTree(json);
+		String user_id = rootNode.path("user_id").asText();
+		
+		int rows = service.delete(user_id);
+		
+		if (rows == 1) {
+			resp.setStatus(204);
+		} else {
+			resp.setStatus(404);
+		}
 	}
 
 //	@Override

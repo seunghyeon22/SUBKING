@@ -2,6 +2,8 @@ package kr.co.subking.user;
 
 import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 public interface UserService {
 
 	List<User> selectAll();
@@ -12,7 +14,8 @@ public interface UserService {
 //
 //	User update(User user);
 //	
-//	int delete(int UserId);
 	
 	int insertUser(User user);
+	
+	int delete(String user_id);
 }
