@@ -23,7 +23,8 @@
 			<input type="password" name="password" placeholder="비밀번호" required>
 			<button type="submit" id="login">로그인</button>
 			<div class="button-group">
-				<button type="button">아이디 찾기</button>
+				<form></form>
+				<button type="button" onclick="location.href='http://localhost:8080/240930subKingProject/static/jsp/findid.jsp'">아이디 찾기</button>
 				<button type="button">비밀번호 찾기</button>
 				<button type="button">회원가입</button>
 			<button class="kakao-login" id="kakao-login-btn" onclick="loginWithKakao()">

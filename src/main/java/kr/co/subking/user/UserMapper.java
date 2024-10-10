@@ -53,8 +53,12 @@ public interface UserMapper {
 	// TODO: 아이디 중복 체크
 	int checkUserExists(String user_id);
 	
+	@Select("SELECT user_id from user where user_name = #{user_name} AND user_phone=#{user_phone}")
+	User findIdByNameAndPhone(@Param("user_name") String user_name, @Param("user_phone") String user_phone);
+	
 	
 }
+
 
 
 

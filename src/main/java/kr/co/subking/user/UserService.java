@@ -18,4 +18,6 @@ public interface UserService {
 	int insertUser(User user);
 	
 	int delete(String user_id);
+	
+	User findIdByNameAndPhone(String user_name, String user_phone);
 }
