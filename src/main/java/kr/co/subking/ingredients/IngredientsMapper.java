@@ -17,4 +17,12 @@ public interface IngredientsMapper {
     @Insert("INSERT INTO ingredients (ig_name, ig_category, ig_price, ig_kcal, ig_image) " +
             "VALUES (#{ig_name}, #{ig_category}, #{ig_price}, #{ig_kcal}, #{ig_image})")
     void insertIg(Ingredients ingredient);
+    
+    
+    
+    @Select("select c.ig_name, b.custom_count from menu as a \r\n"
+    		+ "left outer join custom as b on a.menu_id = b.custom_menu_id \r\n"
+    		+ "left outer join ingredients as c on b.custom_ig_id = c.ig_no \r\n"
+    		+ "where a.menu_id = #{menu_id}")
+    List<CustomNameCount> selectMenubyIg(@Param("menu_id")int menuId);
 }

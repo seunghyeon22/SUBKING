@@ -349,9 +349,7 @@ function cart() {
 
 		}
 		const reqData = [...item, ...item1, ...item2, ...item3, ...item4, ...item5, ...item6];
-		let jsonReq = JSON.stringify(reqData);
 		console.log(reqData);
-		console.log(jsonReq);
 		let url = "/240930subKingProject/api/v1/cart";
 		fetch(url, {
 			method: "POST",
@@ -369,8 +367,28 @@ function cart() {
 function payment() {
 	const orderButton = document.querySelector(".order-button");
 	orderButton.addEventListener("click", function() {
-		window.location.href = "http://localhost:8080/240930subKingProject/custom/payment";
+		item4.splice(0);
+		let counts = document.querySelectorAll('.counts');
+		let igno = document.querySelectorAll(".ig_id");
+		for (let i = 0; i < counts.length; i++) {
+			let number = counts[i].innerText;
+			if (number > 0) {
+				for (let j = 0; j < number; j++) {
+					item4.push(parseInt(igno[i].value));
+				}
+			}
 
+		}
+		const reqData = [...item, ...item1, ...item2, ...item3, ...item4, ...item5, ...item6];
+		let url = "/240930subKingProject/api/v1/cart";
+		fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(reqData),
+		}).then((resp) => window.location.href = "http://localhost:8080/240930subKingProject/custom/payment"
+		)
 	})
 }
 

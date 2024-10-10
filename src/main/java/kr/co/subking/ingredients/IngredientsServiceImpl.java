@@ -43,4 +43,12 @@ public class IngredientsServiceImpl implements IngredientsService {
 			return list;
 		}
 	}
+    @Override
+    public List<CustomNameCount> selectMenubyIg(int menuId) {
+    	try (SqlSession sqlSession = AppContextListener.getSqlSession()){
+    		IngredientsMapper mapper = sqlSession.getMapper(IngredientsMapper.class);
+    		List<CustomNameCount> list = mapper.selectMenubyIg(menuId);
+    		return list;
+		}
+    }
 }

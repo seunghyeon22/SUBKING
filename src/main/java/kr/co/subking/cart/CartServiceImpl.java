@@ -25,10 +25,10 @@ public class CartServiceImpl implements CartService {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
 			MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-			Integer lastCartId=cartMapper.selectCartbyUserId(userId);
-			if (lastCartId!=null) {
-			
-			} else if(lastCartId==null) {
+			Integer lastCartId = cartMapper.selectCartbyUserId(userId);
+			if (lastCartId != null) {
+
+			} else if (lastCartId == null) {
 				int insertCartId = cartMapper.insertCart(userId);
 				sqlSession.commit();
 				lastCartId = cartMapper.selectCartbyUserId(userId);
@@ -39,6 +39,7 @@ public class CartServiceImpl implements CartService {
 			return resultCartList;
 		}
 	}
+
 	@Override
 	public List<Cartlist1> selectUserIdbyAllMenu(String userid) {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
@@ -46,5 +47,19 @@ public class CartServiceImpl implements CartService {
 			List<Cartlist1> list = cartMapper.selectUserIdbyAllMenu(userid);
 			return list;
 		}
+	}
+
+	@Override
+	public int DeleteCartbyUserId(List<Integer> list) {
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
+			int result = 0;
+			for (int i : list) {
+				result += cartMapper.DeleteCartbyUserId(i);
+			}
+			sqlSession.commit();
+			return result;
+		}
+
 	}
 }

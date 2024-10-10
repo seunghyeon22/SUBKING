@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Cartlist1 {
-	private String user_id;
+	private String cart_user_id;
 	private int cart_id;
 	private int menu_id;
 	private String menu_name;

@@ -1,3 +1,5 @@
+sessionStorage.setItem("address", "부산광역시 부산진구 부전동 266-2 4층");
+
 
 let arr = [];
 
@@ -6,14 +8,15 @@ let allPrice = 0;
 loadData();
 
 function loadData() {
+
 	loadCartData().then((cartArr) => {
 		console.log(cartArr);
 		for (let i = 0; i < cartArr.length; i++) {
 			arr.push(cartArr[i]);
 		}
 		loadmenu();
+		addressLoad();
 	})
-
 }
 
 function loadCartData() {
@@ -21,6 +24,12 @@ function loadCartData() {
 	return fetch(url)
 		.then((resp) => resp.json());
 }
+function addressLoad() {
+	let address = document.querySelector(".addr");
+	address.innerText = "배달 지역 :  			" + sessionStorage.getItem("address");
+
+}
+
 
 function loadmenu() {
 	const list = document.querySelector(".list");
@@ -34,7 +43,7 @@ function loadmenu() {
 									<div class="texts">
 										<dl>
 										<dd><strong class="tit">${arr[i].menu_name}</strong></dd>
-										<dd><span>상품정보</span></dd>
+										<dd class ="info"><span>상품정보</span></dd>
 										<dd><span>칼로리 :${arr[i].menu_all_kcal}kcal</span></dd>
 										<dd><span>가격 : ${arr[i].menu_price}원</span></dd>
 										</dl>
@@ -49,18 +58,34 @@ function loadmenu() {
 	}
 	list.innerHTML = texttr;
 	checka();
+	menuInfo();
+
 }
 
+function menuInfo() {
+	let Info = document.querySelectorAll(".info");
+	let menuId = document.querySelectorAll(".menu_id");
+	let url = "/240930subKingProject/api/v1/menu"
+	for (let i = 0; i < menuId.length; i++) {
+		fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(menuId[i].value)
+		}).then((resp) => resp.json())
+			.then((dataArr) => {
+				let arr = [];
+				let sp = ``;
+				for (let i = 0; i < dataArr.length; i++) {
+					arr.push(dataArr[i]);
+					sp += `<span>${arr[i].ig_name}: ${arr[i].custom_count} </span>`;
 
-
-
-
-
-
-
-
-
-
+				}
+				Info[i].innerHTML = sp;
+			})
+	}
+}
 
 
 
@@ -85,27 +110,73 @@ function requestPay() {
 		if (rsp.success) {
 			// 결제 성공 처리
 			console.log('결제 성공:', rsp);
-			window.location.href = "http://localhost:8080/240930subKingProject/custom/custom";
+			let checkigno = [];
+			let checked = document.querySelectorAll(".check");
+			let menuId = document.querySelectorAll(".menu_id");
+			let user_id = sessionStorage.getItem("user_id");
+			for (let i = 0; i < checked.length; i++) {
+				if (checked[i].checked) {
+					checkigno.push(menuId[i].value);
+				}
+			}
+			let data = {
+				menu_ids: checkigno,
+				price: allPrice
+			};
+			let url = "/240930subKingProject/api/v1/orders"
+			fetch((url), {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data)
+			}).then((resp) => resp.json());
+
+			let urls = "/240930subKingProject/api/v1/cart"
+			fetch((urls), {
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(checkigno)
+			}).then((resp) => resp.json());
+
+						window.location.href = "http://localhost:8080/240930subKingProject/custom/custom";
 
 		} else {
 			// 결제 실패 처리
 			console.log('결제 실패:', rsp);
+			alert("주문이 완료되지 않았습니다.")
 		}
 	});
 }
 function checka() {
+	let priceLbl = document.querySelector(".CartallPrice");
 	let checked = document.querySelectorAll(".check");
 	for (let i = 0; i < checked.length; i++) {
 		checked[i].addEventListener("click", function() {
-			if (checked[i].checked) {
-				allPrice += arr[i].menu_price;
+			allPrice = 0;
+			for (let j = 0; j < checked.length; j++) {
+				if (checked[j].checked) {
+					allPrice += arr[j].menu_price;
+				}
 			}
 			console.log(allPrice);
+			priceLbl.innerText = "주문 금액 : " + allPrice + "원";
 		})
 
 	}
 
 }
+
+
+
+
+
+
+
+
+
 
 //
 //const axios = require('axios');

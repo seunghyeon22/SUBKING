@@ -19,6 +19,14 @@ body {
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+}
+.list{
+	margin-bottom: 50px;
+}
+.CartallPrice{
+	font-size: 40px;
+	
 }
 
 .cart_list_wrapper {
@@ -59,7 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 130px;
+    padding-bottom: 50px;
     
 }
 

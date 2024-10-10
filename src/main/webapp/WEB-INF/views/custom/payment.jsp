@@ -16,6 +16,9 @@
 	<c:import url="subking.jsp" charEncoding="utf-8"></c:import>
 	<div class="container">
 		<div class="content">
+			<span class="addr">배달 주소: 부산광역시 진구 어딘가 어딘가?</span>
+		</div>
+		<div class="content">
 			<div class="cart_list_wrapper">
 				<div class="pd_tab">
 					<span>장바구니 목록</span>
@@ -28,25 +31,40 @@
 							</div>
 							<div class="texts">
 								<dl>
-								<dd><strong class="tit">상품이름</strong></dd>
-								<dd><span>상품정보</span></dd>
-								<dd><span>칼로리 : 500kcal</span></dd>
-								<dd><span>가격 : 11111</span></dd>
+									<dd>
+										<strong class="tit">상품이름</strong>
+									</dd>
+									<dd>
+										<span>상품정보</span>
+									</dd>
+									<dd>
+										<span>칼로리 : 500kcal</span>
+									</dd>
+									<dd>
+										<span>가격 : 11111</span>
+									</dd>
 								</dl>
-								<input type="hidden" value="">
-								<input type="checkbox" class="check">
+								<input type="hidden" value=""> <input type="checkbox"
+									class="check">
 							</div>
 						</li>
 					</ul>
 
-					<div class="payment">
-						<button type="button" class="before">주문하기로 돌아가기</button>
-						<button type="button" class="payments" onclick="requestPay()">결제하기</button>
-					</div>
 				</div>
 			</div>
 		</div>
+		<div class="content">
+			<div class="pd_list_wrapper">
+				<div class="list">
+					<label class="CartallPrice">주문금액 : 0원 </label>
+				</div>
+				<div class="payment">
+					<button type="button" class="before">주문하기로 돌아가기</button>
+					<button type="button" class="payments" onclick="requestPay()">결제하기</button>
+				</div>
+			</div>
 
+		</div>
 	</div>
 	<c:import url="footer.jsp" charEncoding="utf-8"></c:import>
 </body>

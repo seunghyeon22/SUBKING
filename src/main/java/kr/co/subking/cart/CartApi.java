@@ -27,9 +27,9 @@ public class CartApi extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().setAttribute("user_id", "asdf");
-		String userId = (String)req.getSession().getAttribute("user_id");
-		
-		List<Cartlist1> list = cartService.selectUserIdbyAllMenu(userId);	
+		String userId = (String) req.getSession().getAttribute("user_id");
+
+		List<Cartlist1> list = cartService.selectUserIdbyAllMenu(userId);
 		resp.setHeader("Content-Type", "application/json; charset=utf-8");
 
 		JsonMapper jsonMapper = new JsonMapper();
@@ -42,7 +42,7 @@ public class CartApi extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		WebUtil webUtil = new WebUtil();
-		String userId = (String) req.getSession().getAttribute("userId");
+		String userId = (String) req.getSession().getAttribute("user_id");
 		String json = webUtil.readBody(req);
 
 		JSONArray jsonArr = new JSONArray(json);
@@ -58,6 +58,23 @@ public class CartApi extends HttpServlet {
 		webUtil.setCodeAndMimeType(resp, 201, "json");
 		webUtil.writeBodyJson(resp, result);
 
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		WebUtil webUtil = new WebUtil();
+		String json = webUtil.readBody(req);
+
+		JSONArray jsonArr = new JSONArray(json);
+		List<Integer> list = new ArrayList<Integer>();
+
+		for (int i = 0; i < jsonArr.length(); i++) {
+			list.add(jsonArr.getInt(i));
+		}
+
+		int result = cartService.DeleteCartbyUserId(list);
+		webUtil.setCodeAndMimeType(resp, 201, "json");
+		webUtil.writeBodyJson(resp, result);
 	}
 
 }

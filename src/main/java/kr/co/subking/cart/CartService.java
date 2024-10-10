@@ -9,4 +9,6 @@ public interface CartService {
 	int insertCart(String userId, int menuId);
 	
 	List<Cartlist1> selectUserIdbyAllMenu(String userid);
+	
+	int DeleteCartbyUserId(List<Integer> list);
 }

@@ -8,4 +8,7 @@ public interface IngredientsService {
     List<IngredientsList> selectIgnameAndCount(Integer menu_id);
 
 	void addIngredient(Ingredients ingredient);
+	
+	List<CustomNameCount> selectMenubyIg(int menuId);
+	
 }
