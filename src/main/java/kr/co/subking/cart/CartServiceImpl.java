@@ -1,6 +1,7 @@
 package kr.co.subking.cart;
 
 import java.awt.Menu;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -36,6 +37,14 @@ public class CartServiceImpl implements CartService {
 			int resultCartList = cartMapper.insertCartList(lastCartId, menuId);
 			sqlSession.commit();
 			return resultCartList;
+		}
+	}
+	@Override
+	public List<Cartlist1> selectUserIdbyAllMenu(String userid) {
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
+			List<Cartlist1> list = cartMapper.selectUserIdbyAllMenu(userid);
+			return list;
 		}
 	}
 }

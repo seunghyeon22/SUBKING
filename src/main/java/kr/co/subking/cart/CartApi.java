@@ -1,6 +1,7 @@
 package kr.co.subking.cart;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
+
+import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import kr.co.subking.custom.CustomService;
 import kr.co.subking.custom.CustomServiceImpl;
@@ -23,8 +26,17 @@ public class CartApi extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+		req.getSession().setAttribute("user_id", "asdf");
+		String userId = (String)req.getSession().getAttribute("user_id");
+		
+		List<Cartlist1> list = cartService.selectUserIdbyAllMenu(userId);	
+		resp.setHeader("Content-Type", "application/json; charset=utf-8");
+
+		JsonMapper jsonMapper = new JsonMapper();
+		String json = jsonMapper.writeValueAsString(list);
+		PrintWriter pw = resp.getWriter();
+		pw.print(json);
+		pw.flush();
 	}
 
 	@Override

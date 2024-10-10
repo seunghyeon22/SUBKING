@@ -1,5 +1,6 @@
 package kr.co.subking.ingredients;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,7 +22,6 @@ public class IngredientsServiceImpl implements IngredientsService {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			IngredientsMapper mapper = sqlSession.getMapper(IngredientsMapper.class);
 			List<Ingredients> list = mapper.selectAll();
-
 			return list;
 		}
 		

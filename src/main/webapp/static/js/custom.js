@@ -366,11 +366,11 @@ function cart() {
 	})
 }
 
-function payment(){
+function payment() {
 	const orderButton = document.querySelector(".order-button");
-	orderButton.addEventListener("click", function(){
+	orderButton.addEventListener("click", function() {
 		window.location.href = "http://localhost:8080/240930subKingProject/custom/payment";
-		
+
 	})
 }
 

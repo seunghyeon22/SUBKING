@@ -21,4 +21,12 @@ public interface CartMapper {
 
 	@Insert("insert into cartlist (cartlist_cart_id, cartlist_menu_id) value(#{cartlist_cart_id},#{cartlist_menu_id})")
 	int insertCartList(@Param("cartlist_cart_id") int cartlist_cart_id, @Param("cartlist_menu_id") int menu_id);
+
+	
+	@Select("SELECT a.cart_user_id, a.cart_id, c.menu_id, c.menu_name, c.menu_price, c.menu_all_kcal\r\n"
+			+ "FROM cart AS a\r\n"
+			+ "LEFT OUTER JOIN cartlist AS b ON a.cart_id = b.cartlist_cart_id\r\n"
+			+ "LEFT OUTER JOIN menu AS c ON b.cartlist_menu_id = c.menu_id\r\n"
+			+ "WHERE a.cart_user_id = '${user_id}';")
+	List<Cartlist1> selectUserIdbyAllMenu(@Param("user_id") String userid);
 }

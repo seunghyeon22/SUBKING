@@ -5,16 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문하기</title>
 <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
+<link rel="stylesheet" type="text/css" href="../static/css/footer.css">
 </head>
 
 <body>
-		<c:import
-			url="subking.jsp"
-			charEncoding="utf-8"></c:import>
+	<c:import url="subking.jsp" charEncoding="utf-8"></c:import>
 	<div class="container">
-
 		<div class="content">
 			<div class="menu_list_wrapper">
 				<div class="pd_tab">
@@ -31,20 +29,22 @@
 				</div>
 				<div class="pd_list_wrapper">
 					<ul class="list">
-						<li class="bread">
+						<li>
 							<div class="img">
 								<img alt="재료이름" src="">
-							</div> <strong class="tit">재료이름</strong> <span class="eng">가격</span> <span
-							class="cal">칼로리</span> <input type="checkbox" class="check">
+							</div> 
+							<strong class="tit">재료이름</strong> 
+							<span class="eng">가격</span> 
+							<span class="cal">칼로리</span> 
+							<input type="checkbox" class="check">
 						</li>
 					</ul>
 					<div class="buttons"></div>
 				</div>
-
 			</div>
 		</div>
 	</div>
-	</main>
+	<c:import url="footer.jsp" charEncoding="utf-8"></c:import>
 </body>
 <script type="text/javascript" src="../static/js/custom.js"></script>
 </html>
