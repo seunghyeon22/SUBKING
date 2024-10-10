@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.JdbcType;import lombok.experimental.PackagePrivate;
 
 public interface UserMapper {
 //    
@@ -45,13 +45,15 @@ public interface UserMapper {
 	
 	List<User> selectAll();
 
-	// TODO: 아이디 중복 체크
-	int checkUserExists(String user_id);
-	
-
 	@Insert("insert into user (user_id, user_pw, user_name, user_birth,user_phone, user_gender, user_email, user_address, user_role) values(#{user.user_id}, #{user.user_pw}, #{user.user_name}, #{user.user_birth}, #{user.user_phone}, #{user.user_gender}, #{user.user_email}, #{user.user_address}, #{user.user_role})")
 	int insertUser(@Param("user") User user);
 
+//	String getHashedPassword(@PackagePrivate)
+	
+	// TODO: 아이디 중복 체크
+	int checkUserExists(String user_id);
+	
+	
 }
 
 

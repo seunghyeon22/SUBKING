@@ -29,6 +29,7 @@ public class TempLogIn extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String user_id = req.getParameter("username");
 		String user_pw = req.getParameter("password");
+//		String user_pw
 		
 		int result = 0;
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {

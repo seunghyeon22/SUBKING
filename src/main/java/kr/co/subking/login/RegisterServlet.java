@@ -40,8 +40,11 @@ public class RegisterServlet extends HttpServlet {
 		String json = sb.toString();
 
 		JsonMapper jsonMapper = new JsonMapper();
-		System.out.println(json);
+		
 		User user = jsonMapper.readValue(json, User.class);
+		String password = user.getUser_pw();
+		String hashedPassword = PasswordUtils.hashPassword(password);
+		user.setUser_pw(hashedPassword);
 
 		// 회원가입 처리 (DB에 사용자 정보 저장 로직)
 		boolean success = false;
