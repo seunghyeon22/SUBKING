@@ -9,7 +9,7 @@ import subking.config.AppContextListener;
 public class UserServiceImple implements UserService {
 	private static final UserServiceImple instance = new UserServiceImple();
 
-	private UserServiceImple() {
+	public UserServiceImple() {
 	}
 
 	public static UserService getInstance() {
@@ -63,19 +63,19 @@ public class UserServiceImple implements UserService {
 //		return null;
 //	}
 //
-//	@Override
-//	public int delete(int userId) {
-//		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
-//			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//			int rows = mapper.delete(userId);
-//
-//			if (rows == 1) {
-//				sqlSession.commit();
-//				return rows;
-//			}
-//		}
-//		return 0;
-//	}
+	@Override
+	public int delete(String user_id) {
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+			int rows = mapper.delete(user_id);
+
+			if (rows == 1) {
+				sqlSession.commit();
+				return rows;
+			}
+		}
+		return 0;
+	}
 
 	@Override
 	public int insertUser(User user) {

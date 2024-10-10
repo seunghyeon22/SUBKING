@@ -82,3 +82,23 @@ function submitForm() {
         alert('서버 오류가 발생했습니다.');
     });
 }
+// 사용자 삭제 함수
+fetch('http://localhost:8080/240930subKingProject/api/v1/tempExit', {
+    method: 'DELETE',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => response.json())
+.then(data => {
+    if (data.success) {
+        alert('사용자가 성공적으로 삭제되었습니다!');
+        // 필요한 경우, 사용자 목록 페이지로 이동 등 추가 작업
+    } else {
+        alert('사용자 삭제에 실패했습니다: ' + data.message);
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('서버 오류가 발생했습니다.');
+});

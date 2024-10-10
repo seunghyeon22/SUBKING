@@ -3,6 +3,8 @@ package kr.co.subking.user;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +24,7 @@ public class User {
 	private String user_email;
 	private String user_address; // not null 적용 안된 상태
 	private String user_role;
+
 	private Timestamp user_signupdate;
 	private Timestamp user_updatedate;
 	
