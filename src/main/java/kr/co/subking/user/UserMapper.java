@@ -59,8 +59,12 @@ public interface UserMapper {
 
 
 	
+	@Select("SELECT user_id from user where user_name = #{user_name} AND user_phone=#{user_phone}")
+	User findIdByNameAndPhone(@Param("user_name") String user_name, @Param("user_phone") String user_phone);
+	
 	
 }
+
 
 
 

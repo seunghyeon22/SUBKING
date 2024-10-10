@@ -86,20 +86,7 @@ body {
 .auth-links a:hover {
 	text-decoration: underline;
 }
-.auth-links2 {
-	display: flex;
-	gap: 20px;
-}
 
-.auth-links b {
-	color: white;
-	text-decoration: none;
-	font-size: 10px;
-}
-
-.auth-links b:hover {
-	text-decoration: underline;
-}
 </style>
 </head>
 <body>
@@ -145,7 +132,7 @@ body {
 				<a href="../html/orders.html">주문내역</a>
 			</c:if>
 		</div>
-		<div class="auth-links2">
+		<div class="auth-links">
 		<c:if test="${ not empty user_id }">
 				<a href="http://localhost:8080/240930subKingProject/api/v1/tempExit" id="userDelete">회원탈퇴</a>
 			</c:if>
