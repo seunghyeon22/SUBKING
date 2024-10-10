@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,18 +41,4 @@ public class CustomAPI extends HttpServlet {
 		pw.flush();
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		WebUtil webUtil = new WebUtil();
-		String json = webUtil.readBody(req);
-
-		JSONArray jsonArr = new JSONArray(json);
-
-		List<Integer> list = new ArrayList<Integer>();
-
-		for (int i = 0; i < jsonArr.length(); i++) {
-			list.add(jsonArr.getInt(i));
-		}
-		customService.insertcart(list);
-	}
 }

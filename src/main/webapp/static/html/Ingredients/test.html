@@ -315,27 +315,25 @@ input {
 			</div>
 		</div>
 	</div>
-</body>
 	<script>
         // ID 중복 확인 기능
         document.getElementById("checkIdBtn").addEventListener("click", function() {
-            const id = document.getElementById("id").value;
+            const id = document.getElementById("user_id").value;
 
             if (!id) {
                 alert("아이디를 입력해주세요.");
                 return;
             }
 
-            fetch(`http:localhost:8080/240930subKingProject/api/v1/user`, {
-                method: 'POST',
-                 
+            fetch("http:localhost:8080/240930subKingProject/api/v1/user?user_id=${user_id}", {
+                method: 'GET',
             })
-           .then(response => {
-   				 if (!response.ok) {
-      		  throw new Error(`HTTP error! status: ${response.status}`);
-    			}
-   				 return response.json();
-					})
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.available) {
                     document.querySelector('.error_next_box').innerHTML = "사용 가능한 아이디입니다.";
@@ -347,7 +345,7 @@ input {
             })
             .catch(error => {
                 console.error('중복 확인 중 오류가 발생했습니다:', error);
-                alert(`오류: ${error.message}`);
+                alert('중복 확인 중 오류가 발생했습니다.');
             });
         });
     document.getElementById("btnJoin").addEventListener("click", function() {
@@ -623,4 +621,5 @@ input {
         
     }
     </script>
+</body>
 </html>

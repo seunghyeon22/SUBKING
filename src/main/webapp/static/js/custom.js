@@ -2,7 +2,7 @@ const igName = document.querySelector(".ig_name");
 const igPrice = document.querySelector(".ig_price");
 const igKcal = document.querySelector(".ig_kcal");
 const buttons = document.querySelector(".buttons")
-const nextButton = document.querySelector(".next-button");
+
 
 let breads = [];
 let vegetables = [];
@@ -78,7 +78,12 @@ function selectBread() {
 		</li>
 		`;
 	}
+	let btnplus = `	
+		<input type="button" value="다음으로" class="next-button">
+					`;
 	list.innerHTML = tableStr;
+	buttons.innerHTML = btnplus;
+	nextButton();
 }
 
 function selectVegetables() {
@@ -109,6 +114,7 @@ function selectVegetables() {
 	plused();
 	minused();
 	next1();
+	before1();
 }
 
 
@@ -202,27 +208,31 @@ function selectCheeses() {
 	plused();
 	minused();
 	cart();
+	payment();
+}
+function nextButton() {
+	const nextButton = document.querySelector(".next-button");
+	nextButton.addEventListener("click", function() {
+		let count = 0;
+		let ss;
+		let aa;
+		const check = document.querySelectorAll(".check");
+		for (let i = 0; i < check.length; i++) {
+			if (check[i].checked) {
+				count++;
+				ss = i;
+			}
+
+		}
+		if (count < 2 && count > 0) {
+			item.push(breads[ss].ig_no);
+			selectVegetables();
+		} else {
+			alert("빵은 1개만 선택가능합니다.");
+		}
+	});
 }
 
-nextButton.addEventListener("click", function() {
-	let count = 0;
-	let ss;
-	let aa;
-	const check = document.querySelectorAll(".check");
-	for (let i = 0; i < check.length; i++) {
-		if (check[i].checked) {
-			count++;
-			ss = i;
-		}
-
-	}
-	if (count < 2 && count > 0) {
-		item.push(breads[ss].ig_no);
-		selectVegetables();
-	} else {
-		alert("빵은 1개만 선택가능합니다.");
-	}
-});
 
 function plused() {
 
@@ -274,14 +284,12 @@ function next1() {
 		selectPattys();
 	})
 }
-//function before1() {
-//	const before1Button = document.querySelector(".before1-button");
-//	before1Button.addEventListener("click", function() {
-//		selectBread();
-//		const check = document.querySelectorAll(".check");
-//		console.log(item.length);
-//	})
-//}
+function before1() {
+	const before1Button = document.querySelector(".before1-button");
+	before1Button.addEventListener("click", function() {
+		selectBread();
+	})
+}
 
 function next2() {
 	let next2Button = document.querySelector(".next2-button");
@@ -344,17 +352,25 @@ function cart() {
 		let jsonReq = JSON.stringify(reqData);
 		console.log(reqData);
 		console.log(jsonReq);
-		let url = "/240930subKingProject/api/v1/custom";
-		fetch(url,{
-			method : "POST",
-			headers : {
+		let url = "/240930subKingProject/api/v1/cart";
+		fetch(url, {
+			method: "POST",
+			headers: {
 				"Content-Type": "application/json",
 			},
-			body : JSON.stringify(reqData),
+			body: JSON.stringify(reqData),
 		}).then((resp) => resp.json())
-		.then((data) => console.log(data))
+			.then((data) => console.log(data))
+
+		selectBread();
 	})
 }
 
+function payment() {
+	const orderButton = document.querySelector(".order-button");
+	orderButton.addEventListener("click", function() {
+		window.location.href = "http://localhost:8080/240930subKingProject/custom/payment";
 
+	})
+}
 

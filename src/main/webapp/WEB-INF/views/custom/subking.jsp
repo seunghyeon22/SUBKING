@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -88,8 +91,7 @@ body {
 <body>
 	<header class="header">
 		<div class="logo">
-			<img
-					src="../image/logo.jpg"
+			<img src="../image/logo.jpg"
 					alt="햄버거 이미지">
 		</div>
 		<nav>
@@ -120,10 +122,15 @@ body {
 			</div>
 		</nav>
 		<div class="auth-links">
-			<a href="login.html">로그인</a>
-			<!-- 로그인 페이지로 이동 -->
-			<a href="agreement.html">회원가입</a>
-		</div>1
+			<c:if test="${ empty user_id }">
+				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogIn">로그인</a>
+				<a href="../html/agreement.html">회원가입</a>
+			</c:if>
+			<c:if test="${ not empty user_id }">
+				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogOut">로그아웃</a>
+				<a href="../html/orders.html">주문내역</a>
+			</c:if>
+		</div>
 	</header>
 </body>
 </html>

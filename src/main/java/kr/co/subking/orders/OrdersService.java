@@ -6,4 +6,7 @@ public interface OrdersService {
 
 	List<Orders> selectAll();
 
+	List<Orders> selectByUserId(String user_id);
+
+
 }
