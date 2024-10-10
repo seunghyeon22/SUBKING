@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.JdbcType;import lombok.experimental.PackagePrivate;
 
 public interface UserMapper {
 //    
@@ -26,8 +26,6 @@ public interface UserMapper {
 	@Select("SELECT user_id, user_pw, user_name, user_birth, user_phone, user_gender, user_email, user_address, user_role, user_signupDate, user_updateDate FROM user WHERE user_id = #{userId}")
     User selectByUserId(@Param("userId") String userId);
 
-	@Insert("insert into user (user_id, user_pw, user_name, user_birth,user_phone, user_gender, user_email, user_address, user_role) values(#{user.user_id}, #{user.user_pw}, #{user.user_name}, #{user.user_birth}, #{user.user_phone}, #{user.gender}, #{user.user_email}, #{user.user_address}, #{user.user_role})")
-	int insertUser(@Param("user") User user);
 
 	@Select("SELECT user_id, user_pw, user_name, user_birth, user_phone, user_gender, user_email, user_address, user_role, user_signupDate, user_updateDate FROM user WHERE user_id = #{userId}")
     User selectByPk(@Param("userId") int pk);
@@ -46,6 +44,16 @@ public interface UserMapper {
     int login(@Param("user_id") String user_id, @Param("user_pw") String user_pw);
 	
 	List<User> selectAll();
+
+	@Insert("insert into user (user_id, user_pw, user_name, user_birth,user_phone, user_gender, user_email, user_address, user_role) values(#{user.user_id}, #{user.user_pw}, #{user.user_name}, #{user.user_birth}, #{user.user_phone}, #{user.user_gender}, #{user.user_email}, #{user.user_address}, #{user.user_role})")
+	int insertUser(@Param("user") User user);
+
+//	String getHashedPassword(@PackagePrivate)
+	
+	// TODO: 아이디 중복 체크
+	int checkUserExists(String user_id);
+	
+	
 }
 
 
