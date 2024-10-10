@@ -1,0 +1,57 @@
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.day {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.total-sales {
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#month-year {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 60px;
+}
+
+.month-sales {
+    display: block;
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.saturday {
+    color: blue;
+}
+
+.sunday {
+    color: red;
+}
+
+.empty-day {
+    border: none;
+    padding: 0;
+}
