@@ -33,7 +33,7 @@ public class CustomAPI extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Ingredients> list = service.selectAll();
 		
-		req.getSession().setAttribute("user_id", "asdf");
+//		req.getSession().setAttribute("user_id", "asdf");
 		resp.setHeader("Content-Type", "application/json; charset=utf-8");
 		
 		JsonMapper jsonMapper = new JsonMapper();

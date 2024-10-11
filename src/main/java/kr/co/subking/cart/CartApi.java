@@ -26,7 +26,7 @@ public class CartApi extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getSession().setAttribute("user_id", "asdf");
+//		req.getSession().setAttribute("user_id", "asdf");
 		String userId = (String) req.getSession().getAttribute("user_id");
 
 		List<Cartlist1> list = cartService.selectUserIdbyAllMenu(userId);
