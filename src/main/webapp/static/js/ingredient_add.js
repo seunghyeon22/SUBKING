@@ -20,7 +20,7 @@ document.getElementById('add-ingredient-form').addEventListener('submit', functi
         // URLSearchParams를 사용하여 데이터 변환
         const params = new URLSearchParams(formData);
 
-        fetch('/api/v1/ingredients', {
+        fetch('/240930subKingProject/api/v1/ingredients', { // 절대 경로로 수정
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,9 +1,15 @@
 window.onload = function() {
-    fetch('/api/v1/ingredients')
-        .then(response => response.json())
+    const url = "http://localhost:8080/240930subKingProject/api/v1/ingredients"; // 절대 경로로 수정
+    fetch(url)
+        .then(response => {
+            console.log(response); // 응답 객체 로그로 확인
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             console.log(data);  // API 응답 데이터 확인
-
             const container = document.getElementById('ingredients-container');
             const categories = {};
 
@@ -44,4 +50,4 @@ window.onload = function() {
             }
         })
         .catch(error => console.error('Error loading ingredients:', error));
-};
+}
