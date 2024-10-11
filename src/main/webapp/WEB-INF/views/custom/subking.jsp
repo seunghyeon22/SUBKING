@@ -44,7 +44,7 @@
 		<div class="auth-links">
 			<c:if test="${ empty user_id }">
 				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogIn">로그인</a>
-				<a href="http://localhost:8080/240930subKingProject/html/agreement.html">회원가입</a>
+				<a href="http://localhost:8080/240930subKingProject/static/html/agreement.html">회원가입</a>
 			</c:if>
 			<c:if test="${ not empty user_id }">
 				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogOut">로그아웃</a>

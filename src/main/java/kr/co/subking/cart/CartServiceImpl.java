@@ -62,4 +62,20 @@ public class CartServiceImpl implements CartService {
 		}
 
 	}
+
+	@Override
+	public void insertCartByUserId(String user_id) {
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
+			Integer lastCartId = cartMapper.selectCartbyUserId(user_id);
+			if (lastCartId != null) {
+
+			} else if (lastCartId == null) {
+				int insertCartId = cartMapper.insertCart(user_id);
+				sqlSession.commit();
+				lastCartId = cartMapper.selectCartbyUserId(user_id);
+			}
+			sqlSession.commit();
+		}
+	}
 }

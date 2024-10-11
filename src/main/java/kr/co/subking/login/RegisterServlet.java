@@ -15,6 +15,8 @@ import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
+import kr.co.subking.cart.CartService;
+import kr.co.subking.cart.CartServiceImpl;
 import kr.co.subking.user.User;
 import kr.co.subking.user.UserMapper;
 import subking.config.AppContextListener;
@@ -22,6 +24,7 @@ import subking.config.PasswordUtils;
 
 @WebServlet("/api/v1/register")
 public class RegisterServlet extends HttpServlet {
+	private static final CartService cartService = CartServiceImpl.getInstance();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -60,6 +63,9 @@ public class RegisterServlet extends HttpServlet {
 			// 사용자 정보 저장
 			userMapper.insertUser(user);
 			sqlSession.commit();
+			
+			cartService.insertCartByUserId(user.getUser_id());
+			
 			success = true;
 //            }
 		} catch (Exception e) {
