@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
@@ -44,9 +45,16 @@ public class TempFindId extends HttpServlet {
 
 //		PrintWriter out = resp.getWriter();
 		try (PrintWriter out = resp.getWriter()) {
+			if (user_name == null || user_name.isEmpty() || user_phone == null || user_phone.isEmpty()) {
+			    out.println("{\"success\": false, \"message\": \"이름과 전화번호를 입력해 주세요.\"}");
+			    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			    return;
+			}
 			if (user.getUser_id() != null) {
 				out.println("{\"success\": true, \"message\": \"아이디를 찾았습니다: " + user.getUser_id() + "\"}");
 				resp.setStatus(HttpServletResponse.SC_OK);
+				HttpSession session = req.getSession();
+				session.setAttribute("asdf", user_name);
 			} else {
 				out.println("{\"success\": false, \"message\": \"아이디를 찾을 수 없습니다. 정보를 확인하세요.\"}");
 				resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

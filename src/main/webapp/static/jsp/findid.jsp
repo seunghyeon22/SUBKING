@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로그인 페이지</title>
+<title>아이디 페이지</title>
 
 <link rel="stylesheet" href="../css/findid.css">
 
 </head>
 <body>
 	<div class="login-container">
-		<h2>아이디 찾기 / 비밀번호 찾기</h2>
+		<h2>아이디 찾기</h2>
 		<p class="login-error">${ result }</p>
 		<form method="POST">
 			<div class="form-group">
@@ -27,7 +27,8 @@
 			<button type="submit" id="login">아이디 찾기</button>
 			<div class="button-group">
 				<button type="button">아이디 찾기</button>
-				<button type="button">비밀번호 찾기</button>
+				<button type="button" onclick="location.href='http://localhost:8080/240930subKingProject/static/jsp/findpw.jsp'">비밀번호 찾기</button>
+				<!-- <button type="button">비밀번호 찾기</button> -->
 				<button type="button">회원가입</button>
 			</div>
 		</form>
