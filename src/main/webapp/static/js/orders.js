@@ -95,7 +95,21 @@ function createMenus(menus, dialog) {
 	// 복사 버튼 
 	let copyBtn = menuClone.querySelector(".btn-copy");
 	copyBtn.addEventListener("click", (e) => {
-		
+
+		const menucopyUrl = "/240930subKingProject/api/v1/menucopy/";
+		fetch(menucopyUrl + menus.menu_id, { method: "post" })
+			.then((resp) => resp.json())
+			.then((result) => {
+				if (result === 1) {
+					alert("장바구니에 담았습니다.");
+				} else {
+					alert("복사에 실패했습니다.");
+				}
+			})
+			.catch((error) => {
+				alert("복사에 실패했습니다.");
+				console.error('Error:', error);
+			});
 	});
 
 	menuClone.querySelector(".menu-name").innerText = "버거 이름: " + menus.menu_name;
@@ -110,7 +124,6 @@ function createMenus(menus, dialog) {
 				igList.appendChild(igName);
 			})
 		});
-
 
 	return menuClone;
 }

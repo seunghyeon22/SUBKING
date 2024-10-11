@@ -78,4 +78,29 @@ public class CartServiceImpl implements CartService {
 			sqlSession.commit();
 		}
 	}
+
+	@Override
+	public void deleteCartIdbyUserId(String user_id) {
+		int result = 0;
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
+
+			result = cartMapper.deleteCartIdbyUserId(user_id);
+			sqlSession.commit();
+		}
+	}
+
+	@Override
+	public int insertCartAndMenuId(String user_id, int cartlist_menu_id) {
+		int result = 0;
+		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+			CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
+			
+			int cartlist_cart_id = cartMapper.selectCartbyUserId(user_id);
+			
+			result = cartMapper.insertCartList(cartlist_cart_id, cartlist_menu_id);
+			sqlSession.commit();
+		}
+		return result;
+	}
 }

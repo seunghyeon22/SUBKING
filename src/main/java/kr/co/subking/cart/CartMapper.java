@@ -35,4 +35,8 @@ public interface CartMapper {
 	
 	@Delete("delete from cartlist where cartlist_menu_id = ${menu_id}")
 	int DeleteCartbyUserId(@Param("menu_id") int menu_id);
+
+	@Delete("DELETE FROM cart WHERE cart_user_id = #{user_id};")
+	int deleteCartIdbyUserId(@Param("user_id") String user_id);
+
 }

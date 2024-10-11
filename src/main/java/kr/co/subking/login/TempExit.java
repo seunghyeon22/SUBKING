@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kr.co.subking.cart.CartService;
+import kr.co.subking.cart.CartServiceImpl;
 import kr.co.subking.user.User;
 import kr.co.subking.user.UserServiceImple;
 
 @WebServlet("/api/v1/tempExit")
 public class TempExit extends HttpServlet {
+	private static final CartService cartService = CartServiceImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,13 +34,14 @@ public class TempExit extends HttpServlet {
             if (isDeleted == 1) {
                 // 삭제 성공 시 세션 무효화
                 session.invalidate();
+                cartService.deleteCartIdbyUserId(user_id);
 
                 // 응답 설정
                 resp.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = resp.getWriter();
                 out.println("<script>");
                 out.println("alert('회원 탈퇴가 완료되었습니다.');");
-                out.println("window.location.href = 'http://localhost:8080/240930subKingProject/static/jsp/subking.jsp';");
+                out.println("window.location.href = 'http://localhost:8080/240930subKingProject/custom/home';");
                 out.println("</script>");
                 out.close();
             } else {

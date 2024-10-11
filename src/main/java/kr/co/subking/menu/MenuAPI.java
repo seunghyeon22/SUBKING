@@ -20,7 +20,7 @@ import kr.co.subking.ingredients.IngredientsServiceImpl;
 import subking.config.WebUtil;
 
 @WebServlet({ "/api/v1/menu", "/api/v1/menu/*" })
-public class ManuAPI extends HttpServlet {
+public class MenuAPI extends HttpServlet {
 	private MenuService menuService = MenuServiceImple.getInstance();
 	private IngredientsService igService = IngredientsServiceImpl.getInstance();
 

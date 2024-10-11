@@ -14,12 +14,11 @@ public class PaymentServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		req.getSession().setAttribute("userId", "asdf");
-		String userId = (String) req.getSession().getAttribute("userId");
+		String userId = (String) req.getSession().getAttribute("user_id");
 		if (userId != null) {
 			req.getRequestDispatcher("/WEB-INF/views/custom/payment.jsp").forward(req, resp);
 		} else {
 			resp.sendRedirect("../static/html/login.html");
 		}
 	}
-
 }

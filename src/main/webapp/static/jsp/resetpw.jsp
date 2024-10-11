@@ -23,6 +23,7 @@
 			<div class="form-group">
 				<label for="user_name">비밀번호 확인</label>
 				<input type="password" id="pw2" name="pw2" placeholder="비밀번호 확인" required>
+				<span class="error_next_box"></span>
 			</div>
 			<button type="submit" id="login">비밀번호 설정하기</button>
 			<div class="button-group">

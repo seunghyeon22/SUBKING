@@ -41,7 +41,7 @@
 					<ul class="ingredients-list">
 						
 					</ul>
-					<button class="btn-copy">복사 버튼</button>
+					<button class="btn-copy">장바구니에 담기</button>
 					<button class="btn-close">닫기</button>
 				</template>
 			</dialog>
