@@ -28,6 +28,10 @@ public class TempLogIn extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json; charset=UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		
 		String user_id = req.getParameter("username");
 		String user_pw = req.getParameter("password");
 		
