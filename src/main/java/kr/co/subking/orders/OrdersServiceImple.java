@@ -48,6 +48,7 @@ public class OrdersServiceImple implements OrdersService {
 			int lastOrder_id = orderMapper.SelectLastIdByOreder(user_id);
 
 			for (int i : menu_ids) {
+				System.out.println("넘어가는 메뉴 id는: " + i);
 				int result = menuMapper.InsertMenuList(lastOrder_id, i);
 			}
 			sqlSession.commit();

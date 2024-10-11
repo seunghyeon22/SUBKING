@@ -44,6 +44,7 @@
 					<button class="btn-copy">장바구니에 담기</button>
 					<button class="btn-close">닫기</button>
 				</template>
+				<a href="http://localhost:8080/240930subKingProject/custom/payment">장바구니로 이동</a>
 			</dialog>
 		</div>
 	</template>
