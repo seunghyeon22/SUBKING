@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class Temp {
 	private String user_name;
 	private String user_phone;
-
+	private String user_id;
+	private String user_pw;
 }

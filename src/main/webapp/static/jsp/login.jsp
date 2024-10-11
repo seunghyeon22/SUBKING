@@ -25,7 +25,7 @@
 			<div class="button-group">
 				<form></form>
 				<button type="button" onclick="location.href='http://localhost:8080/240930subKingProject/static/jsp/findid.jsp'">아이디 찾기</button>
-				<button type="button">비밀번호 찾기</button>
+				<button type="button" onclick="location.href='http://localhost:8080/240930subKingProject/static/jsp/findpw.jsp'">비밀번호 찾기</button>
 				<button type="button">회원가입</button>
 			<button class="kakao-login" id="kakao-login-btn" onclick="loginWithKakao()">
             카카오로 로그인
