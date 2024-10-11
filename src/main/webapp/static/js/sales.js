@@ -1,10 +1,22 @@
-const currentDate = new Date();
+let currentDate = new Date();
 let currentMonth = currentDate.getMonth() + 1;
 let currentYear = currentDate.getFullYear();
 
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded 이벤트 발생');
+    loadSalesData();
+});
+
 function loadSalesData() {
-    fetch('/api/v1/sales')
-        .then(response => response.json())
+    console.log('loadSalesData 호출됨');
+    let url = "/240930subKingProject/api/v1/sales";
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             const calendar = document.getElementById('calendar');
             const monthSales = document.getElementById('month-sales');
@@ -56,7 +68,10 @@ function loadSalesData() {
 
             monthSales.innerHTML = `${currentYear}년 ${currentMonth}월 매출: ${monthlyTotal}원`;
         })
-        .catch(error => console.error('Error loading sales data:', error));
+        .catch(error => {
+            console.error('Error loading sales data:', error.message);
+            console.error(error.stack);
+        });
 }
 
 function previousMonth() {
@@ -88,7 +103,3 @@ function nextYear() {
     currentYear++;
     loadSalesData();
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadSalesData();
-});
