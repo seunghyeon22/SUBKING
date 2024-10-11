@@ -35,25 +35,25 @@ public class TempFindId extends HttpServlet {
 		String user_phone = temp.getUser_phone();
 		System.out.println(user_name);
 		System.out.println(user_phone);
-	
+
 		UserServiceImple userServiceimple = new UserServiceImple();
 		User user = userServiceimple.findIdByNameAndPhone(user_name, user_phone); // 사용자 정보를 찾는 메서드 호출
-		System.out.println("User: " + user); // User 객체 출력
+		System.out.println("User: " + user.getUser_id()); // User 객체 출력
 
 		resp.setContentType("application/json; charset=UTF-8");
-		
+
 //		PrintWriter out = resp.getWriter();
 		try (PrintWriter out = resp.getWriter()) {
-            if (user != null && user.getUser_id() != null) {
-                out.println("{\"success\": true, \"message\": \"아이디를 찾았습니다: " + user.getUser_id() + "\"}");
-                resp.setStatus(HttpServletResponse.SC_OK);
-            } else {
-                out.println("{\"success\": false, \"message\": \"아이디를 찾을 수 없습니다. 정보를 확인하세요.\"}");
-                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            }
-            out.close();
-        }
+			if (user.getUser_id() != null) {
+				out.println("{\"success\": true, \"message\": \"아이디를 찾았습니다: " + user.getUser_id() + "\"}");
+				resp.setStatus(HttpServletResponse.SC_OK);
+			} else {
+				out.println("{\"success\": false, \"message\": \"아이디를 찾을 수 없습니다. 정보를 확인하세요.\"}");
+				resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			}
+			out.close();
 		}
+	}
 
 }
 //try (PrintWriter out = resp.getWriter()) {
@@ -77,4 +77,3 @@ public class TempFindId extends HttpServlet {
 //}
 //out.println("</body>");
 //out.println("</html>");
-	
