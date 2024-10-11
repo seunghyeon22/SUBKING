@@ -28,15 +28,7 @@
 				</div>
 				<div class="pd_list_wrapper">
 					<ul class="list">
-						<li>
-							<div class="img">
-								<img alt="상품이름" src="">
-							</div> <strong class="tit">상품명</strong> <span class="text">재료명들</span>
-							<span class="eng">가격</span> <span class="cal">칼로리</span> <input
-							type="button" class="plus" value="추가"> <label
-							class="counts">0</label> <input type="button" class="minus"
-							value="감소">
-						</li>
+						
 					</ul>
 					
 					<div class="buttons">

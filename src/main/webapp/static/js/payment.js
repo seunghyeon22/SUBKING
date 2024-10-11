@@ -37,7 +37,9 @@ function loadmenu() {
 	const list = document.querySelector(".list");
 	let texttr = ``;
 	for (let i = 0; i < arr.length; i++) {
-		texttr += `
+		console.log(arr[i].menu_name);
+		if (arr[i].menu_name !== null) {
+			texttr += `
 		<li>
 									<div class="img">
 										<img alt="상품이미지" src="">
@@ -57,7 +59,9 @@ function loadmenu() {
 								</li>		
 		
 		`;
-
+		}else {
+			texttr ="";
+		}
 	}
 	list.innerHTML = texttr;
 	checka();
@@ -116,10 +120,8 @@ function requestPay() {
 			let checked = document.querySelectorAll(".check");
 			let menuId = document.querySelectorAll(".menu_id");
 			let user_id = sessionStorage.getItem("user_id");
-			for (let i = 0; i < checked.length; i++) {
-				if (checked[i].checked) {
-					checkigno.push(menuId[i].value);
-				}
+			for (let i = 0; i < menuId.length; i++) {
+				checkigno.push(menuId[i].value);
 			}
 			let data = {
 				menu_ids: checkigno,
@@ -154,7 +156,7 @@ function requestPay() {
 }
 function checka() {
 	let priceLbl = document.querySelector(".CartallPrice");
-//	let checked = document.querySelectorAll(".check");
+	//	let checked = document.querySelectorAll(".check");
 	allPrice = 0;
 	for (let i = 0; i < arr.length; i++) {
 		allPrice += arr[i].menu_price;

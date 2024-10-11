@@ -25,32 +25,7 @@
 				</div>
 				<div class="pd_list_wrapper">
 					<ul class="list">
-						<li>
-							<div class="img">
-								<img alt="상품이미지" src="">
-							</div>
-							<div class="texts">
-								<dl>
-									<dd>
-										<strong class="tit">상품이름</strong>
-									</dd>
-									<dd>
-										<span>상품정보</span>
-									</dd>
-									<dd>
-										<span>칼로리 : 500kcal</span>
-									</dd>
-									<dd>
-										<span>가격 : 11111</span>
-									</dd>
-								</dl>
-								
-								<input type="hidden" value="">
-								<input type="button" class="deleteBtn" value ="취소">
-								<input type="checkbox"
-									class="check">
-							</div>
-						</li>
+						
 					</ul>
 
 				</div>
