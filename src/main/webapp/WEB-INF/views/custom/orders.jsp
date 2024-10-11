@@ -6,7 +6,6 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="../static/css/orders.css">
-<link rel="stylesheet" type="text/css" href="../static/css/footer.css">
 
 <title>서브킹 주문 내역</title>
 </head>

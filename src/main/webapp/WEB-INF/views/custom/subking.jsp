@@ -17,39 +17,38 @@
 		</div>
 		<nav>
 			<div class="menu-item">
-				<a href="#">Home</a>
-				<div class="dropdown">
-					<a href="#">Home Submenu 1</a> <a href="#">Home Submenu 2</a>
-				</div>
+				<a href="${ pageContext.request.contextPath }/custom/home">Home</a>
+<!-- 				<div class="dropdown"> -->
+<!-- 					<a href="#">Home Submenu 1</a> <a href="#">Home Submenu 2</a> -->
+<!-- 				</div> -->
 			</div>
 			<div class="menu-item">
-				<a href="#">Menu</a>
-				<div class="dropdown">
-					<a href="#">Submenu 1</a> <a href="#">Submenu 2</a> <a href="#">Submenu
-						3</a>
-				</div>
+				<a href="${ pageContext.request.contextPath }/custom/custom">Custom</a>
+<!-- 				<div class="dropdown"> -->
+<!-- 					<a href="#">Submenu 1</a> <a href="#">Submenu 2</a> <a href="#">Submenu	3</a> -->
+<!-- 				</div> -->
 			</div>
 			<div class="menu-item">
-				<a href="#">Order</a>
-				<div class="dropdown">
-					<a href="#">Order Submenu 1</a> <a href="#">Order Submenu 2</a>
-				</div>
+				<a href="#">Kcal Custom</a>
+<!-- 				<div class="dropdown"> -->
+<!-- 					<a href="#">Order Submenu 1</a> <a href="#">Order Submenu 2</a> -->
+<!-- 				</div> -->
 			</div>
 			<div class="menu-item">
 				<a href="#">Contact</a>
-				<div class="dropdown">
-					<a href="#">Contact Submenu 1</a> <a href="#">Contact Submenu 2</a>
-				</div>
+<!-- 				<div class="dropdown"> -->
+<!-- 					<a href="#">Contact Submenu 1</a> <a href="#">Contact Submenu 2</a> -->
+<!-- 				</div> -->
 			</div>
 		</nav>
 		<div class="auth-links">
 			<c:if test="${ empty user_id }">
 				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogIn">로그인</a>
-				<a href="../html/agreement.html">회원가입</a>
+				<a href="http://localhost:8080/240930subKingProject/html/agreement.html">회원가입</a>
 			</c:if>
 			<c:if test="${ not empty user_id }">
 				<a href="http://localhost:8080/240930subKingProject/api/v1/tempLogOut">로그아웃</a>
-				<a href="http://localhost:8080/240930subKingProject/custom/orders">주문내역</a>
+				<a href="${ pageContext.request.contextPath }/custom/orders">주문내역</a>
 			</c:if>
 		</div>
 		<div class="auth-links">

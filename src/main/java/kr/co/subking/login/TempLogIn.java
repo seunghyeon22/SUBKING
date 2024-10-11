@@ -66,7 +66,7 @@ public class TempLogIn extends HttpServlet {
 		// 로그인 성공 시 자바스크립트를 포함한 HTML 응답
 	    out.println("<script>");
 	    out.println("alert('로그인에 성공하셨습니다.');");
-	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/custom/custom';");
+	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/custom/home';");
 	    out.println("</script>");
 	    out.close();
 		

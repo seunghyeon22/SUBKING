@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" type="text/css" href="../static/css/footer.css">
 <footer>
 	<div class="footer_in">
 		<div class="footer_buttons">

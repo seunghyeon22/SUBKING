@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>주문하기</title>
 <link rel="stylesheet" type="text/css" href="../static/css/custom.css">
-<link rel="stylesheet" type="text/css" href="../static/css/footer.css">
 </head>
 
 <body>
