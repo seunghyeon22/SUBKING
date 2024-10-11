@@ -61,6 +61,18 @@ public interface UserMapper {
 	
 	@Select("SELECT user_id from user where user_name = #{user_name} AND user_phone=#{user_phone}")
 	User findIdByNameAndPhone(@Param("user_name") String user_name, @Param("user_phone") String user_phone);
+
+	@Select("SELECT user_id, user_name, user_phone from user where user_id = #{user_id} AND user_name=#{user_name} AND user_phone= #{user_phone}")
+	User findIdByPw(@Param("user_id") String user_id, @Param("user_name") String user_name, @Param("user_phone") String user_phone);
+	
+    @Update({
+        "UPDATE user",
+        "SET user_pw=#{user_pw}",
+        "WHERE user_id=#{user_id}"
+    })
+    int update2(@Param("user_id")String user_id, @Param("user_pw")String user_pw);
+
+
 	
 	
 }
