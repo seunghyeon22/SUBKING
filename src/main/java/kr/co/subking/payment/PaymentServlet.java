@@ -1,4 +1,4 @@
-package kr.co.subking;
+package kr.co.subking.payment;
 
 import java.io.IOException;
 

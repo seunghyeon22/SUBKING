@@ -20,7 +20,7 @@ public class KcalCustomAPI extends HttpServlet {
 	private CustomService customService = CustomServiceImpl.getInstance();
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		WebUtil webUtil = new WebUtil();
 		String json = webUtil.readBody(req);
 		JsonMapper jsonMapper = new JsonMapper();
