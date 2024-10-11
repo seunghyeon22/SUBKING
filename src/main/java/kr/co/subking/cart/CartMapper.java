@@ -30,9 +30,9 @@ public interface CartMapper {
 	List<Cartlist1> selectUserIdbyAllMenu(@Param("user_id") String userid);
 
 //	@Delete("delete from cart where cart_user_id = ${user_id}")
-//	int DeleteCartbyUserId(@Param("user_id") String user_id);
-//	
-
+//	int DeleteCart(@Param("user_id") String user_id);
+	
+	
 	@Delete("delete from cartlist where cartlist_menu_id = ${menu_id}")
 	int DeleteCartbyUserId(@Param("menu_id") int menu_id);
 }

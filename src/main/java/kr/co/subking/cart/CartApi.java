@@ -64,6 +64,8 @@ public class CartApi extends HttpServlet {
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		WebUtil webUtil = new WebUtil();
 		String json = webUtil.readBody(req);
+		
+		String user_id = (String)req.getSession().getAttribute("user_id");
 
 		JSONArray jsonArr = new JSONArray(json);
 		List<Integer> list = new ArrayList<Integer>();
@@ -72,7 +74,7 @@ public class CartApi extends HttpServlet {
 			list.add(jsonArr.getInt(i));
 		}
 
-		int result = cartService.DeleteCartbyUserId(list);
+		int result = cartService.DeleteCartbyUserId(user_id, list);
 		webUtil.setCodeAndMimeType(resp, 201, "json");
 		webUtil.writeBodyJson(resp, result);
 	}
