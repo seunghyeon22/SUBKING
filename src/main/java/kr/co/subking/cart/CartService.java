@@ -10,5 +10,5 @@ public interface CartService {
 	
 	List<Cartlist1> selectUserIdbyAllMenu(String userid);
 	
-	int DeleteCartbyUserId(List<Integer> list);
+	int DeleteCartbyUserId(String user_id, List<Integer> list);
 }

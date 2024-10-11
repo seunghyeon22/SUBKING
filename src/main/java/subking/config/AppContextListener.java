@@ -19,6 +19,7 @@ import kr.co.subking.custom.CustomMapper;
 import kr.co.subking.ingredients.IngredientsMapper;
 import kr.co.subking.menu.MenuMapper;
 import kr.co.subking.orders.OrdersMapper;
+import kr.co.subking.sales.SalesMapper;
 import kr.co.subking.user.UserMapper;
 
 
@@ -56,6 +57,7 @@ public class AppContextListener implements ServletContextListener {
 		configuration.addMapper(CustomMapper.class);
 		configuration.addMapper(CartMapper.class);
 		configuration.addMapper(UserMapper.class);
+		configuration.addMapper(SalesMapper.class);
 		sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 	}
 

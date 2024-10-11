@@ -26,7 +26,7 @@ public class TempLogout extends HttpServlet{
 	    PrintWriter out = resp.getWriter();
 		out.println("<script>");
 	    out.println("alert('로그아웃하셨습니다.');");
-	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/static/jsp/subking.jsp';");
+	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/custom/home';");
 	    out.println("</script>");
 	    out.close();
 		

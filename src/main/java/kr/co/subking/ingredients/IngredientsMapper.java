@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 public interface IngredientsMapper {
 
-    @Select("SELECT ig_no, ig_name, ig_category, ig_price, ig_kcal, ig_image FROM ingredients")
+    @Select("SELECT ig_no, ig_name, ig_category, ig_price, ig_kcal FROM ingredients")
     List<Ingredients> selectAll();
     
     @Select("SELECT I.ig_name, C.custom_count FROM custom AS C " +

@@ -21,7 +21,7 @@ public interface MenuMapper {
 	@Select("SELECT menu_id, menu_name, menu_price, menu_all_kcal FROM menu \n" + "WHERE menu_id = #{menu_id}")
 	Menu getMenuByPk(@Param("menu_id") int menu_id);
 
-	@Select("SELECT menu_id FROM menulist WHERE order_menu_id = #{order_id}")
+	@Select("SELECT menulist_menu_id FROM menulist WHERE menulist_order_id = #{order_id}")
 	List<Integer> getMenuIdList(@Param("order_id") int order_id);
 
 	@Select("SELECT menu_id, menu_name, menu_price, menu_all_kcal FROM menu")
@@ -30,4 +30,5 @@ public interface MenuMapper {
 	@Insert("insert into menulist (menulist_order_id, menulist_menu_id) values(#{order_id}, #{menu_id})")
 	int InsertMenuList(@Param("order_id") int order_id, @Param("menu_id") int menu_id);
 
+//	menulist_order_id, menulist_menu_id
 }

@@ -50,7 +50,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int DeleteCartbyUserId(List<Integer> list) {
+	public int DeleteCartbyUserId(String user_id, List<Integer> list) {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
 			int result = 0;

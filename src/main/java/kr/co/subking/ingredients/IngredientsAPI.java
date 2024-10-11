@@ -11,16 +11,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet({ "/api/v1/ingredients", "/api/v1/ingredients/*" })
 public class IngredientsAPI extends HttpServlet {
-	private IngredientsService ingredientsService = IngredientsServiceImpl.getInstance();
+    private IngredientsService ingredientsService = IngredientsServiceImpl.getInstance();
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Ingredients> ingredientsList = ingredientsService.selectAll();
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValue(resp.getOutputStream(), ingredientsList);
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("IngredientsAPI: doGet 호출됨");  // 디버그 로그 추가
+        List<Ingredients> ingredientsList = ingredientsService.selectAll();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(resp.getOutputStream(), ingredientsList);
+    }
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

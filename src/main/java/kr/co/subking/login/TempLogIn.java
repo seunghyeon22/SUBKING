@@ -16,14 +16,14 @@ import kr.co.subking.user.UserMapper;
 import subking.config.AppContextListener;
 import subking.config.PasswordUtils;
 
-
-@WebServlet("/api/v1/tempLogIn")
+// 임시로 
+//@WebServlet("/api/v1/tempLogIn")
 public class TempLogIn extends HttpServlet {
-	private static final String formURL = "/static/jsp/login.jsp";
+	private static final String loginURL = "/static/jsp/login.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(formURL).forward(req, resp);
+		req.getRequestDispatcher(loginURL).forward(req, resp);
 	}
 
 	@Override
@@ -42,26 +42,31 @@ public class TempLogIn extends HttpServlet {
 			} else {
 				result = 0;
 			}
+		} catch ( IllegalArgumentException e) {
+			result = 0;
 		}
+		
+		resp.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = resp.getWriter();
 		
 		// db에 아이디나 비밀번호가 없는 경우 
 		if (result == 0) {
-			req.setAttribute("result", "아이디 비밀번호를 확인해주세요");
-			req.getRequestDispatcher(formURL).forward(req, resp);
+			out.println("<script>");
+		    out.println("alert('비밀번호를 확인해주세요');");
+		    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/api/v1/tempLogIn';");
+		    out.println("</script>");
+		    out.close();
 			return;
 		}
 		
 		// 로그인 정보를 세션에 기록
 		HttpSession session = req.getSession();
-		
 		session.setAttribute("user_id", user_id);
 		
 		// 로그인 성공 시 자바스크립트를 포함한 HTML 응답
-	    resp.setContentType("text/html; charset=UTF-8");
-	    PrintWriter out = resp.getWriter();
 	    out.println("<script>");
 	    out.println("alert('로그인에 성공하셨습니다.');");
-	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/static/jsp/subking.jsp';");
+	    out.println("window.location.href = 'http://localhost:8080/240930subKingProject/custom/home';");
 	    out.println("</script>");
 	    out.close();
 		

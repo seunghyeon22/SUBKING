@@ -52,7 +52,7 @@ function loadmenu() {
 										<input type="hidden" class ="menu_id" value="${arr[i].menu_id}">
 										<input type="hidden" class ="cart_id"  value="${arr[i].cart_id}">
 										<input type ="button" class = "deleteBtn" value="취소">
-										<input type="checkbox" class="check">
+										
 										</div>
 								</li>		
 		
@@ -97,7 +97,6 @@ IMP.init('imp50777305'); // 본인 가맹점 식별코드로 변경
 
 
 function requestPay() {
-	checka();
 	IMP.request_pay({
 		pg: 'kakaopay', // PG사 선택 (예: KG이니시스)
 		pay_method: 'card', // 결제 수단 (예: 카드)
@@ -155,21 +154,26 @@ function requestPay() {
 }
 function checka() {
 	let priceLbl = document.querySelector(".CartallPrice");
-	let checked = document.querySelectorAll(".check");
-
-	for (let i = 0; i < checked.length; i++) {
-		checked[i].addEventListener("click", function() {
-			allPrice = 0;
-			for (let j = 0; j < checked.length; j++) {
-				if (checked[j].checked) {
-					allPrice += arr[j].menu_price;
-				}
-			}
-			console.log(allPrice);
-			priceLbl.innerText = "주문 금액 : " + allPrice + "원";
-		})
-
+//	let checked = document.querySelectorAll(".check");
+	allPrice = 0;
+	for (let i = 0; i < arr.length; i++) {
+		allPrice += arr[i].menu_price;
 	}
+	priceLbl.innerText = "주문 금액 : " + allPrice + "원";
+
+	//	for (let i = 0; i < checked.length; i++) {
+	//		checked[i].addEventListener("click", function() {
+	//			allPrice = 0;
+	//			for (let j = 0; j < checked.length; j++) {
+	//				if (checked[j].checked) {
+	//					allPrice += arr[j].menu_price;
+	//				}
+	//			}
+	//			console.log(allPrice);
+	//			priceLbl.innerText = "주문 금액 : " + allPrice + "원";
+	//		})
+	//
+	//	}
 
 }
 
@@ -196,7 +200,7 @@ function deleteMenu() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(checkigno)
-			}).then((resp) => resp.json()).then((data)=>{
+			}).then((resp) => resp.json()).then((data) => {
 				alert("주문상품이 취소되었습니다.")
 				window.location.href = "http://localhost:8080/240930subKingProject/custom/payment";
 
