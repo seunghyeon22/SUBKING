@@ -14,6 +14,7 @@ public class CustomServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().setAttribute("user_id", "asdf");
+		
 		String userId = (String) req.getSession().getAttribute("user_id");
 		if (userId != null) {
 			req.getRequestDispatcher("/WEB-INF/views/custom/custom.jsp").forward(req, resp);

@@ -1,40 +1,80 @@
-/* Dropdown container */
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	background-color: rgb(31, 147, 98);
+	color: white;
+	padding: 20px 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header .logo {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.header .logo img {
+	width: 150px;
+	height: auto;
+}
+
+.header nav {
+	display: flex;
+	gap: 200px;
+	position: relative;
+}
+
+.header nav a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	position: relative;
+}
+
+.header nav a:hover {
+	text-decoration: underline;
+}
+
 .dropdown {
-    position: relative;
-    display: inline-block;
+	display: none; /* 기본적으로 숨김 */
+	position: absolute; /* 드롭다운 위치 조정 */
+	background-color: rgb(31, 147, 98);
+	padding: 10px;
+	/* margin-top: 10px; */ /* 드롭다운 아래쪽 여백 추가 */
+	z-index: 5000;
 }
 
-/* Dropdown button */
-.dropbtn {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+.menu-item {
+	position: relative; /* 드롭다운을 포함할 부모 요소 */
 }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+.menu-item:hover .dropdown {
+	display: block; /* 부모 링크에 마우스가 올라가면 드롭다운 보임 */
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+.dropdown a {
+	display: block; /* 드롭다운 항목을 블록으로 설정 */
+	padding: 5px 0;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
+.auth-links {
+	display: flex;
+	gap: 20px;
 }
 
-/* Show the dropdown menu when the button is clicked */
-.show {
-    display: block;
+.auth-links a {
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.auth-links a:hover {
+	text-decoration: underline;
 }

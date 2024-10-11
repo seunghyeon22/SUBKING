@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Orders {
 	private int order_id;
 	private String order_user_id;
-	private int order_menu_id;
+//	private int order_menu_id;
 	private String order_state;
 	private int order_price;
 	private Date order_date;

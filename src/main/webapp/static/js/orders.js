@@ -7,9 +7,8 @@ window.addEventListener("load", onload);
 const url = "/240930subKingProject/api/v1/orders"
 
 
-let dialog;
-let container;
 
+let container;
 function onload(e) {
 	console.log("페이지가 로드되었습니다.");
 	container = document.querySelector(".section-container");
@@ -21,7 +20,7 @@ function onload(e) {
 			}).forEach((elem) => {
 				container.append(elem);
 			})
-		})
+		});
 }
 // menu_id (custom_menu_id)에 맞는 재료 이름과 숫자 목록을 불러와서 json 배열로 반환
 function loadIgListData(menu_id) {
@@ -59,7 +58,7 @@ function createOrders(orders) {
 	clone.querySelector(".content > p:nth-child(4)").innerText = "총 가격: " + orders.order_price + "원";
 
 	let btnOrderDetail = clone.querySelector(".order-details");
-	dialog = clone.querySelector(".order-dialog");
+	let dialog = clone.querySelector(".order-dialog");
 
 
 	// 주문 상세 버튼에 dialog를 출력하는 이벤트 설정
@@ -67,38 +66,37 @@ function createOrders(orders) {
 		dialog.showModal();
 	});
 
-	let orderId = orders.order_menu_id;
+	let orderId = orders.order_id;
 
 	loadMenuData(orderId)
 		.then((menuArr) => {
-				createBtnClose();
 			menuArr.map((menus) => {
-				
-				return createMenus(menus);
+				return createMenus(menus, dialog);
 			}).forEach((elem) => {
 				dialog.append(elem);
 			})
-		})
+		});
+
 	return clone;
 }
 
-function createBtnClose() {
-	let btnClose = document.createElement('button');
-	btnClose.type = "button";
-	btnClose.className = "btn-close";
-	btnClose.innerText = "닫기";
-	btnClose.addEventListener("click", (e) => {
-		dialog.close();
-	})
-
-	dialog.appendChild(btnClose);
-}
-
-function createMenus(menus) {
+function createMenus(menus, dialog) {
 
 	let menuTemplate = document.getElementById('menu-template');
 	let menuClone = document.importNode(menuTemplate.content, true);
 	let igList = menuClone.querySelector(".ingredients-list");
+
+	// 닫기 버튼
+	let btnClose = menuClone.querySelector(".btn-close");
+	btnClose.addEventListener("click", (e) => {
+		dialog.close();
+	});
+
+	// 복사 버튼 
+	let copyBtn = menuClone.querySelector(".btn-copy");
+	copyBtn.addEventListener("click", (e) => {
+		
+	});
 
 	menuClone.querySelector(".menu-name").innerText = "버거 이름: " + menus.menu_name;
 	menuClone.querySelector(".menu-kcal").innerText = "칼로리: " + menus.menu_all_kcal;
@@ -109,10 +107,11 @@ function createMenus(menus) {
 			igArr.forEach((elem) => {
 				let igName = document.createElement('li');
 				igName.textContent = elem.ig_name + ": " + elem.custom_count + "개";
-
 				igList.appendChild(igName);
 			})
 		});
+
+
 	return menuClone;
 }
 
