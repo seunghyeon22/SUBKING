@@ -102,5 +102,24 @@ public class UserServiceImple implements UserService {
             return user; // 사용자 정보 반환
 	}
 }
+   @Override
+	public User findIdByPw(String user_id, String user_name, String user_phone) {
+        try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            User user = userMapper.findIdByPw(user_id, user_name, user_phone); 
+            sqlSession.commit();
+            return user; // 사용자 정보 반환
+	}
 }
+	@Override
+	public int update2(String user_id, String user_pw) {
+        try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            int user = userMapper.update2(user_id, user_pw); 
+            sqlSession.commit();
+            return user; // 사용자 정보 반환
+	}
+}
+}
+
 

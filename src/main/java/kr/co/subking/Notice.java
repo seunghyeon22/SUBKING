@@ -6,5 +6,6 @@ public class Notice {
 //		https://business.juso.go.kr/addrlink/openApi/popupApi.do
 		// 승인키
 //		var confmKey = "devU01TX0FVVEgyMDI0MTAwODEzNTQyOTExNTE0MDc=";
+	
 	}
 }

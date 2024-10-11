@@ -1,4 +1,4 @@
-package kr.co.subking;
+package kr.co.subking.payment;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ public class PaymentServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.getSession().setAttribute("userId", "asdf");
+		req.getSession().setAttribute("userId", "asdf");
 		String userId = (String) req.getSession().getAttribute("userId");
 		if (userId != null) {
 			req.getRequestDispatcher("/WEB-INF/views/custom/payment.jsp").forward(req, resp);
@@ -21,4 +21,5 @@ public class PaymentServlet extends HttpServlet {
 			resp.sendRedirect("../static/html/login.html");
 		}
 	}
+
 }
