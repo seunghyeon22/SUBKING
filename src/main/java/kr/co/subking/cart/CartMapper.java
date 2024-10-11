@@ -17,9 +17,6 @@ public interface CartMapper {
 	@Select("select cart_id from cart where cart_user_id = #{cart_user_id} ")
 	Integer selectCartbyUserId(@Param("cart_user_id") String userId);
 
-	@Select("select  max(cart_id) from cart;")
-	int selectlastIdbyCart();
-
 	@Insert("insert into cartlist (cartlist_cart_id, cartlist_menu_id) value(#{cartlist_cart_id},#{cartlist_menu_id})")
 	int insertCartList(@Param("cartlist_cart_id") int cartlist_cart_id, @Param("cartlist_menu_id") int menu_id);
 
