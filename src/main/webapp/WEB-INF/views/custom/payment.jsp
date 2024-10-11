@@ -44,7 +44,10 @@
 										<span>가격 : 11111</span>
 									</dd>
 								</dl>
-								<input type="hidden" value=""> <input type="checkbox"
+								
+								<input type="hidden" value="">
+								<input type="button" class="deleteBtn" value ="취소">
+								<input type="checkbox"
 									class="check">
 							</div>
 						</li>

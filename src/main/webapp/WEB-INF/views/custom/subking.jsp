@@ -48,6 +48,7 @@ body {
 
 .header nav a:hover {
 	text-decoration: underline;
+	
 }
 
 .dropdown {

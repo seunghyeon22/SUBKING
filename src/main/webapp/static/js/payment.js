@@ -11,11 +11,13 @@ function loadData() {
 
 	loadCartData().then((cartArr) => {
 		console.log(cartArr);
+
 		for (let i = 0; i < cartArr.length; i++) {
 			arr.push(cartArr[i]);
 		}
 		loadmenu();
 		addressLoad();
+		befored();
 	})
 }
 
@@ -49,8 +51,9 @@ function loadmenu() {
 										</dl>
 										<input type="hidden" class ="menu_id" value="${arr[i].menu_id}">
 										<input type="hidden" class ="cart_id"  value="${arr[i].cart_id}">
+										<input type ="button" class = "deleteBtn" value="취소">
 										<input type="checkbox" class="check">
-									</div>
+										</div>
 								</li>		
 		
 		`;
@@ -59,7 +62,7 @@ function loadmenu() {
 	list.innerHTML = texttr;
 	checka();
 	menuInfo();
-
+	deleteMenu();
 }
 
 function menuInfo() {
@@ -141,7 +144,7 @@ function requestPay() {
 				body: JSON.stringify(checkigno)
 			}).then((resp) => resp.json());
 
-						window.location.href = "http://localhost:8080/240930subKingProject/custom/custom";
+			window.location.href = "http://localhost:8080/240930subKingProject/custom/custom";
 
 		} else {
 			// 결제 실패 처리
@@ -153,6 +156,7 @@ function requestPay() {
 function checka() {
 	let priceLbl = document.querySelector(".CartallPrice");
 	let checked = document.querySelectorAll(".check");
+
 	for (let i = 0; i < checked.length; i++) {
 		checked[i].addEventListener("click", function() {
 			allPrice = 0;
@@ -170,9 +174,36 @@ function checka() {
 }
 
 
+function befored() {
+	let before = document.querySelector(".before");
+	before.addEventListener("click", function() {
+		window.location.href = "http://localhost:8080/240930subKingProject/custom/custom";
+	})
+}
 
+function deleteMenu() {
+	let deleteBtn = document.querySelectorAll(".deleteBtn");
+	let menu_ids = document.querySelectorAll(".menu_id");
+	let cart_id = document.querySelectorAll(".cart_id");
+	let checkigno = [];
+	for (let i = 0; i < deleteBtn.length; i++) {
+		deleteBtn[i].addEventListener("click", function() {
+			checkigno.push(menu_ids[i].value);
 
+			fetch("/240930subKingProject/api/v1/cart", {
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(checkigno)
+			}).then((resp) => resp.json()).then((data)=>{
+				alert("주문상품이 취소되었습니다.")
+				window.location.href = "http://localhost:8080/240930subKingProject/custom/payment";
 
+			})
+		})
+	}
+}
 
 
 

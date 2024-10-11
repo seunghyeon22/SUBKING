@@ -32,8 +32,10 @@ public class CustomAPI extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Ingredients> list = service.selectAll();
+		
 		req.getSession().setAttribute("user_id", "asdf");
 		resp.setHeader("Content-Type", "application/json; charset=utf-8");
+		
 		JsonMapper jsonMapper = new JsonMapper();
 		String json = jsonMapper.writeValueAsString(list);
 		PrintWriter pw = resp.getWriter();

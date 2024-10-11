@@ -146,6 +146,7 @@ function selectPattys() {
 	plused();
 	minused();
 	next2();
+	before2();
 }
 
 function selectSauces() {
@@ -176,6 +177,7 @@ function selectSauces() {
 	plused();
 	minused();
 	next3();
+	before3();
 }
 
 function selectCheeses() {
@@ -209,6 +211,7 @@ function selectCheeses() {
 	minused();
 	cart();
 	payment();
+	before4();
 }
 function nextButton() {
 	const nextButton = document.querySelector(".next-button");
@@ -290,6 +293,26 @@ function before1() {
 		selectBread();
 	})
 }
+function before2() {
+	const before1Button = document.querySelector(".before2-button");
+	before1Button.addEventListener("click", function() {
+		selectVegetables();
+	})
+}
+function before3() {
+	const before1Button = document.querySelector(".before3-button");
+	before1Button.addEventListener("click", function() {
+		selectPattys();
+	})
+}
+
+function before4() {
+	const before1Button = document.querySelector(".before4-button");
+	before1Button.addEventListener("click", function() {
+		selectSauces();
+	})
+}
+
 
 function next2() {
 	let next2Button = document.querySelector(".next2-button");
@@ -392,3 +415,18 @@ function payment() {
 	})
 }
 
+//function Recheck() {
+//	let igno = document.querySelectorAll(".ig_id");
+//	let check = document.querySelectorAll(".check")
+//	const reqData = [...item, ...item1, ...item2, ...item3, ...item4, ...item5, ...item6];
+//
+//	for (let i = 0; i < reqData.length; i++) {
+//		for (let j = 0; j < igno.length; j++) {
+//			if (reqData[i] = igno[j].value) {
+//				console.log(reqData[i]);
+//				console.log(igno[j].value);
+//				check[j].prop("checked", true);
+//			}
+//		}
+//	}
+//}
