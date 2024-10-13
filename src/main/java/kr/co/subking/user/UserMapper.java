@@ -73,6 +73,10 @@ public interface UserMapper {
     int update2(@Param("user_id")String user_id, @Param("user_pw")String user_pw);
 
 
+    @Select("SELECT * FROM user WHERE user_id = #{user_id}")
+	User adminLogin(@Param("user_id") String user_id);
+
+
 	
 	
 }

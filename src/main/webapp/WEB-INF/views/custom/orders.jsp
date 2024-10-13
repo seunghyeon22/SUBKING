@@ -33,18 +33,35 @@
 			</div>
 			<dialog class="order-dialog">
 				<template id="menu-template">
+				 <div class="menu-border">
 					<div class="label-conatiner">
-						<label class="menu-name">버거이름</label>
-						<label class="menu-kcal">칼로리</label>
-						<label class="menu-price">금액</label>
+						<label class="menu-name">커스텀버거</label>
+						<label class="menu-kcal">2000kcal</label>
+						<label class="menu-price">15300원</label>
 					</div>
 					<ul class="ingredients-list">
-						
+						<li>빵</li>
+							<ul class="ingredients-bread">
+							</ul>
+						<li>야채</li>
+							<ul class="ingredients-vegetable">
+							</ul>
+						<li>패티</li>
+							<ul class="ingredients-patty">
+							</ul>
+						<li>치즈</li>
+							<ul class="ingredients-cheeze">
+							</ul>
+						<li>소스</li>
+							<ul class="ingredients-sauce">
+							</ul>
 					</ul>
 					<button class="btn-copy">장바구니에 담기</button>
-					<button class="btn-close">닫기</button>
+				 </div>
 				</template>
-				<a href="http://localhost:8080/240930subKingProject/custom/payment">장바구니로 이동</a>
+					<button class="btn-tocart">장바구니로 이동</button>
+					<button class="btn-close">닫기</button>
+<!-- 				<a href="http://localhost:8080/240930subKingProject/custom/payment">장바구니로 이동</a> -->
 			</dialog>
 		</div>
 	</template>

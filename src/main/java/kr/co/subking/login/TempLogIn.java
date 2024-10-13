@@ -12,12 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.co.subking.user.User;
 import kr.co.subking.user.UserMapper;
 import subking.config.AppContextListener;
 import subking.config.PasswordUtils;
 
 // 임시로 
-//@WebServlet("/api/v1/tempLogIn")
+@WebServlet("/api/v1/tempLogIn")
 public class TempLogIn extends HttpServlet {
 	private static final String loginURL = "/static/jsp/login.jsp";
 
@@ -36,6 +37,8 @@ public class TempLogIn extends HttpServlet {
 		String user_pw = req.getParameter("password");
 		
 		int result = 0;
+		int admin = 0;
+		User user = new User();
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			
@@ -46,6 +49,13 @@ public class TempLogIn extends HttpServlet {
 			} else {
 				result = 0;
 			}
+			
+			user = userMapper.adminLogin(user_id);
+//			if (user_role != null) {
+//				if (user_role.equals("admin")) {
+//					admin = 1;
+//				}
+//			}
 		} catch ( IllegalArgumentException e) {
 			result = 0;
 		}
@@ -66,6 +76,11 @@ public class TempLogIn extends HttpServlet {
 		// 로그인 정보를 세션에 기록
 		HttpSession session = req.getSession();
 		session.setAttribute("user_id", user_id);
+		session.setAttribute("user_role", user.getUser_role());
+		session.setAttribute("user_address", user.getUser_address());
+//		if (admin == 1) {
+//			session.setAttribute("user_role", "admin");
+//		}
 		
 		// 로그인 성공 시 자바스크립트를 포함한 HTML 응답
 	    out.println("<script>");
