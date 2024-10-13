@@ -11,11 +11,12 @@
 <body>
 	<c:import url="subking.jsp" charEncoding="utf-8"></c:import>
 	
+	<div>
 	<div class="slider">
         <div class="slides">
             <div class="slide"><img src="../static/image/homeimage1.jpg" alt="슬라이드 1"></div>
             <div class="slide"><img src="../static/image/homeimage2.jpg" alt="슬라이드 2"></div>
-            <div class="slide"><img src="../static/image/homeimage4.jpg" alt="슬라이드 3"></div>
+<!--             <div class="slide"><img src="../static/image/homeimage4.jpg" alt="슬라이드 3"></div> -->
         </div>
     </div>
     <button class="prev" onclick="moveSlide(-1)">&#10094;</button>

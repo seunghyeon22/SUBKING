@@ -9,6 +9,7 @@
 .slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
+/*     justify-content: center; */
 }
 
 .slide {
@@ -26,6 +27,7 @@ button {
     padding: 10px;
     cursor: pointer;
     z-index: 1;
+    font-size: 1.5em; /* 글자 크기 조정 */
 }
 
 .prev {
@@ -35,3 +37,4 @@ button {
 .next {
     right: 10px;
 }
+

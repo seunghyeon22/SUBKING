@@ -29,7 +29,7 @@
 <!-- 				</div> -->
 			</div>
 			<div class="menu-item">
-				<a href="#">Kcal Custom</a>
+				<a href="${ pageContext.request.contextPath }/custom/kcal">Kcal Custom</a>
 <!-- 				<div class="dropdown"> -->
 <!-- 					<a href="#">Order Submenu 1</a> <a href="#">Order Submenu 2</a> -->
 <!-- 				</div> -->

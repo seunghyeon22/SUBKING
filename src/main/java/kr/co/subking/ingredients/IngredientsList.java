@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class IngredientsList {
 	private String ig_name;
 	private int custom_count;
+	private String ig_category;
 	
 }

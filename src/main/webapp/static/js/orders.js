@@ -60,10 +60,32 @@ function createOrders(orders) {
 	let btnOrderDetail = clone.querySelector(".order-details");
 	let dialog = clone.querySelector(".order-dialog");
 
+	// 첫 번째 버튼 생성
+	const ToCart = document.createElement('button');
+	ToCart.className = 'btn-tocart';
+	ToCart.textContent = '장바구니로 이동';
+
+	// 두 번째 버튼 생성
+	const Close = document.createElement('button');
+	Close.className = 'btn-close';
+	Close.textContent = '닫기'
+
 
 	// 주문 상세 버튼에 dialog를 출력하는 이벤트 설정
 	btnOrderDetail.addEventListener("click", (e) => {
 		dialog.showModal();
+	});
+
+	// 닫기 버튼 설정
+	let btnClose = clone.querySelector(".btn-close");
+	btnClose.addEventListener("click", (e) => {
+		dialog.close();
+	});
+
+	// 장바구니로 이동하는 버튼
+	let btnTocart = clone.querySelector(".btn-tocart");
+	btnTocart.addEventListener("click", (e) => {
+		window.location.href = 'http://localhost:8080/240930subKingProject/custom/payment';
 	});
 
 	let orderId = orders.order_id;
@@ -74,6 +96,8 @@ function createOrders(orders) {
 				return createMenus(menus, dialog);
 			}).forEach((elem) => {
 				dialog.append(elem);
+				dialog.append(ToCart);
+				dialog.append(Close);
 			})
 		});
 
@@ -87,10 +111,10 @@ function createMenus(menus, dialog) {
 	let igList = menuClone.querySelector(".ingredients-list");
 
 	// 닫기 버튼
-	let btnClose = menuClone.querySelector(".btn-close");
-	btnClose.addEventListener("click", (e) => {
-		dialog.close();
-	});
+	//	let btnClose = menuClone.querySelector(".btn-close");
+	//	btnClose.addEventListener("click", (e) => {
+	//		dialog.close();
+	//	});
 
 	// 복사 버튼 
 	let copyBtn = menuClone.querySelector(".btn-copy");
@@ -112,19 +136,48 @@ function createMenus(menus, dialog) {
 			});
 	});
 
-	menuClone.querySelector(".menu-name").innerText = "버거 이름: " + menus.menu_name;
-	menuClone.querySelector(".menu-kcal").innerText = "칼로리: " + menus.menu_all_kcal;
-	menuClone.querySelector(".menu-price").innerText = "가격: " + menus.menu_price + "원";
+	menuClone.querySelector(".menu-name").innerText = menus.menu_name;
+	menuClone.querySelector(".menu-kcal").innerText = menus.menu_all_kcal + "kcal";
+	menuClone.querySelector(".menu-price").innerText = menus.menu_price + "원";
+
+	// 지료 목룍
+	let bread = menuClone.querySelector(".ingredients-bread");
+	let vegetable = menuClone.querySelector(".ingredients-vegetable");
+	let patty = menuClone.querySelector(".ingredients-patty");
+	let cheeze = menuClone.querySelector(".ingredients-cheeze");
+	let sauce = menuClone.querySelector(".ingredients-sauce");
+
 
 	loadIgListData(menus.menu_id)
 		.then((igArr) => {
 			igArr.forEach((elem) => {
-				let igName = document.createElement('li');
-				igName.textContent = elem.ig_name + ": " + elem.custom_count + "개";
-				igList.appendChild(igName);
+				//				let igName = document.createElement('li');
+				//				igName.textContent = elem.ig_name + ": " + elem.custom_count + "개";
+				//				igList.appendChild(igName);
+
+				if (elem.ig_category == "빵") {
+					let igbread = document.createElement('li');
+					igbread.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					bread.appendChild(igbread);
+				} else if (elem.ig_category == "야채") {
+					let igvegetable = document.createElement('li');
+					igvegetable.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					vegetable.appendChild(igvegetable);
+				} else if (elem.ig_category == "패티") {
+					let igpatty = document.createElement('li');
+					igpatty.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					patty.appendChild(igpatty);
+				} else if (elem.ig_category == "치즈") {
+					let igcheeze = document.createElement('li');
+					igcheeze.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					cheeze.appendChild(igcheeze);
+				} else if (elem.ig_category == "소스") {
+					let igsauce = document.createElement('li');
+					igsauce.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					sauce.appendChild(igsauce);
+				}
 			})
 		});
-
 	return menuClone;
 }
 
