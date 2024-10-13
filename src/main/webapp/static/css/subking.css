@@ -6,75 +6,116 @@ body {
 	padding: 0;
 }
 
+ul, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
 .header {
 	background-color: rgb(31, 147, 98);
 	color: white;
 	padding: 20px 40px;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	overflow: hidden;
+	transition: height 0.8s;
 }
 
-.header .logo {
+.User_header {
+	width: 300px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	margin-left: 1500px;
+	background-color: rgb(31, 147, 98);
+}
+
+.User_header_List {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-around;
+	width: 250px;
+	line-height: 25px;
+}
+
+.User_header_List a {
+	font-size: 14px;
+	color: #000;
+}
+
+.User_header_List a:hover {
+	text-decoration: underline;
+}
+
+.logo {
 	font-size: 24px;
 	font-weight: bold;
 }
 
 .header .logo img {
-	width: 150px;
+	width: 100px;
 	height: auto;
-}
-
-.header nav {
-	display: flex;
-	gap: 200px;
-	position: relative;
 }
 
 .header nav a {
 	color: white;
 	text-decoration: none;
 	font-size: 18px;
-	position: relative;
 }
 
-.header nav a:hover {
-	text-decoration: underline;
-}
-
-.dropdown {
-	display: none; /* 기본적으로 숨김 */
-	position: absolute; /* 드롭다운 위치 조정 */
-	background-color: rgb(31, 147, 98);
-	padding: 10px;
-	/* margin-top: 10px; */ /* 드롭다운 아래쪽 여백 추가 */
-	z-index: 5000;
-}
-
-.menu-item {
-	position: relative; /* 드롭다운을 포함할 부모 요소 */
-}
-
-.menu-item:hover .dropdown {
-	display: block; /* 부모 링크에 마우스가 올라가면 드롭다운 보임 */
-}
-
-.dropdown a {
-	display: block; /* 드롭다운 항목을 블록으로 설정 */
-	padding: 5px 0;
-}
-
-.auth-links {
+.mainMenu_List {
 	display: flex;
-	gap: 20px;
 }
 
-.auth-links a {
-	color: white;
-	text-decoration: none;
-	font-size: 18px;
+.mainMenu {
+	width: 100%;
+	display: flex;
 }
 
-.auth-links a:hover {
-	text-decoration: underline;
+.mainMenu>li {
+	text-align: center;
+	width: 250px;
+}
+
+.mainMenu>li>a {
+		line-height: 80px;
+	cursor: pointer;
+	font-size: 26px;
+	color: #000;
+	font-weight: 700;
+}
+
+.header :hover .subMenu {
+	height: 200px;
+	z-index: 10000;
+	display: block;
+}
+
+.subMenu {
+	display: none;
+	z-index: 10;
+	position: relative;
+	width: 100%;
+	padding-top: 20px;
+}
+
+.subMenu li {
+	z-index: 3;
+	white-space: nowrap;
+	width: 250px;
+}
+
+.subMenu li a {
+	line-height: 65px;
+	z-index: 11;
+	text-align: center;
+	cursor: pointer;
+	font-size: 22px;
+	font-weight: 700;
+	color: #fff;
 }

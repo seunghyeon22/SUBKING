@@ -27,13 +27,11 @@ public class CustomAPI extends HttpServlet {
 	private IngredientsService service = IngredientsServiceImpl.getInstance();
 	private CustomService customService = CustomServiceImpl.getInstance();
 
-	// private List<Ingredients> ig = new ArrayList<Ingredients>();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Ingredients> list = service.selectAll();
-		
-//		req.getSession().setAttribute("user_id", "asdf");
+
 		resp.setHeader("Content-Type", "application/json; charset=utf-8");
 		
 		JsonMapper jsonMapper = new JsonMapper();

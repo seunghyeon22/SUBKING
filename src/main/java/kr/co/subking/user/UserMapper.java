@@ -40,8 +40,8 @@ public interface UserMapper {
     @Delete("DELETE FROM user WHERE user_id=#{userId}")
     int delete(@Param("userId") String user_id);
 
-    @Select("SELECT COUNT(user_id) FROM user WHERE user_id = #{user_id} AND user_pw=#{user_pw}")
-    int login(@Param("user_id") String user_id, @Param("user_pw") String user_pw);
+    @Select("SELECT * FROM user WHERE user_id = #{user_id} AND user_pw=#{user_pw}")
+    User login(@Param("user_id") String user_id, @Param("user_pw") String user_pw);
 	
 	List<User> selectAll();
 

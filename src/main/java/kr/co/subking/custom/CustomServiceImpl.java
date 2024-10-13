@@ -29,6 +29,7 @@ public class CustomServiceImpl implements CustomService {
 
 	@Override
 	public int insertcart(List<Integer> list) {
+		System.out.println(list);
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
 			CustomMapper customMapper = sqlSession.getMapper(CustomMapper.class);
@@ -39,7 +40,7 @@ public class CustomServiceImpl implements CustomService {
 			int result = 0;
 			Set<Integer> set = new HashSet<Integer>(list);
 			for (Integer i : set) {
-				System.out.println(i + " : " + Collections.frequency(list, i));
+//				System.out.println(i + " : " + Collections.frequency(list, i));
 				custom.add(new Custom(lastId, i, Collections.frequency(list, i)));
 			}
 			System.out.println(custom.toString());

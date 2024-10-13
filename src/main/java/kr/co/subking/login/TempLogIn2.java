@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.co.subking.user.User;
 import kr.co.subking.user.UserMapper;
 import subking.config.AppContextListener;
 
@@ -34,13 +35,14 @@ public class TempLogIn2 extends HttpServlet {
 		String user_pw = req.getParameter("password");
 		
 		int result = 0;
+		User user = new User();
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-			result = userMapper.login(user_id, user_pw);
+			user = userMapper.login(user_id, user_pw);
 		}
 		
 		// db에 아이디나 비밀번호가 없는 경우 
-		if (result == 0) {
+		if (user==null) {
 			req.setAttribute("result", "아이디 비밀번호를 확인해주세요");
 			req.getRequestDispatcher(loginURL).forward(req, resp);
 			return;
@@ -50,6 +52,8 @@ public class TempLogIn2 extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		session.setAttribute("user_id", user_id);
+		session.setAttribute("user_role", user.getUser_role());
+		session.setAttribute("user_address", user.getUser_address());
 		session.setAttribute("message", "로그인에 성공하셨습니다.");
 		
 		resp.sendRedirect("http://localhost:8080/240930subKingProject/custom/home");

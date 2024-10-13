@@ -19,11 +19,11 @@
 		</div>
 		<div class="footer_contents">
 			<h2 id="footer_logo">
-				<img src="/static/images/footer.png">
+				<img src="./static/image/img.png">
 			</h2>
 			<p>
-				<span>(12345) 부산광역시 사상구 사상로310번길 33(덕포동) 전화 051-123-4567 / 팩스
-					010-000-0000</span> <br> Copyright © Korea Metropolitan Library, All
+				<span>(12345) 부산광역시 진구 중앙대로 749(부전동) 전화 051-123-4567 / 팩스
+					010-000-0000</span> <br> Copyright © Greenart Subking, All
 				rights reserved.
 			</p>
 		</div>

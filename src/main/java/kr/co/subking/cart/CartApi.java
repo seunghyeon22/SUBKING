@@ -44,9 +44,7 @@ public class CartApi extends HttpServlet {
 		WebUtil webUtil = new WebUtil();
 		String userId = (String) req.getSession().getAttribute("user_id");
 		String json = webUtil.readBody(req);
-
 		JSONArray jsonArr = new JSONArray(json);
-
 		List<Integer> list = new ArrayList<Integer>();
 
 		for (int i = 0; i < jsonArr.length(); i++) {

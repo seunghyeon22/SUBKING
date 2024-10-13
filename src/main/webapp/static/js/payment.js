@@ -2,10 +2,23 @@ sessionStorage.setItem("address", "부산광역시 부산진구 부전동 266-2 
 
 
 let arr = [];
-
 let allPrice = 0;
+let address = document.querySelector(".addr");
 
 loadData();
+
+
+function goPopup() {
+	var pop = window.open("http://localhost:8080/240930subKingProject/static/jsp/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+}
+
+function update() {
+	goPopup();
+}
+function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail, roadAddrPart2, zipNo) {
+	address = document.querySelector(".addr");
+	address.innerText = "배달지역 : " + roadAddrPart1 + roadAddrPart2 + addrDetail;
+}
 
 function loadData() {
 
@@ -27,7 +40,7 @@ function loadCartData() {
 		.then((resp) => resp.json());
 }
 function addressLoad() {
-	let address = document.querySelector(".addr");
+	address = document.querySelector(".addr");
 	address.innerText = "배달 지역 :  			" + sessionStorage.getItem("address");
 
 }
@@ -42,7 +55,7 @@ function loadmenu() {
 			texttr += `
 		<li>
 									<div class="img">
-										<img alt="상품이미지" src="">
+										<img alt="상품이미지" src="../static/image/img.png">
 									</div>
 									<div class="texts">
 										<dl>
@@ -59,8 +72,8 @@ function loadmenu() {
 								</li>		
 		
 		`;
-		}else {
-			texttr ="";
+		} else {
+			texttr = "";
 		}
 	}
 	list.innerHTML = texttr;
@@ -86,10 +99,10 @@ function menuInfo() {
 				let sp = ``;
 				for (let i = 0; i < dataArr.length; i++) {
 					arr.push(dataArr[i]);
-					sp += `<span>${arr[i].ig_name}: ${arr[i].custom_count} </span>`;
+					sp += `${arr[i].ig_name} : ${arr[i].custom_count}개  `;
 
 				}
-				Info[i].innerHTML = sp;
+				Info[i].innerText = sp;
 			})
 	}
 }
@@ -110,7 +123,7 @@ function requestPay() {
 		buyer_email: 'iamport@siot.do', // 구매자 이메일
 		buyer_name: '테스트', // 구매자 이름
 		buyer_tel: '010-1234-1234', // 구매자 전화번호
-		buyer_addr: '부산광역시 진구 부전동' // 구매자 주소
+		buyer_addr:address// 구매자 주소
 		// ... 기타 필요한 파라미터 추가
 	}, function(rsp) {
 		if (rsp.success) {
@@ -124,8 +137,9 @@ function requestPay() {
 				checkigno.push(menuId[i].value);
 			}
 			let data = {
-				menu_ids: checkigno,
-				price: allPrice
+				menu_ids : checkigno,
+				price : allPrice,
+				address : address
 			};
 			let url = "/240930subKingProject/api/v1/orders"
 			fetch((url), {
@@ -161,7 +175,7 @@ function checka() {
 	for (let i = 0; i < arr.length; i++) {
 		allPrice += arr[i].menu_price;
 	}
-	priceLbl.innerText = "주문 금액 : " + allPrice + "원";
+	priceLbl.innerText = "최종 결제 금액 : " + allPrice + "원";
 
 	//	for (let i = 0; i < checked.length; i++) {
 	//		checked[i].addEventListener("click", function() {
@@ -204,13 +218,12 @@ function deleteMenu() {
 				body: JSON.stringify(checkigno)
 			}).then((resp) => resp.json()).then((data) => {
 				alert("주문상품이 취소되었습니다.")
-				window.location.href = "http://localhost:8080/240930subKingProject/custom/payment";
+				window.location.href = "http://localhost:8080/240930subKingProject/custom/cart";
 
 			})
 		})
 	}
 }
-
 
 
 

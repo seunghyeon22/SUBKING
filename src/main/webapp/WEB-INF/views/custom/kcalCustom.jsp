@@ -13,13 +13,12 @@
 <body>
 	<c:import url="subking.jsp" charEncoding="utf-8"></c:import>
 	<div class="container">
-		<div class="content-1">
-			
-			<div>
-				<strong class="addr">원하시는 칼로리를 입력해주세요.</strong> <input type="search"
-					class="kcal_input">
-				<button type="button" class="kcal_button">검색</button>
-			</div>
+		<div class="content1">
+
+			<strong class="addr">원하시는 칼로리를 입력해주세요.</strong> <input type="search"
+				class="kcal_input" placeholder="kcal">
+			<button type="button" class="kcal_button" >검색</button>
+
 		</div>
 		<div class="content">
 			<div class="menu_list_wrapper">
@@ -28,9 +27,9 @@
 				</div>
 				<div class="pd_list_wrapper">
 					<ul class="list">
-						
+
 					</ul>
-					
+
 					<div class="buttons">
 						<input type="button" value="주문하기" class="order-button"> <input
 							type="button" value="장바구니 담기" class="cart-button">
@@ -42,6 +41,6 @@
 
 	<c:import url="footer.jsp" charEncoding="utf-8"></c:import>
 </body>
-	<script type="text/javascript" src="../static/js/kcalcustom.js"></script>
+<script type="text/javascript" src="../static/js/kcalcustom.js"></script>
 
 </html>

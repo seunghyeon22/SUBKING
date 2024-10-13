@@ -11,19 +11,16 @@ body {
 	margin: 0 auto;
 	padding: 20px;
 }
-.content-1{
+
+.content1 {
 	background-color: #fff;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	margin-bottom: 20px;
-}
-.content-1 div{
-	margin-left: 600px;
-}
-.content-1 div button{
-	width: 100px;
-	height: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .content {
@@ -50,8 +47,6 @@ body {
 	display: block;
 	margin-bottom: 10px;
 }
-
-
 
 .pd_list_wrapper {
 	display: flex;
@@ -98,12 +93,11 @@ body {
 	margin-bottom: 5px;
 }
 
-.pd_list_wrapper li span{
+.pd_list_wrapper li span {
 	font-size: 16px;
 	color: #666;
 	margin-bottom: 5px;
 	display: block;
-	
 }
 
 .pd_list_wrapper li .cal {
@@ -112,17 +106,78 @@ body {
 	margin-bottom: 10px;
 }
 
-.buttons {
-	text-align: center;
-	margin-top: 20px;
-}
-
-.buttons button {
+.kcal_button {
 	padding: 10px 20px;
-	background-color: #009223;
+	background-color: rgb(31, 147, 98);
 	color: #fff;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	margin: 0 10px;
+}
+
+.kcal_input {
+	width: 700px;
+	padding: 10px 15px;
+	border: 2px solid #ccc;
+	border-radius: 25px;
+	outline: none;
+	transition: all 0.3s
+}
+
+.kcal_input:focus {
+	border-color: rgb(31, 147, 98);
+	box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.kcal_input::placeholder {
+	color: #aaa;
+}
+
+.kcal_button:hover {
+	background-color: #007a1a;
+}
+
+.buttons {
+	text-align: center;
+	margin-top: 20px;
+}
+.plus {
+	padding: 5px 10px;
+	background-color: rgb(31, 147, 98);
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.plus:hover {
+	background-color: #007a1a;
+}
+
+.minus {
+	padding: 5px 10px;
+	background-color: rgb(31, 147, 98);
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.minus:hover {
+	background-color: #007a1a;
+}
+
+
+.buttons input {
+	padding: 10px 20px;
+	background-color:rgb(31, 147, 98);
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 0 10px;
+}
+.buttons input:hover {
+	background-color: #007a1a;
 }

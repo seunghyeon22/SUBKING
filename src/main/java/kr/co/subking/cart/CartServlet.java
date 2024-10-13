@@ -1,4 +1,4 @@
-package kr.co.subking.payment;
+package kr.co.subking.cart;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/custom/payment")
-public class PaymentServlet extends HttpServlet {
+@WebServlet("/custom/cart")
+public class CartServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

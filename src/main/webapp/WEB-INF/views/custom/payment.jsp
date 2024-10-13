@@ -15,8 +15,10 @@
 <body>
 	<c:import url="subking.jsp" charEncoding="utf-8"></c:import>
 	<div class="container">
-		<div class="content">
-			<span class="addr">배달 주소: 부산광역시 진구 어딘가 어딘가?</span>
+		<div class="content1">
+			<strong class="addr">배달 주소: 부산광역시 진구 어딘가 어딘가?</strong>
+			<button type="button" class="updateBtn" onclick="update()">변경</button>
+			<span class="error_next_box">일단 확인</span>
 		</div>
 		<div class="content">
 			<div class="cart_list_wrapper">
@@ -25,20 +27,20 @@
 				</div>
 				<div class="pd_list_wrapper">
 					<ul class="list">
-						
+
 					</ul>
 
 				</div>
 			</div>
 		</div>
-		<div class="content">
-			<div class="pd_list_wrapper">
-				<div class="list">
+		<div class="content2">
+			<div class="pd_list_wrappers">
+				<div class="lists">
 					<label class="CartallPrice">주문금액 : 0원 </label>
 				</div>
-				<div class="payment">
-					<button type="button" class="before">주문하기로 돌아가기</button>
+				<div class="buttons">
 					<button type="button" class="payments" onclick="requestPay()">결제하기</button>
+					<button type="button" class="before">주문하기로 돌아가기</button>
 				</div>
 			</div>
 

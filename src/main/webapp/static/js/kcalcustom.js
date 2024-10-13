@@ -37,51 +37,149 @@ kcalBtn.addEventListener("click", function() {
 				menu += `
 					<li>
 						<div class="img">
-							<img alt="상품이름" src="">
+							<img alt="상품이름" src="../static/image/img.png">
 						</div> 
 						<strong class="tit">${kcal}칼로리 버거</strong> 
 						<span class="text">${igname}</span>
 						<span class="eng">${price} 원</span> 
 						<span class="cal">${cal}kcal</span> <input
-						type="button" class="plus" value="추가"> 
+						type="button" class="plus" value="+"> 
 						<label class="counts">0</label> 
-						<input type="button" class="minus" value="감소">
+						<input type="button" class="minus" value="-">
 					</li>						
 					`;
 			}
 			list.innerHTML = menu;
 			plused();
 			minused();
-			cartBtn.addEventListener("click", function() {
-				console.log("시바ㅓㄹ");
-				let counts = document.querySelectorAll('.counts');
-				for (let i = 0; i < counts.length; i++) {
-					console.log(counts[i].innerText);
-					let count=0;
-					if (counts[i].innerText > 0) {
-						let count = counts[i].innerText;
-						let ig_nos = [];
-						for (let j = 0; j < arr[i].length; j++) {
-							ig_nos.push(arr[i][j].ig_no);
-						}
-						let url = "/240930subKingProject/api/v1/cart";
-						for (let k = 0; k < count; k++) {
-							fetch(url, {
-								method: "POST",
-								headers: {
-									"Content-Type": "application/json",
-								},
-								body: JSON.stringify(ig_nos)
-							}).then((resp) => window.location.href = "http://localhost:8080/240930subKingProject/custom/kcal");
-						}
 
+			cartBtn.addEventListener("click", async function() {
+				let counts = document.querySelectorAll('.counts');
+				let ig_nods = [];
+
+				for (let i = 0; i < counts.length; i++) {
+					if (counts[i].innerText > 0) {
+						for (let n = 0; n < counts[i].innerText; n++) {
+							let ig_nos = [];
+							for (let j = 0; j < arr[i].length; j++) {
+								ig_nos.push(arr[i][j].ig_no);
+							}
+							ig_nods.push(ig_nos);
+						}
+					}
+				}
+
+				let url = "/240930subKingProject/api/v1/cart";
+
+				for (let i = 0; i < ig_nods.length; i++) {
+					let ig_nos = [];
+					for (let j = 0; j < ig_nods[i].length; j++) {
+						ig_nos.push(ig_nods[i][j]);
+					}
+
+					try {
+						let response = await fetch(url, {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify(ig_nos),
+						});
+
+						// 응답 처리 (필요시)
+						console.log(await response.json());
+					} catch (error) {
+						console.error('Error:', error);
 					}
 
 				}
+				window.location.href = "http://localhost:8080/240930subKingProject/custom/kcal";
+			});
+			orderBtn.addEventListener("click", async function() {
+				let counts = document.querySelectorAll('.counts');
+				let ig_nods = [];
+				for (let i = 0; i < counts.length; i++) {
+					if (counts[i].innerText > 0) {
+						for (let n = 0; n < counts[i].innerText; n++) {
+							let ig_nos = [];
+							for (let j = 0; j < arr[i].length; j++) {
+								ig_nos.push(arr[i][j].ig_no);
+							}
+							ig_nods.push(ig_nos);
+						}
+					}
+				}
 
-			})				
+				let url = "/240930subKingProject/api/v1/cart";
+
+				for (let i = 0; i < ig_nods.length; i++) {
+					let ig_nos = [];
+					for (let j = 0; j < ig_nods[i].length; j++) {
+						ig_nos.push(ig_nods[i][j]);
+					}
+
+					try {
+						let response = await fetch(url, {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify(ig_nos),
+						});
+
+						// 응답 처리 (필요시)
+						console.log(await response.json());
+					} catch (error) {
+						console.error('Error:', error);
+					}
+
+				}
+				window.location.href = "http://localhost:8080/240930subKingProject/custom/payment";
+
+			});
+
+
+			//			cartBtn.addEventListener("click", function() {
+			//				let counts = document.querySelectorAll('.counts');
+			//				let ig_nods = [];
+			//				for (let i = 0; i < counts.length; i++) {
+			//					if (counts[i].innerText > 0) {
+			//						for (let n = 0; n < counts[i].innerText; n++) {
+			//							let ig_nos = [];
+			//							for (let j = 0; j < arr[i].length; j++) {
+			//								ig_nos.push(arr[i][j].ig_no);
+			//							}
+			//							ig_nods.push(ig_nos);
+			//						}
+			//					}
+			//
+			//				}
+			//				let url = "/240930subKingProject/api/v1/cart";
+			//				for (let i = 0; i < ig_nods.length; i++) {
+			//					let ig_nos = [];
+			//					for (let j = 0; j < ig_nods[i].length; j++) {
+			//						ig_nos.push(ig_nods[i][j]);
+			//					}
+			//					
+			//					fetch(url, {
+			//						method: "POST",
+			//						headers: {
+			//							"Content-Type": "application/json",
+			//						},
+			//						body: JSON.stringify(ig_nos),
+			//					})
+			//					//							.then((resp) => window.location.href = "http://localhost:8080/240930subKingProject/custom/kcal");
+			//					console.log(ig_nos);
+			//				}
+			//			})
 		});
 })
+
+
+
+
+
+
 function plused() {
 
 	let counts = document.querySelectorAll('.counts');

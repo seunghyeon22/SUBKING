@@ -14,5 +14,6 @@ import lombok.NoArgsConstructor;
 public class Menulist {
 	private List<Integer> menu_ids;
 	private int price;
+	private String address;
 
 }

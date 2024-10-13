@@ -1,7 +1,13 @@
 const igName = document.querySelector(".ig_name");
 const igPrice = document.querySelector(".ig_price");
 const igKcal = document.querySelector(".ig_kcal");
-const buttons = document.querySelector(".buttons")
+const buttons = document.querySelector(".buttons");
+
+let bread = document.querySelector(".bread");
+let vegetable = document.querySelector(".vegetable");
+let patty = document.querySelector(".patty");
+let sauce = document.querySelector(".sauce");
+let cheese = document.querySelector(".cheese");
 
 
 let breads = [];
@@ -62,19 +68,24 @@ function loadData() {
 }
 
 function selectBread() {
+	bread.classList.toggle("ative");
 	const list = document.querySelector(".list");
 	let tableStr = ``;
 	for (let i = 0; i < breads.length; i++) {
 		tableStr += `	
-		<li class="bread">
+		<li class="breads">
 			<div class="img">
-				<img alt="재료이름" src="">
+				<img alt="재료이름" src="data:image/jpeg;base64,${breads[i].ig_image}">
 			</div>
 			<input type="hidden" class="ig_id" value = "${breads[i].ig_no}">
 			<strong class="tit">${breads[i].ig_name}</strong> 
 			<span class="eng">${breads[i].ig_price}원</span>
 			<span class="cal">${breads[i].ig_kcal}kcal</span>
-			<input type="checkbox" class="check">
+			<label class="checkbox-container">
+			        <input type="checkbox" class ="check">
+			        <span class="checkmark"></span>
+			</label>	
+			    
 		</li>
 		`;
 	}
@@ -87,21 +98,22 @@ function selectBread() {
 }
 
 function selectVegetables() {
+	vegetable.classList.toggle("ative");
 	const list = document.querySelector(".list");
 	let tableStr = ``;
 	for (let i = 0; i < vegetables.length; i++) {
 		tableStr += `	
-		<li class="vegetable">
+		<li class="vegetables">
 			<div class="img">
-				<img alt="재료이름" src="">
+				<img alt="재료이름" src="data:image/jpeg;base64,${vegetables[i].ig_image}">
 			</div>
 			<input type="hidden" class="ig_id" value = "${vegetables[i].ig_no}">
 			<strong class="tit">${vegetables[i].ig_name}</strong> 
 			<span class="eng">${vegetables[i].ig_price}원</span>
 			<span class="cal">${vegetables[i].ig_kcal}kcal</span>
-			<input type = "button" class="plus"  value ="추가" >
-			<label class="counts">0</label>
-			<input type = "button" class="minus" value ="감소">
+			<input type = "button" class="plus"  value ="+" >
+						<label class="counts">0</label>
+						<input type = "button" class="minus" value ="-">
 		</li>
 		`;
 	}
@@ -119,21 +131,22 @@ function selectVegetables() {
 
 
 function selectPattys() {
+	patty.classList.toggle("ative");
 	const list = document.querySelector(".list");
 	let tableStr = ``;
 	for (let i = 0; i < pattys.length; i++) {
 		tableStr += `	
-		<li class="patty">
+		<li class="pattys">
 			<div class="img">
-				<img alt="재료이름" src="">
+				<img alt="재료이름" src="data:image/jpeg;base64,${pattys[i].ig_image}">
 			</div>
 			<input type="hidden" class="ig_id" value = "${pattys[i].ig_no}">
 			<strong class="tit">${pattys[i].ig_name}</strong> 
 			<span class="eng">${pattys[i].ig_price}원</span>
 			<span class="cal">${pattys[i].ig_kcal}kcal</span>
-			<input type = "button" class="plus"  value ="추가" >
-			<label class="counts">0</label>
-			<input type = "button" class="minus" value ="감소">
+			<input type = "button" class="plus"  value ="+" >
+						<label class="counts">0</label>
+						<input type = "button" class="minus" value ="-">
 		</li>
 		`;
 	}
@@ -150,21 +163,22 @@ function selectPattys() {
 }
 
 function selectSauces() {
+	sauce.classList.toggle("ative");
 	const list = document.querySelector(".list");
 	let tableStr = ``;
 	for (let i = 0; i < sauces.length; i++) {
 		tableStr += `	
-		<li class="sauce">
+		<li class="sauces">
 			<div class="img">
-				<img alt="재료이름" src="">
+				<img alt="재료이름" src="data:image/jpeg;base64,${sauces[i].ig_image}">
 			</div>
 			<input type="hidden" class="ig_id" value = "${sauces[i].ig_no}">
 			<strong class="tit">${sauces[i].ig_name}</strong> 
 			<span class="eng">${sauces[i].ig_price}원</span>
 			<span class="cal">${sauces[i].ig_kcal}kcal</span>
-			<input type = "button" class="plus"  value ="추가" >
+			<input type = "button" class="plus"  value ="+" >
 			<label class="counts">0</label>
-			<input type = "button" class="minus" value ="감소">
+			<input type = "button" class="minus" value ="-">
 		</li>
 		`;
 	}
@@ -181,21 +195,22 @@ function selectSauces() {
 }
 
 function selectCheeses() {
+	cheese.classList.toggle("ative");
 	const list = document.querySelector(".list");
 	let tableStr = ``;
 	for (let i = 0; i < cheezes.length; i++) {
 		tableStr += `	
-		<li class="cheese">
+		<li class="cheeses">
 			<div class="img">
-				<img alt="재료이름" src="">
+				<img alt="재료이름" src="data:image/jpeg;base64,${cheezes[i].ig_image}">
 			</div>
 			<input type="hidden" class="ig_id" value = "${cheezes[i].ig_no}">
 			<strong class="tit">${cheezes[i].ig_name}</strong> 
 			<span class="eng">${cheezes[i].ig_price}원</span>
 			<span class="cal">${cheezes[i].ig_kcal}kcal</span>
-			<input type = "button" class="plus"  value ="추가" >
-			<label class="counts">0</label>
-			<input type = "button" class="minus" value ="감소">
+			<input type = "button" class="plus"  value ="+" >
+						<label class="counts">0</label>
+						<input type = "button" class="minus" value ="-">
 			
 		</li>
 		`;
@@ -216,6 +231,7 @@ function selectCheeses() {
 function nextButton() {
 	const nextButton = document.querySelector(".next-button");
 	nextButton.addEventListener("click", function() {
+		
 		let count = 0;
 		let ss;
 		let aa;
@@ -230,6 +246,7 @@ function nextButton() {
 		if (count < 2 && count > 0) {
 			item.push(breads[ss].ig_no);
 			selectVegetables();
+			bread.classList.toggle("ative");
 		} else {
 			alert("빵은 1개만 선택가능합니다.");
 		}
@@ -270,6 +287,7 @@ function minused() {
 function next1() {
 	const next1Button = document.querySelector(".next1-button");
 	next1Button.addEventListener("click", function() {
+		vegetable.classList.toggle("ative");
 		item1.splice(0);
 		let counts = document.querySelectorAll('.counts');
 		let igno = document.querySelectorAll(".ig_id");
@@ -291,18 +309,21 @@ function before1() {
 	const before1Button = document.querySelector(".before1-button");
 	before1Button.addEventListener("click", function() {
 		selectBread();
+		vegetable.classList.toggle("ative");
 	})
 }
 function before2() {
 	const before1Button = document.querySelector(".before2-button");
 	before1Button.addEventListener("click", function() {
 		selectVegetables();
+		patty.classList.toggle("ative");
 	})
 }
 function before3() {
 	const before1Button = document.querySelector(".before3-button");
 	before1Button.addEventListener("click", function() {
 		selectPattys();
+		sauce.classList.toggle("ative");
 	})
 }
 
@@ -310,6 +331,7 @@ function before4() {
 	const before1Button = document.querySelector(".before4-button");
 	before1Button.addEventListener("click", function() {
 		selectSauces();
+		cheese.classList.toggle("ative");
 	})
 }
 
@@ -317,6 +339,7 @@ function before4() {
 function next2() {
 	let next2Button = document.querySelector(".next2-button");
 	next2Button.addEventListener("click", function() {
+		patty.classList.toggle("ative");
 		item2.splice(0);
 		let counts = document.querySelectorAll('.counts');
 		let igno = document.querySelectorAll(".ig_id");
@@ -335,8 +358,10 @@ function next2() {
 	})
 }
 function next3() {
+
 	let next3Button = document.querySelector(".next3-button");
 	next3Button.addEventListener("click", function() {
+		sauce.classList.toggle("ative");
 		item3.splice(0);
 		let counts = document.querySelectorAll('.counts');
 		let igno = document.querySelectorAll(".ig_id");
