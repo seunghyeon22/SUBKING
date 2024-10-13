@@ -24,7 +24,7 @@ import kr.co.subking.user.UserMapper;
 
 
 @WebListener
-public class AppContextListener implements ServletContextListener {
+public class AppContextListener3 implements ServletContextListener {
 	private static DataSource dataSource;
 	private static SqlSessionFactory sessionFactory;
 
@@ -41,7 +41,7 @@ public class AppContextListener implements ServletContextListener {
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 
-		AppContextListener.dataSource = dataSource;
+		AppContextListener3.dataSource = dataSource;
 	}
 
 	private void initSqlSessionFactory() {

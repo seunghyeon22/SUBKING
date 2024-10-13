@@ -35,10 +35,19 @@
 <!-- 				</div> -->
 			</div>
 			<div class="menu-item">
-				<a href="#">Contact</a>
-<!-- 				<div class="dropdown"> -->
-<!-- 					<a href="#">Contact Submenu 1</a> <a href="#">Contact Submenu 2</a> -->
-<!-- 				</div> -->
+				<c:if test="${ user_role == 'admin' }">	
+				<a href="#">관리자메뉴</a>
+				<div class="dropdown">
+					<a href="http://localhost:8080/240930subKingProject/static/html/ingredient_list.html">재료 리스트</a> 
+					<a href="http://localhost:8080/240930subKingProject/static/html/ingredient_add.html">재료 추가</a>
+					<a href="http://localhost:8080/240930subKingProject/static/html/sales.html">판매 실적</a>
+				</div>
+				</c:if>
+				<c:if test="${ user_role != 'admin' }">
+					<div>
+						<a href="#">Contact</a>
+					</div>
+				</c:if>	
 			</div>
 		</nav>
 		<div class="auth-links">

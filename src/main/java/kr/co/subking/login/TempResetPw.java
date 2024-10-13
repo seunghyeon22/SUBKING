@@ -47,7 +47,9 @@ public class TempResetPw extends HttpServlet {
 			
 		UserServiceImple userServiceimple = new UserServiceImple();
 		System.out.println(user_id);
-		int user = userServiceimple.update2(user_id, user_pw); // 사용자 정보를 찾는 메서드 호출
+		
+		String hashedPassword = PasswordUtils.hashPassword(user_pw);
+		int user = userServiceimple.update2(user_id, hashedPassword); // 사용자 정보를 찾는 메서드 호출
 		
 		
 //		System.out.println(json);
