@@ -43,7 +43,7 @@ public class OrdersServiceImple implements OrdersService {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			OrdersMapper orderMapper = sqlSession.getMapper(OrdersMapper.class);
 			MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-			int resultOrder = orderMapper.InsertOrder(user_id, "배달", price, address);
+			int resultOrder = orderMapper.InsertOrder(user_id, "배달 완료", price, address);
 			sqlSession.commit();
 			int lastOrder_id = orderMapper.SelectLastIdByOreder(user_id);
 

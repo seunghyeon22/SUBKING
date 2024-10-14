@@ -157,7 +157,7 @@ function requestPay() {
 				body: JSON.stringify(checkigno)
 			}).then((resp) => resp.json());
 
-			window.location.href = "http://localhost:8080/240930subKingProject/custom/custom";
+			window.location.href = "http://localhost:8080/240930subKingProject/custom/orders";
 
 		} else {
 			// 결제 실패 처리

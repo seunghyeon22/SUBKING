@@ -18,7 +18,7 @@ public class CartServlet extends HttpServlet {
 		if (userId != null) {
 			req.getRequestDispatcher("/WEB-INF/views/custom/payment.jsp").forward(req, resp);
 		} else {
-			resp.sendRedirect("../static/html/login.html");
+			resp.sendRedirect("http://localhost:8080/240930subKingProject/api/v1/tempLogIn");
 		}
 	}
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>칼로리 주문</title>
 <link rel="stylesheet" type="text/css"
 	href="../static/css/kcalCustom.css">
 <link rel="stylesheet" type="text/css" href="../static/css/footer.css">

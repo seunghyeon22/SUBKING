@@ -19,7 +19,7 @@
 		</div>
 		<div class="footer_contents">
 			<h2 id="footer_logo">
-				<img src="./static/image/img.png">
+<!-- 				<img src="./static/image/img.png"> -->
 			</h2>
 			<p>
 				<span>(12345) 부산광역시 진구 중앙대로 749(부전동) 전화 051-123-4567 / 팩스

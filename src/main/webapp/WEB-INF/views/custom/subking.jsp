@@ -31,7 +31,7 @@
 		</div>
 		<div class="mainMenu_List">
 			<div class="logo">
-				<img src="../static/image/logo.jpg" alt="햄버거 이미지">
+				<img class="imgs" src="../static/image/logo.jpg" alt="햄버거 이미지">
 				<a href="http://localhost:8080/240930subKingProject/custom/home"></a>
 			</div>
 			<nav>
@@ -42,14 +42,14 @@
 							<li><a href="">광고영상</a></li>
 							<li><a href="">공지사항</a></li>
 						</ul></li>
-					<li><a href=""><span>재료 소개</span></a>
+					<li><a href="http://localhost:8080/240930subKingProject/custom/introduction"><span>재료 소개</span></a>
 						<ul class="subMenu">
 							<li><a
 								href="http://localhost:8080/240930subKingProject/custom/introduction">재료
 									소개</a></li>
 							<!-- 							<li><a href=""></a></li> -->
 						</ul></li>
-					<li><a href=""><span>주문하기</span></a>
+					<li><a href="http://localhost:8080/240930subKingProject/custom/custom"><span>주문하기</span></a>
 						<ul class="subMenu">
 							<li><a
 								href="http://localhost:8080/240930subKingProject/custom/custom">커스텀
@@ -58,7 +58,7 @@
 								href="http://localhost:8080/240930subKingProject/custom/kcal">칼로리
 									주문</a></li>
 						</ul></li>
-					<li class=mypage-Menue><a href=""><span>내 목록</span></a>
+					<li class=mypage-Menue><a href="http://localhost:8080/240930subKingProject/custom/cart"><span>내 목록</span></a>
 						<ul class="subMenu">
 							<li><a
 								href="http://localhost:8080/240930subKingProject/custom/cart">장바구니</a></li>
@@ -70,15 +70,16 @@
 						<li class=mypage-Menue><a href=""><span>관리자</span></a>
 							<ul class="subMenu">
 								<li><a
-									href="http://localhost:8080/240930subKingProject/static/html/ingredient_list.html">재료리스트</a></li>
+									href="http://localhost:8080/240930subKingProject/custom/ingredient">재료리스트</a></li>
 								<li><a
 									href="http://localhost:8080/240930subKingProject/static/html/ingredient_add.html">재료추가</a></li>
 								<li><a
-									href="http://localhost:8080/240930subKingProject/static/html/sales.html">매출확인</a></li>
+									href="http://localhost:8080/240930subKingProject/custom/sales">매출확인</a></li>
 							</ul></li>
 					</c:if>
 				</ul>
 		</div>
 	</header>
 </body>
+<script type="text/javascript" src="../static/js/subking.js"></script>
 </html>

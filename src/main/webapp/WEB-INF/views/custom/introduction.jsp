@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="../static/css/introduction.css">
-<title>Insert title here</title>
+<title>재료</title>
 </head>
 <body>
 	<c:import url="subking.jsp" charEncoding="utf-8"></c:import>

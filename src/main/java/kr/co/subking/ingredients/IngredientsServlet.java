@@ -7,10 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ingredient")
+@WebServlet("/custom/ingredient")
 public class IngredientsServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/ig/ingredient-list.jsp").forward(req, resp);
-    }
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String user_role = (String) req.getSession().getAttribute("user_role");
+
+		if (user_role.equals("user_admin")) {
+			req.getRequestDispatcher("../static/html/ingredient_list.html").forward(req, resp);
+		} else {
+			resp.sendRedirect("http://localhost:8080/240930subKingProject/api/v1/tempLogIn");
+		}
+
+	}
 }

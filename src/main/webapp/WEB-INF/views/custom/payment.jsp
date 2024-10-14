@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>장바구니</title>
 <link rel="stylesheet" type="text/css" href="../static/css/payment.css">
 <link rel="stylesheet" type="text/css" href="../static/css/footer.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
