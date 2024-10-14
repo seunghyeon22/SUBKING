@@ -40,19 +40,19 @@
 						<label class="menu-price">15300원</label>
 					</div>
 					<ul class="ingredients-list">
-						<li>빵</li>
+						<li class="ig-li">빵</li>
 							<ul class="ingredients-bread">
 							</ul>
-						<li>야채</li>
+						<li class="ig-li">야채</li>
 							<ul class="ingredients-vegetable">
 							</ul>
-						<li>패티</li>
+						<li class="ig-li">패티</li>
 							<ul class="ingredients-patty">
 							</ul>
-						<li>치즈</li>
+						<li class="ig-li">치즈</li>
 							<ul class="ingredients-cheeze">
 							</ul>
-						<li>소스</li>
+						<li class="ig-li">소스</li>
 							<ul class="ingredients-sauce">
 							</ul>
 					</ul>

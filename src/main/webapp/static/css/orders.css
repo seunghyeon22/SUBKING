@@ -86,7 +86,7 @@
 	width: 150px; /* 버튼의 가로 크기 */
 	height: 30px; /* 버튼의 세로 크기 */
 	background-color: #4CAF50;
-    color: white;
+	color: white;
 }
 
 .btn-close {
@@ -107,4 +107,12 @@
 	border-radius: 5px;
 	margin: 10px;
 	background-color: #defcc7;
+}
+
+.ig-li {
+	list-style: disc;
+}
+
+.ig-li2 {
+	list-style: circle;
 }

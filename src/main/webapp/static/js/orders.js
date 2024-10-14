@@ -164,22 +164,27 @@ function createMenus(menus, dialog) {
 				if (elem.ig_category == "빵") {
 					let igbread = document.createElement('li');
 					igbread.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					igbread.classList.add("ig-li2");
 					bread.appendChild(igbread);
 				} else if (elem.ig_category == "야채") {
 					let igvegetable = document.createElement('li');
 					igvegetable.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					igvegetable.classList.add("ig-li2");
 					vegetable.appendChild(igvegetable);
 				} else if (elem.ig_category == "패티") {
 					let igpatty = document.createElement('li');
 					igpatty.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					igpatty.classList.add("ig-li2");
 					patty.appendChild(igpatty);
 				} else if (elem.ig_category == "치즈") {
 					let igcheeze = document.createElement('li');
 					igcheeze.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					igcheeze.classList.add("ig-li2");
 					cheeze.appendChild(igcheeze);
 				} else if (elem.ig_category == "소스") {
 					let igsauce = document.createElement('li');
 					igsauce.textContent = elem.ig_name + "(" + elem.custom_count + ")";
+					igsauce.classList.add("ig-li2");
 					sauce.appendChild(igsauce);
 				}
 			})
