@@ -60,15 +60,21 @@ function createOrders(orders) {
 	let btnOrderDetail = clone.querySelector(".order-details");
 	let dialog = clone.querySelector(".order-dialog");
 
-	// 첫 번째 버튼 생성
+	// 장바구니 버튼 생성
 	const ToCart = document.createElement('button');
 	ToCart.className = 'btn-tocart';
 	ToCart.textContent = '장바구니로 이동';
+	ToCart.addEventListener("click", (e) => {
+			window.location.href = 'http://localhost:8080/240930subKingProject/custom/cart';
+		});
 
-	// 두 번째 버튼 생성
+	// 닫기 버튼 생성
 	const Close = document.createElement('button');
 	Close.className = 'btn-close';
 	Close.textContent = '닫기'
+	Close.addEventListener("click", (e) => {
+			dialog.close();
+		});
 
 
 	// 주문 상세 버튼에 dialog를 출력하는 이벤트 설정
