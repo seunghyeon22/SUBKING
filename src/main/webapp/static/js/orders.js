@@ -85,7 +85,7 @@ function createOrders(orders) {
 	// 장바구니로 이동하는 버튼
 	let btnTocart = clone.querySelector(".btn-tocart");
 	btnTocart.addEventListener("click", (e) => {
-		window.location.href = 'http://localhost:8080/240930subKingProject/custom/payment';
+		window.location.href = 'http://localhost:8080/240930subKingProject/custom/cart';
 	});
 
 	let orderId = orders.order_id;

@@ -435,7 +435,7 @@ function payment() {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(reqData),
-		}).then((resp) => window.location.href = "http://localhost:8080/240930subKingProject/custom/payment"
+		}).then((resp) => window.location.href = "http://localhost:8080/240930subKingProject/custom/cart"
 		)
 	})
 }

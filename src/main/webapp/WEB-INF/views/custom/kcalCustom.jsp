@@ -16,7 +16,7 @@
 		<div class="content1">
 
 			<strong class="addr">원하시는 칼로리를 입력해주세요.</strong> <input type="search"
-				class="kcal_input" placeholder="kcal">
+				class="kcal_input" placeholder="700kcal~1500kcal">
 			<button type="button" class="kcal_button" >검색</button>
 
 		</div>
