@@ -32,6 +32,7 @@
 		<div class="mainMenu_List">
 			<div class="logo">
 				<img src="../static/image/logo.jpg" alt="햄버거 이미지">
+				<a href="http://localhost:8080/240930subKingProject/custom/home"></a>
 			</div>
 			<nav>
 				<ul class="mainMenu">

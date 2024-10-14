@@ -39,11 +39,11 @@ public class OrdersServiceImple implements OrdersService {
 	}
 
 	@Override
-	public int InsertMenulist(String user_id, List<Integer> menu_ids, int price) {
+	public int InsertMenulist(String user_id, List<Integer> menu_ids, int price, String address) {
 		try (SqlSession sqlSession = AppContextListener.getSqlSession()) {
 			OrdersMapper orderMapper = sqlSession.getMapper(OrdersMapper.class);
 			MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-			int resultOrder = orderMapper.InsertOrder(user_id, "조리중", price);
+			int resultOrder = orderMapper.InsertOrder(user_id, "배달", price, address);
 			sqlSession.commit();
 			int lastOrder_id = orderMapper.SelectLastIdByOreder(user_id);
 

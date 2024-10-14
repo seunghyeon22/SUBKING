@@ -1,5 +1,3 @@
-sessionStorage.setItem("address", "부산광역시 부산진구 부전동 266-2 4층");
-
 
 let arr = [];
 let allPrice = 0;
@@ -29,7 +27,7 @@ function loadData() {
 			arr.push(cartArr[i]);
 		}
 		loadmenu();
-		addressLoad();
+//		addressLoad();
 		befored();
 	})
 }
@@ -39,11 +37,11 @@ function loadCartData() {
 	return fetch(url)
 		.then((resp) => resp.json());
 }
-function addressLoad() {
-	address = document.querySelector(".addr");
-	address.innerText = "배달 지역 :  			" + sessionStorage.getItem("address");
-
-}
+//function addressLoad() {
+//	address = document.querySelector(".addr");
+//	address.innerText = "배달 지역 :  			" + sessionStorage.getItem("address");
+//
+//}
 
 
 function loadmenu() {

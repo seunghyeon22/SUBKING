@@ -8,6 +8,6 @@ public interface OrdersService {
 
 	List<Orders> selectByUserId(String user_id);
 
-	int InsertMenulist(String user_id, List<Integer> menu_ids, int price);
+	int InsertMenulist(String user_id, List<Integer> menu_ids, int price, String address);
 
 }

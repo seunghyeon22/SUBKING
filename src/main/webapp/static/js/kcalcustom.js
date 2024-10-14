@@ -42,7 +42,7 @@ kcalBtn.addEventListener("click", function() {
 						<div class="img">
 							<img alt="상품이름" src="../static/image/img.png">
 						</div> 
-						<strong class="tit">${kcal}칼로리 버거</strong> 
+						<strong class="tit">커스텀 버거</strong> 
 						<span class="text">${igname}</span>
 						<span class="eng">${price} 원</span> 
 						<span class="cal">${cal}kcal</span> <input

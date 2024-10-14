@@ -16,7 +16,7 @@
 	<c:import url="subking.jsp" charEncoding="utf-8"></c:import>
 	<div class="container">
 		<div class="content1">
-			<strong class="addr">배달 주소: 부산광역시 진구 어딘가 어딘가?</strong>
+			<strong class="addr" >배달지역 : ${ user_address }</strong>
 			<button type="button" class="updateBtn" onclick="update()">변경</button>
 			<span class="error_next_box">일단 확인</span>
 		</div>

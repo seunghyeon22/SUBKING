@@ -49,7 +49,7 @@ public class OrdersAPI extends HttpServlet {
 		int price = menulist.getPrice();
 		String address = menulist.getAddress();
 		
-		int result = ordersService.InsertMenulist(user_id, menu_ids, price);
+		int result = ordersService.InsertMenulist(user_id, menu_ids, price,address);
 		webUtil.setCodeAndMimeType(resp, 201, "json");
 		webUtil.writeBodyJson(resp, result);
 	}
