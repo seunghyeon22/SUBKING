@@ -41,12 +41,9 @@
 
 ## How To Use / Development setup
 
-> To clone and run this application,
-> you'll need [Git](https://git-scm.com)
-> and [download Maven](https://maven.apache.org/download.cgi)
-> Maven is a Java tool, so you must have Java installed in order to proceed. Set the JAVA_HOME environment variable pointing to your JDK installation or have the java executable on your PATH.
->
-> From your command line:
+> 이 어플리케이션을 복제 및 실행하려면 [Git](https://git-scm.com) 과 [download Maven](https://maven.apache.org/download.cgi) 이 필요합니다.
+> Maven은 Java 도구이므로 계속 진행하려면 Java가 설치되어 있어야 합니다.
+> JDK 설치를 가리키는 JAVA_HOME 환경 변수를 설정하거나 PATH에 Java 실행 파일을 두십시오.
 
 ```bash
 
