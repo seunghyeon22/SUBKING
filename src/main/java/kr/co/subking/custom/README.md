@@ -24,7 +24,8 @@
 
 <h2> 칼로리를 이용한 커스텀 </h2>
 <h3>칼로리 입력 화면</h3>
+<p> 칼로리를 입력하게 되면 입력한 칼로리에 맞춰 커스텀된 버거 10개 생성</p>
+<p> 마음에 든 버거가 없을 시 다시 클릭 -> 이전 생성된 버거 소멸 후 버거 재생성</p>
 <img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/9.png">
-
 <h3>조회된 버거 화면</h3>
 <img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/10.png">
