@@ -41,8 +41,17 @@
 
 ## How To Use / Development setup
 
+> To clone and run this application,
+> you'll need [Git](https://git-scm.com)
+> and [download Maven](https://maven.apache.org/download.cgi)
+> Maven is a Java tool, so you must have Java installed in order to proceed. Set the JAVA_HOME environment variable pointing to your JDK installation or have the java executable on your PATH.
+>
+> From your command line:
+
+```bash
+
 # Clone this repository
-$ git clone [https://github.com/](https://github.com/seunghyeon22/SUBKING)https://github.com/seunghyeon22/SUBKING.git
+$ git clone https://github.com/seunghyeon22/SUBKING.git
 
 # Go into the repository
 $ cd SUBKING
@@ -61,6 +70,9 @@ $ json
 $ mybatis
 $ jstl
 
+```
+
+> **Note** > [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) or use OpenJDK.
 
 ## Repository Structure
 - Repository
