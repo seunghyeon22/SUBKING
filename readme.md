@@ -4,7 +4,7 @@
    SUBKING 커스텀버거 프로젝트
 </h1>
 
-## 기능 설명 
+## 주요 기능 설명 
 [버거 기본 커스텀 기능](src/main/java/kr/co/subking/custom)
 [버거 주문 목록](src/main/java/kr/co/subking/sales)
 [버거 장바구니 담기 및 결제](src/main/java/kr/co/subking/cart)
