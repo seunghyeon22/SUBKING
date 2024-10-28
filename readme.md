@@ -16,7 +16,7 @@
 ## Contents
 <p align="center">
   <a href="#key-features">Key Features</a> |
-  <a href="#what-is?">What is</a> |
+  <a href="#what-is">What is</a> |
   <a href="#how-to-use--development-setup">How To Use</a> |
   <a href="#Repository-Structure">Repository Structure</a> |
   <a href="#ToDo">ToDo</a>
@@ -31,7 +31,7 @@
 <img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/17.png">
 
 
-## What is?
+## What is
 - <p> 소심한 사람들을 위한 자신의 취향에 맞춰 버거를 커스텀 제작 </p>
 - <p> 칼로리를 생각하는 다이어터들을 위한 칼로리 커스텀 </p>
 - <p> 개인적인 취향에 최적 </p>
