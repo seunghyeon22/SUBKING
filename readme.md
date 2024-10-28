@@ -5,7 +5,7 @@
 </h1>
 
 ## 기능 설명 
-
+[버거 기본 커스텀 기능](src/main/java/kr/co/subking/custom)
 <p align="center">
   <h2>Built With</h2>
   <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white">
