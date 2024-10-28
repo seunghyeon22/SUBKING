@@ -14,7 +14,11 @@
 </p>
 
 ## Contents
-
+<p align="center">
+  <a href="#key-features">Key Features</a> |
+  <a href="#how-to-use--development-setup">How To Use</a> |
+  <a href="#ToDo">Authors</a>
+</p>
 
 
 ## What is?
@@ -26,7 +30,8 @@
 
 
 ## How To Use / Development setup
-
+1. DB 구축 및 권한 설정
+   
 
 ## Repository Structure
 <img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/13.png">
