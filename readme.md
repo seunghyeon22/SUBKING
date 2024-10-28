@@ -5,9 +5,9 @@
 </h1>
 
 ## 주요 기능 설명 
-[버거 기본 커스텀 기능](src/main/java/kr/co/subking/custom)
-[버거 주문 목록](src/main/java/kr/co/subking/sales)
-[버거 장바구니 담기 및 결제](src/main/java/kr/co/subking/cart)
+ - [버거 기본 커스텀 기능](src/main/java/kr/co/subking/custom)
+ - [버거 주문 목록](src/main/java/kr/co/subking/sales)
+ - [버거 장바구니 담기 및 결제](src/main/java/kr/co/subking/cart)
 
 <p align="center">
   <h2>Built With</h2>
