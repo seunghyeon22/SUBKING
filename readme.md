@@ -21,6 +21,10 @@
 </p>
 
 
+## Key Features
+- 테이블 구성 
+<img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/14.png">
+
 ## What is?
 <p> 소심한 사람들을 위한 자신의 취향에 맞춰 버거를 커스텀 제작 </p>
 <p> 칼로리를 생각하는 다이어터들을 위한 칼로리 커스텀 </p>
