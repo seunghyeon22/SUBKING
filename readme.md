@@ -16,14 +16,17 @@
 ## Contents
 <p align="center">
   <a href="#key-features">Key Features</a> |
+    <a href="#what-is?">What is</a> |
   <a href="#how-to-use--development-setup">How To Use</a> |
-  <a href="#ToDo">Authors</a>
+  <a href="#ToDo">ToDo</a>
 </p>
 
 
 ## Key Features
 - 테이블 구성 
 <img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/14.png">
+- 기능 구성
+<img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/17.png">
 
 ## What is?
 <p> 소심한 사람들을 위한 자신의 취향에 맞춰 버거를 커스텀 제작 </p>
@@ -38,6 +41,7 @@
    
 
 ## Repository Structure
+- Repository
 <img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/13.png">
 
 ## ToDo
