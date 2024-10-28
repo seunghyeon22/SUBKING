@@ -48,6 +48,15 @@
 <img src="https://github.com/seunghyeon22/SUBKING/blob/masterSeungHyeon/subking/13.png">
 
 ## ToDo
+- 구현된 기능
+   - 내가 구현한 기능 
+   *   [ ] 로그인, 회원가입, 아이디-비밀번호 찾기
+   *   [ ] 상품 추가
+   *   [ ] 매출 확인
+   *   [x] 기본 버거 커스텀
+   *   [x] 칼로리를 이용한 자동 버거 커스텀
+   *   [x] 장바구니
+   *   [ ] 주문목록     
 
 
 
