@@ -40,8 +40,27 @@
 
 
 ## How To Use / Development setup
-1. DB 구축 및 권한 설정
-   
+
+# Clone this repository
+$ git clone [https://github.com/](https://github.com/seunghyeon22/SUBKING)https://github.com/seunghyeon22/SUBKING.git
+
+# Go into the repository
+$ cd SUBKING
+ 
+# Install dependencies
+$ lombok
+$ mybatis
+$ logback-classic 
+$ commons-dbcp2
+$ mysql-connector-j
+$ jackson-databind
+$ javax.servlet.jsp-api
+$ javax.servlet-api
+$ jbcrypt
+$ json
+$ mybatis
+$ jstl
+
 
 ## Repository Structure
 - Repository
@@ -50,14 +69,11 @@
 ## ToDo
 - 구현된 기능
    - 내가 구현한 기능 
-   *   [ ] 로그인, 회원가입, 아이디-비밀번호 찾기
-   *   [ ] 상품 추가
-   *   [ ] 매출 확인
-   *   [x] 기본 버거 커스텀
-   *   [x] 칼로리를 이용한 자동 버거 커스텀
-   *   [x] 장바구니
-   *   [ ] 주문목록     
+      *   [ ] 로그인, 회원가입, 아이디-비밀번호 찾기
+      *   [ ] 상품 추가
+      *   [ ] 매출 확인
+      *   [x] 기본 버거 커스텀
+      *   [x] 칼로리를 이용한 자동 버거 커스텀
+      *   [x] 장바구니
+      *   [ ] 주문목록     
 
-
-
-https://github.com/LeeKangHo1/SUBKINGproject.git
