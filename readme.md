@@ -12,12 +12,12 @@
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
   <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
   <img src="https://img.shields.io/badge/HTML-4285F4?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/CSS-4285F4?style=for-the-badge&logo=css3&logoColor=white">
-  <img src="https://img.shields.io/badge/JAVA-4285F4?style=for-the-badge&logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/JAVASCRIPT-4285F4?style=for-the-badge&logo=javascript&logoColor=white"> 
-  <img src="https://img.shields.io/badge/MAVEN-4285F4?style=for-the-badge&logo=apache-maven&logoColor=white">
-  <img src="https://img.shields.io/badge/JSP-4285F4?style=for-the-badge&logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/Servlet-4285F4?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS-66FFFF?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/JAVA-336600?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/JAVASCRIPT-0033FF?style=for-the-badge&logo=javascript&logoColor=white"> 
+  <img src="https://img.shields.io/badge/MAVEN-993300?style=for-the-badge&logo=apache-maven&logoColor=white">
+  <img src="https://img.shields.io/badge/JSP-CCCCCC?style=for-the-badge&logo=java&logoColor=white">
+  <img src="https://img.shields.io/badge/Servlet-003300?style=for-the-badge&logo=java&logoColor=white">
 </p>
 
 ## Contents
