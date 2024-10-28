@@ -10,7 +10,13 @@
   <h2>Built With</h2>
   <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
-  <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">   
+  <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
+   ![HTML](https://img.shields.io/badge/HTML-4285F4?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-4285F4?style=for-the-badge&logo=css3&logoColor=white)
+![JAVA](https://img.shields.io/badge/JAVA-4285F4?style=for-the-badge&logo=java&logoColor=white)
+![JAVASCRIPT](https://img.shields.io/badge/JAVASCRIPT-4285F4?style=for-the-badge&logo=javascript&logoColor=white)
+![MAVEN](https://img.shields.io/badge/MAVEN-4285F4?style=for-the-badge&logo=apache-maven&logoColor=white)
+
 </p>
 
 ## Contents
