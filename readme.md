@@ -6,6 +6,9 @@
 
 ## 기능 설명 
 [버거 기본 커스텀 기능](src/main/java/kr/co/subking/custom)
+[버거 주문 목록](src/main/java/kr/co/subking/sales)
+[버거 장바구니 담기 및 결제](src/main/java/kr/co/subking/cart)
+
 <p align="center">
   <h2>Built With</h2>
   <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white">
